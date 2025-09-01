@@ -1,6 +1,7 @@
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
+import mdx from '@astrojs/mdx';
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import swup from "@swup/astro";
@@ -28,7 +29,6 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://blog.jursin.top/",
-
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
@@ -112,8 +112,10 @@ export default defineConfig({
 		}),
 		svelte(),
 		sitemap(),
+		mdx()
 	],
 	markdown: {
+		syntaxHighlight: 'prism',
 		remarkPlugins: [
 			remarkMath,
 			remarkReadingTime,

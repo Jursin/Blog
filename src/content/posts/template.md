@@ -2,7 +2,7 @@
 title: 文章示例
 published: 2024-05-01
 updated: 2025-08-29
-description: '了解 Fuwari 文章的基本语法。'
+description: '了解文章的基本语法。'
 image: ''
 tags: [示例, Markdown]
 category: '示例'

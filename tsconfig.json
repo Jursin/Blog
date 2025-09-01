@@ -8,7 +8,6 @@
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"allowJs": false,
-		"allowSyntheticDefaultImports": true,
 		"declaration": true,
 		"plugins": [
 			{
