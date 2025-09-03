@@ -255,8 +255,8 @@ export const profileConfig: ProfileConfig = {
 	// Umami统计部份，记得在layout插入Umami的head标签
 	umami: {
 		enable: true, // 是否显示umami统计
-		shareId: "ei0O8XE0vI3KkzGb", //填入共享URL最后面那一串
-		region: "us",
+		shareId: "nhdFh75Jho6mSr1L", //填入共享URL最后面那一串
+		region: "eu",
 	},
 };
 
