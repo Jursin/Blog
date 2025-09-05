@@ -23,18 +23,24 @@
 	function checkIsTOCNavigation() {
 		// 检查调用堆栈，看是否来自TOC组件
 		const stack = new Error().stack;
-		if (stack && (stack.includes('handleAnchorClick') || stack.includes('TOC.astro'))) {
+		if (
+			stack &&
+			(stack.includes("handleAnchorClick") || stack.includes("TOC.astro"))
+		) {
 			return true;
 		}
 
 		// 检查最近是否有TOC点击事件
-		if (window.tocClickTimestamp && Date.now() - window.tocClickTimestamp < 1000) {
+		if (
+			window.tocClickTimestamp &&
+			Date.now() - window.tocClickTimestamp < 1000
+		) {
 			return true;
 		}
 
 		// 检查是否在TOC元素上
 		const activeElement = document.activeElement;
-		if (activeElement && activeElement.closest('#toc, .table-of-contents')) {
+		if (activeElement?.closest("#toc, .table-of-contents")) {
 			return true;
 		}
 
@@ -67,7 +73,7 @@
 	}
 
 	// 检查滚动是否被允许
-	function isScrollAllowed(x, y) {
+	function isScrollAllowed(y) {
 		if (!scrollProtection.enabled) {
 			return true;
 		}
@@ -75,7 +81,7 @@
 		// 检查是否是TOC或MD导航触发的滚动
 		const isTOCNavigation = checkIsTOCNavigation();
 		if (isTOCNavigation) {
-			console.log('[强力滚动保护] 检测到TOC导航，允许滚动');
+			console.log("[强力滚动保护] 检测到TOC导航，允许滚动");
 			return true;
 		}
 
@@ -102,7 +108,10 @@
 	}
 
 	// 劫持 window.scrollTo
-	window.scrollTo = (x, y) => {
+	window.scrollTo = (originalX, originalY) => {
+		let x = originalX;
+		let y = originalY;
+
 		// 处理参数为对象的情况
 		if (typeof x === "object") {
 			const options = x;
@@ -122,18 +131,19 @@
 	// 劫持 window.scrollBy
 	window.scrollBy = (x, y) => {
 		const currentY = window.scrollY || window.pageYOffset;
-		const targetY = currentY + y;
+		let targetX = x; // 使用新变量名 targetX
+		let targetY = currentY + y; // 使用新变量名 targetY
 
 		if (typeof x === "object") {
 			const options = x;
-			x = options.left || 0;
-			y = options.top || 0;
+			targetX = options.left || 0; // 重新赋值给 targetX
+			targetY = currentY + (options.top || 0); // 重新计算 targetY 基于 currentY
 		}
 
-		if (isScrollAllowed(x, targetY)) {
-			originalScrollBy.call(window, x, y);
+		if (isScrollAllowed(targetX, targetY)) {
+			originalScrollBy.call(window, targetX, targetY);
 		} else {
-			console.log("[强力滚动保护] 阻止 scrollBy:", x, y);
+			console.log("[强力滚动保护] 阻止 scrollBy:", targetX, targetY);
 		}
 	};
 
@@ -163,9 +173,12 @@
 			const target = event.target;
 
 			// 检查是否点击了TOC导航
-			if (target.closest('#toc, .table-of-contents') && target.closest('a[href^="#"]')) {
+			if (
+				target.closest("#toc, .table-of-contents") &&
+				target.closest('a[href^="#"]')
+			) {
 				window.tocClickTimestamp = Date.now();
-				console.log('[强力滚动保护] 检测到TOC导航点击');
+				console.log("[强力滚动保护] 检测到TOC导航点击");
 				return; // 不启动保护，允许TOC正常工作
 			}
 
@@ -265,7 +278,7 @@
 				const target = mutation.target;
 
 				// 检查是否是 Twikoo 相关的 DOM 变化
-				if (target.closest && target.closest("#tcomment")) {
+				if (target?.closest("#tcomment")) {
 					// 检查是否有元素被移除或隐藏（可能是面板关闭）
 					if (
 						mutation.removedNodes.length > 0 ||

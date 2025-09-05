@@ -31,8 +31,21 @@ export const timelineData: TimelineItem[] = [
 			"初次接触开源平台",
 		type: "project",
 		startDate: "2023-03-18",
+		endDate: "2023-03-18",
+		icon: "mdi:github",
+		color: "#000000ff",
+		featured: false,
+	},
+	{
+		id: "graducation",
+		title: "高中毕业",
+		description:
+			"完成高中学业",
+		type: "education",
+		startDate: "2025-06-06",
+		endDate: "2025-06-06",
 		icon: "material-symbols:school",
-		color: "#059669",
+		color: "#e01717ff",
 		featured: true,
 	},
 ];

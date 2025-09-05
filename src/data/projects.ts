@@ -42,6 +42,17 @@ export const projectsData: Project[] = [
 		status: 'in-progress',
 		startDate: '2025-07-14',
 		tags: ['VitePress', 'Minecraft', '教程']
+	},
+	{
+		id: 'awesome-class-softwares',
+		title: 'Awesome-Class-Softwares',
+		description: '适用于班级一体机的优质软件合集',
+		image: '',
+		category: 'other',
+		techStack: ['Markdown'],
+		status: 'in-progress',
+		startDate: '2024-08-23',
+		tags: ['软件', '合集']
 	}
 ];
 
