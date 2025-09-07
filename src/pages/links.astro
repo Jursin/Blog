@@ -9,7 +9,7 @@ import MainGridLayout from "../layouts/MainGridLayout.astro";
 const friendsPost = await getEntry("spec", "friends");
 
 if (!friendsPost) {
-	throw new Error("friends page content not found");
+	throw new Error("未发现友链页面内容");
 }
 
 const { Content } = await render(friendsPost);
@@ -17,17 +17,17 @@ const items = [
 	{
 		title: "Astro",
 		imgurl: "https://avatars.githubusercontent.com/u/44914786?s=48&v=4",
-		desc: "The web framework for content-driven websites. ⭐️ Star to support our work!",
+		desc: "内容驱动的静态网站生成器 ",
 		siteurl: "https://github.com/withastro/astro",
-		tags: ["Framework"],
+		tags: ["框架"],
 	},
 	{
-		title: "Mizuki Docs",
+		title: "Mizuki 文档",
 		imgurl:
 			"https://docs.mizuki.mysqil.com/youxi.png",
-		desc: "Mizuki User Manual",
+		desc: "Mizuki 使用手册",
 		siteurl: "https://docs.mizuki.mysqil.com",
-		tags: ["Docs"],
+		tags: ["文档"],
 	},
 ];
 
@@ -42,7 +42,7 @@ function shuffleArray(array) {
 
 const shuffledItems = shuffleArray(items);
 ---
-<MainGridLayout title={i18n(I18nKey.friends)} description={i18n(I18nKey.friends)}>
+<MainGridLayout title={i18n(I18nKey.links)} description={i18n(I18nKey.links)}>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full ">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 my-4">

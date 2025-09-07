@@ -9,6 +9,7 @@
 		"strictNullChecks": true,
 		"allowJs": false,
 		"declaration": true,
+		"allowSyntheticDefaultImports": true,
 		"plugins": [
 			{
 				"name": "@astrojs/ts-plugin"
@@ -24,5 +25,5 @@
 			"@/*": ["src/*"]
 		}
 	},
-	"include": ["src/**/*"]
+	"include": ["src/**/*", "global.d.ts"]
 }

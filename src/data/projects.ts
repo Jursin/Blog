@@ -40,6 +40,8 @@ export const projectsData: Project[] = [
 		category: 'web',
 		techStack: ['TypeScript', 'Vue'],
 		status: 'in-progress',
+		liveDemo: 'https://mc-guide.jursin.top/',
+		sourceCode: 'https://github.com/Jursin/MC-Guide',
 		startDate: '2025-07-14',
 		tags: ['VitePress', 'Minecraft', '教程']
 	},
@@ -51,6 +53,7 @@ export const projectsData: Project[] = [
 		category: 'other',
 		techStack: ['Markdown'],
 		status: 'in-progress',
+		sourceCode: 'https://github.com/Jursin/Awesome-Class-Softwares',
 		startDate: '2024-08-23',
 		tags: ['软件', '合集']
 	}

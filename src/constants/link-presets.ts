@@ -18,9 +18,9 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 		url: "/archive/",
 		icon: "material-symbols:archive",
 	},
-	[LinkPreset.Friends]: {
-		name: i18n(I18nKey.friends),
-		url: "/friends/",
+	[LinkPreset.Links]: {
+		name: i18n(I18nKey.links),
+		url: "/links/",
 		icon: "material-symbols:group",
 	},
 	[LinkPreset.Anime]: {
@@ -33,20 +33,10 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 		url: "/diary/",
 		icon: "material-symbols:book",
 	},
-	[LinkPreset.Gallery]: {
-		name: i18n(I18nKey.gallery),
-		url: "/gallery/",
-		icon: "material-symbols:photo-library",
-	},
 	[LinkPreset.Projects]: {
 		name: i18n(I18nKey.projects),
 		url: "/projects/",
 		icon: "material-symbols:work",
-	},
-	[LinkPreset.Skills]: {
-		name: i18n(I18nKey.skills),
-		url: "/skills/",
-		icon: "material-symbols:psychology",
 	},
 	[LinkPreset.Timeline]: {
 		name: i18n(I18nKey.timeline),

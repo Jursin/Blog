@@ -42,7 +42,7 @@ export const en: Translation = {
 	[Key.author]: "Author",
 	[Key.publishedAt]: "Published at",
 	[Key.license]: "License",
-	[Key.friends]: "Friends",
+	[Key.links]: "Links",
 	[Key.anime]: "Anime",
 	[Key.diary]: "Moments",
 
@@ -80,16 +80,6 @@ export const en: Translation = {
 	// Music Player
 	[Key.playlist]: "Playlist",
 
-	// 相册页面
-	[Key.albums]: "Albums",
-	[Key.albumsSubtitle]: "Capturing beautiful moments in life",
-	[Key.albumsEmpty]: "No Albums",
-	[Key.albumsEmptyDesc]:
-		"No albums created yet. Start adding some beautiful memories!",
-	[Key.albumsBackToList]: "Back to Albums",
-	[Key.albumsPhotoCount]: "photo",
-	[Key.albumsPhotosCount]: "photos",
-
 	// Projects page
 	[Key.projects]: "Projects",
 	[Key.projectsSubtitle]: "Showcase of my development projects",
@@ -113,7 +103,6 @@ export const en: Translation = {
 	[Key.projectsFeatured]: "Featured Projects",
 	[Key.projectsPlanned]: "Planned",
 	[Key.projectsDemo]: "Demo",
-	[Key.projectsSource]: "Source",
 
 	// RSS page
 	[Key.rss]: "RSS Feed",
@@ -135,33 +124,6 @@ export const en: Translation = {
 		"We recommend using Feedly, Inoreader, or other RSS readers to subscribe to this site.",
 	[Key.rssCopied]: "RSS link copied to clipboard!",
 	[Key.rssCopyFailed]: "Copy failed, please copy the link manually",
-
-	// Skills page
-	[Key.skills]: "Skills",
-	[Key.skillsSubtitle]: "My technical skills and expertise",
-	[Key.skillsFrontend]: "Frontend",
-	[Key.skillsBackend]: "Backend",
-	[Key.skillsDatabase]: "Database",
-	[Key.skillsTools]: "Tools",
-	[Key.skillsOther]: "Other",
-	[Key.skillLevel]: "Level",
-	[Key.skillLevelBeginner]: "Beginner",
-	[Key.skillLevelIntermediate]: "Intermediate",
-	[Key.skillLevelAdvanced]: "Advanced",
-	[Key.skillLevelExpert]: "Expert",
-	[Key.skillExperience]: "Experience",
-	[Key.skillYears]: "years",
-	[Key.skillMonths]: "months",
-	[Key.skillsTotal]: "Total Skills",
-	[Key.skillsExpert]: "Expert",
-	[Key.skillsAdvanced]: "Advanced",
-	[Key.skillsIntermediate]: "Intermediate",
-	[Key.skillsBeginner]: "Beginner",
-	[Key.skillsAdvancedTitle]: "Professional Skills",
-	[Key.skillsProjects]: "Related Projects",
-	[Key.skillsDistribution]: "Skills Distribution",
-	[Key.skillsByLevel]: "By Level",
-	[Key.skillsByCategory]: "By Category",
 
 	// Timeline page
 	[Key.timeline]: "Timeline",

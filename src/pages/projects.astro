@@ -1,5 +1,4 @@
 ---
-import { getCollection } from 'astro:content';
 import MainGridLayout from '../layouts/MainGridLayout.astro';
 import { projectsData, getProjectStats, getProjectsByCategory, getFeaturedProjects, getAllTechStack } from '../data/projects';
 import { i18n } from '../i18n/translation';
@@ -127,25 +126,25 @@ const getCategoryText = (category: string) => {
                       </span>
                     )}
                   </div>
-                  <div class="flex gap-3">
-                    {project.demoUrl && (
+                  <div class="flex gap-3 text-sm justify-between items-end">
+                    {project.liveDemo && (
                       <a 
-                        href={project.demoUrl} 
+                        href={project.liveDemo} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
+                        class="text-blue-600 dark:text-blue-400 hover:underline font-medium"
                       >
                         {i18n(I18nKey.projectsDemo)}
                       </a>
                     )}
-                    {project.sourceUrl && (
+                    {project.sourceCode && (
                       <a 
-                        href={project.sourceUrl} 
+                        href={project.sourceCode} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        class="text-gray-600 dark:text-gray-400 hover:underline text-sm font-medium"
+                        class="text-gray-600 dark:text-gray-400 hover:underline font-medium"
                       >
-                        {i18n(I18nKey.projectsSource)}
+                        <iconify-icon icon="mdi:github" width="2em" height="2em"></iconify-icon>
                       </a>
                     )}
                   </div>
@@ -214,10 +213,10 @@ const getCategoryText = (category: string) => {
                           </span>
                         )}
                       </div>
-                      <div class="flex gap-3 text-sm">
-                        {project.demoUrl && (
+                      <div class="flex gap-3 text-sm justify-between items-end">
+                        {project.liveDemo && (
                           <a 
-                            href={project.demoUrl} 
+                            href={project.liveDemo} 
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="text-blue-600 dark:text-blue-400 hover:underline font-medium"
@@ -225,14 +224,14 @@ const getCategoryText = (category: string) => {
                             {i18n(I18nKey.projectsDemo)}
                           </a>
                         )}
-                        {project.sourceUrl && (
+                        {project.sourceCode && (
                           <a 
-                            href={project.sourceUrl} 
+                            href={project.sourceCode} 
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="text-gray-600 dark:text-gray-400 hover:underline font-medium"
                           >
-                            {i18n(I18nKey.projectsSource)}
+                            <iconify-icon icon="mdi:github" width="2em" height="2em"></iconify-icon>
                           </a>
                         )}
                       </div>

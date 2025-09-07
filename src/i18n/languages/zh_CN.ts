@@ -19,7 +19,7 @@ export const zh_CN: Translation = {
 	[Key.announcementClose]: "关闭",
 
 	[Key.comments]: "评论",
-	[Key.friends]: "友链",
+	[Key.links]: "友链",
 	[Key.untitled]: "无标题",
 	[Key.uncategorized]: "未分类",
 	[Key.noTags]: "无标签",
@@ -43,7 +43,6 @@ export const zh_CN: Translation = {
 	[Key.publishedAt]: "发布于",
 	[Key.license]: "许可协议",
 	[Key.anime]: "追番",
-	[Key.diary]: "日记",
 
 	// 番剧页面
 	[Key.animeTitle]: "我的追番记录",
@@ -59,16 +58,6 @@ export const zh_CN: Translation = {
 	[Key.animeYear]: "年份",
 	[Key.animeStudio]: "制作",
 
-	// 短文页面
-	[Key.diarySubtitle]: "随时随地，分享生活",
-	[Key.diaryCount]: "条短文",
-	[Key.diaryImage]: "图片",
-	[Key.diaryReply]: "回复",
-	[Key.diaryTips]: "只展示最近30条日记",
-	[Key.diaryMinutesAgo]: "分钟前",
-	[Key.diaryHoursAgo]: "小时前",
-	[Key.diaryDaysAgo]: "天前",
-
 	// 404页面
 	[Key.notFound]: "404",
 	[Key.notFoundTitle]: "页面未找到",
@@ -77,15 +66,6 @@ export const zh_CN: Translation = {
 
 	// 音乐播放器
 	[Key.playlist]: "播放列表",
-
-	// 相册页面
-	[Key.albums]: "相册",
-	[Key.albumsSubtitle]: "记录生活中的美好瞬间",
-	[Key.albumsEmpty]: "暂无相册",
-	[Key.albumsEmptyDesc]: "还没有创建任何相册，快去添加一些美好的回忆吧！",
-	[Key.albumsBackToList]: "返回相册",
-	[Key.albumsPhotoCount]: "张照片",
-	[Key.albumsPhotosCount]: "张照片",
 
 	// 项目展示页面
 	[Key.projects]: "项目展示",
@@ -110,7 +90,6 @@ export const zh_CN: Translation = {
 	[Key.projectsFeatured]: "精选项目",
 	[Key.projectsPlanned]: "计划中",
 	[Key.projectsDemo]: "在线演示",
-	[Key.projectsSource]: "源代码",
 
 	// RSS页面
 	[Key.rss]: "RSS 订阅",

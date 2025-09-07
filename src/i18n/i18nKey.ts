@@ -39,9 +39,8 @@ enum I18nKey {
 	author = "author",
 	publishedAt = "publishedAt",
 	license = "license",
-	friends = "friends",
+	links = "links",
 	anime = "anime",
-	diary = "diary",
 
 	// 番剧页面
 	animeTitle = "animeTitle",
@@ -57,16 +56,6 @@ enum I18nKey {
 	animeYear = "animeYear",
 	animeStudio = "animeStudio",
 
-	// 短文页面
-	diarySubtitle = "diarySubtitle",
-	diaryCount = "diaryCount",
-	diaryImage = "diaryImage",
-	diaryReply = "diaryReply",
-	diaryTips = "diaryTips",
-	diaryMinutesAgo = "diaryMinutesAgo",
-	diaryHoursAgo = "diaryHoursAgo",
-	diaryDaysAgo = "diaryDaysAgo",
-
 	// 404页面
 	notFound = "notFound",
 	notFoundTitle = "notFoundTitle",
@@ -75,15 +64,6 @@ enum I18nKey {
 
 	// 音乐播放器
 	playlist = "playlist",
-
-	// 相册页面
-	albums = "albums",
-	albumsSubtitle = "albumsSubtitle",
-	albumsEmpty = "albumsEmpty",
-	albumsEmptyDesc = "albumsEmptyDesc",
-	albumsBackToList = "albumsBackToList",
-	albumsPhotoCount = "albumsPhotoCount",
-	albumsPhotosCount = "albumsPhotosCount",
 
 	// 项目展示页面
 	projects = "projects",
@@ -108,7 +88,6 @@ enum I18nKey {
 	projectsFeatured = "projectsFeatured",
 	projectsPlanned = "projectsPlanned",
 	projectsDemo = "projectsDemo",
-	projectsSource = "projectsSource",
 
 	// RSS页面
 	rss = "rss",
