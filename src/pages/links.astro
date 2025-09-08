@@ -1,18 +1,8 @@
 ---
-
-import { getEntry, render } from "astro:content";
-import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 
-const friendsPost = await getEntry("spec", "friends");
-
-if (!friendsPost) {
-	throw new Error("未发现友链页面内容");
-}
-
-const { Content } = await render(friendsPost);
 const items = [
 	{
 		title: "Astro",
@@ -22,12 +12,18 @@ const items = [
 		tags: ["框架"],
 	},
 	{
-		title: "Mizuki 文档",
-		imgurl:
-			"https://docs.mizuki.mysqil.com/youxi.png",
-		desc: "Mizuki 使用手册",
-		siteurl: "https://docs.mizuki.mysqil.com",
-		tags: ["文档"],
+		title: "Mizuki 博客主题",
+		imgurl: "https://docs.mizuki.mysqil.com/youxi.png",
+		desc: "Mizuki 演示站点",
+		siteurl: "https://mizuki.mysqil.com",
+		tags: ["博客", "文档"],
+	},
+    {
+		title: "Fuwari 博客主题",
+		imgurl: "https://fuwari.vercel.app/favicon/favicon-dark-192.png",
+		desc: "Fuwari 演示站点",
+		siteurl: "https://fuwari.vercel.app",
+		tags: ["博客", "文档"],
 	},
 ];
 
@@ -54,7 +50,7 @@ const shuffledItems = shuffleArray(items);
                         <div class="grow w-full">
                             <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 mb-1">{item.title}</div>
                             <div class="text-50 text-sm font-medium">{item.desc}</div>
-                            <div class:list={["items-center", {"flex": true, "hidden md:flex" : false}]}>
+                            <div class:list={["items-center", {"flex": true, "hidden md:flex" : false}]} >
                                 <div class="flex flex-row flex-nowrap items-center">
                                     {(item.tags && item.tags.length > 0) && item.tags.map((tag,i) => (
                                     <div class:list={[{"hidden": i==0}, "mx-1.5 text-[var(--meta-divider)] text-sm" ]}>
@@ -75,9 +71,6 @@ const shuffledItems = shuffleArray(items);
                     </div>
                 ))}
             </div>
-            <Markdown class="mt-2">
-                <Content />
-            </Markdown>
         </div>
     </div>
 </MainGridLayout>

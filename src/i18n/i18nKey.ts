@@ -56,6 +56,16 @@ enum I18nKey {
 	animeYear = "animeYear",
 	animeStudio = "animeStudio",
 
+	// 游戏页面
+games = "games",
+    games_stats = "games_stats",
+    total_games = "total_games",
+	gamesList = "gamesList",
+    total_play_time = "total_play_time",
+    favorite_game = "favorite_game",
+    play_time = "play_time",
+	game_tags = "game_tags",
+
 	// 404页面
 	notFound = "notFound",
 	notFoundTitle = "notFoundTitle",

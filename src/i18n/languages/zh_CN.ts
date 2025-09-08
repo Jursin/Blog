@@ -45,7 +45,7 @@ export const zh_CN: Translation = {
 	[Key.anime]: "追番",
 
 	// 番剧页面
-	[Key.animeTitle]: "我的追番记录",
+	[Key.animeTitle]: "追番记录",
 	[Key.animeSubtitle]: "记录我的二次元之旅",
 	[Key.animeList]: "追番列表",
 	[Key.animeTotal]: "总数",
@@ -57,6 +57,16 @@ export const zh_CN: Translation = {
 	[Key.animeStatusPlanned]: "计划中",
 	[Key.animeYear]: "年份",
 	[Key.animeStudio]: "制作",
+
+	// 游戏页面 
+    [Key.games]: "游戏统计",
+    [Key.games_stats]: "我的游戏库与游玩记录",
+	[Key.gamesList]: "游戏列表",    
+    [Key.total_games]: "总游戏数",
+    [Key.total_play_time]: "总游玩时长",
+    [Key.favorite_game]: "常玩游戏",    
+    [Key.play_time]: "游玩时长",
+	[Key.game_tags]: "游戏标签",
 
 	// 404页面
 	[Key.notFound]: "404",

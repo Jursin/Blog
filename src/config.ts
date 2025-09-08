@@ -164,9 +164,13 @@ export const navBarConfig: NavBarConfig = {
 			name: "我的",
 			url: "/content/",
 			icon: "material-symbols:person",
-			children: [
-				LinkPreset.About,
+			children: [				
 				LinkPreset.Anime,
+				{
+					name: "游戏",
+					url: "/games/",
+					icon: "material-symbols:videogame-asset",
+				},
 			],
 		},
 		{
@@ -180,6 +184,7 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:timeline",
 		},
 		LinkPreset.Links,
+		LinkPreset.About,
 	],
 };
 

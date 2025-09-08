@@ -1,0 +1,273 @@
+---
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+
+// 游戏数据配置
+const games = [
+  {
+    title: "Minecraft",
+    cover:
+      "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Homepage_Discover-our-games_MC-Vanilla-KeyArt_864x864.jpg",
+    icon: "/images/games/Minecraft_logo.jpg",
+    desc: "我的世界",
+    startDate: "2016-07-01",
+    url: "https://www.minecraft.net/zh-hans",
+    tags: ["开放世界", "沙盒", "建造", "冒险"],
+    favorite: true,
+  },
+  {
+    title: "猫和老鼠",
+    cover: "/images/games/tom-and-jerry_cover.jpg",
+    icon: "/images/games/tom-and-jerry.png",
+    desc: "",
+    startDate: "2019-07-04",
+    url: "https://tom.163.com/",
+    tags: ["竞技", "跑酷"],
+  },
+  {
+    title: "和平精英",
+    cover: "/images/games/hpjy.jpg",
+    icon: "/images/games/hpjy_logo.png",
+    desc: "",
+    startDate: "2025-07-06",
+    url: "https://gp.qq.com/main.shtml",
+    tags: ["枪战", "竞技"],
+  },
+];
+
+// 计算游戏游玩时长（年/月）
+function formatPlayDuration(startDate) {
+  const start = new Date(startDate);
+  const now = new Date();
+
+  let months = (now.getFullYear() - start.getFullYear()) * 12;
+  months += now.getMonth() - start.getMonth();
+
+  // 调整天数差异（如果当前日期小于开始日期）
+  if (now.getDate() < start.getDate()) {
+    months--;
+  }
+
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+
+  if (years > 0 && remainingMonths > 0) {
+    return `${years}年${remainingMonths}个月`;
+  } else if (years > 0) {
+    return `${years}年`;
+  } else {
+    return `${months}个月`;
+  }
+}
+
+// 计算统计数据
+const totalGames = games.length;
+
+// 获取所有游戏的开始日期，找出最早的
+const earliestDate = games.reduce((earliest, game) => {
+  const gameDate = new Date(game.startDate);
+  return gameDate < earliest ? gameDate : earliest;
+}, new Date());
+
+// 计算总游玩时长（从最早的游戏开始算起）
+const totalPlayDuration = formatPlayDuration(earliestDate);
+
+const favoriteGame = games.find((game) => game.favorite) || games[0];
+
+// 获取所有标签并统计出现次数
+const allTags = games.flatMap((game) => game.tags);
+const tagCounts = allTags.reduce((acc, tag) => {
+  acc[tag] = (acc[tag] || 0) + 1;
+  return acc;
+}, {});
+const uniqueTags = [...new Set(allTags)];
+---
+
+<MainGridLayout
+  title={i18n(I18nKey.games)}
+  description={i18n(I18nKey.games_stats)}
+>
+  <div
+    class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32"
+  >
+    <div class="card-base z-10 px-9 py-6 relative w-full">
+      <div class="mb-6">
+        <h1 class="text-4xl font-bold text-black/90 dark:text-white/90 mb-2">
+          {i18n(I18nKey.games)}
+        </h1>
+      </div>
+      <!-- 游戏统计信息 -->
+      <div class="mb-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+        <!-- 总游戏数卡片 -->
+        <div class="stat-card bg-blue-100 dark:bg-blue-900/50">
+          <div class="flex items-center">
+            <svg
+              class="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+              ></path>
+            </svg>
+            <div>
+              <div class="text-sm text-50">{i18n(I18nKey.total_games)}</div>
+              <div class="text-2xl font-bold text-black/90 dark:text-white/90">
+                {totalGames}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 总游玩时长卡片 -->
+        <div class="stat-card bg-purple-100 dark:bg-purple-900/50">
+          <div class="flex items-center">
+            <svg
+              class="w-6 h-6 mr-2 text-purple-600 dark:text-purple-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div>
+              <div class="text-sm text-50">{i18n(I18nKey.total_play_time)}</div>
+              <div class="text-2xl font-bold text-black/90 dark:text-white/90">
+                {totalPlayDuration}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 常玩游戏卡片 -->
+        <div class="stat-card bg-green-100 dark:bg-green-900/50">
+          <div class="flex items-center">
+            <svg
+              class="w-6 h-6 mr-2 text-green-600 dark:text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              ></path>
+            </svg>
+            <div>
+              <div class="text-sm text-50">{i18n(I18nKey.favorite_game)}</div>
+              <div class="text-2xl font-bold text-black/90 dark:text-white/90">
+                {favoriteGame.title}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 游戏卡片网格 -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-black/90 dark:text-white/90 mb-4">
+          {i18n(I18nKey.gamesList)}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            games.map((game) => {
+              const playDuration = formatPlayDuration(game.startDate);
+              return (
+                <a
+                  href={game.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block relative group rounded-[var(--radius-large)] overflow-hidden bg-zinc-100 dark:bg-zinc-800 transition-all hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div class="h-40 relative overflow-hidden">
+                    <img
+                      src={game.cover}
+                      alt={`${game.title}封面`}
+                      class="w-full h-full object-cover transition-transform group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <div class="absolute bottom-4 left-4 flex items-center">
+                      <img
+                        src={game.icon}
+                        alt={`${game.title}图标`}
+                        class="w-14 h-14 rounded-lg border-2 border-white/80"
+                      />
+                      <div class="ml-3 text-white">
+                        <h3 class="font-bold text-lg">{game.title}</h3>
+                        <p class="text-sm opacity-90">{game.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-4">
+                    <div class="flex justify-between items-center text-sm mb-2">
+                      <span class="text-50">{i18n(I18nKey.play_time)}</span>
+                      <span class="font-medium text-black/90 dark:text-white/90">
+                        {playDuration}
+                      </span>
+                    </div>
+
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      {game.tags.map((tag) => (
+                        <span class="px-2.5 py-1 text-xs rounded-full bg-zinc-200 dark:bg-zinc-500">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              );
+            })
+          }
+        </div>
+      </div>
+
+      <!-- 标签云 -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-black/90 dark:text-white/90 mb-4">
+          {i18n(I18nKey.game_tags)}
+        </h2>
+        <div class="flex flex-wrap gap-3">
+          {
+            uniqueTags.map((tag) => {
+              const count = tagCounts[tag];
+              const sizeClass = count > 1 ? "text-base" : "text-sm";
+              return (
+                <span
+                  class={`px-3 py-1.5 rounded-full bg-zinc-200 dark:bg-zinc-700 ${sizeClass}`}
+                >
+                  {tag} {count > 1 ? `(${count})` : ""}
+                </span>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</MainGridLayout>
+
+<style>
+  .stat-card {
+    @apply p-4 rounded-[var(--radius-large)] transition-all hover:shadow-md;
+  }
+
+  /* 暗色模式适配 */
+  @media (prefers-color-scheme: dark) {
+    .stat-card {
+      @apply border border-transparent hover:border-white/10;
+    }
+  }
+</style>
