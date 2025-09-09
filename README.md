@@ -1,9 +1,9 @@
 # Blog
 
-![Node.js >= 20](https://img.shields.io/badge/node.js-%3E%3D20-brightgreen)
-![pnpm >= 9](https://img.shields.io/badge/pnpm-%3E%3D9-blue)
-![Astro](https://img.shields.io/badge/Astro-5.12.8-orange)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue)
+![Node.js ≥ 20](https://img.shields.io/badge/node.js-%E2%89%A520-brightgreen?logo=node.js)
+![pnpm ≥ 9](https://img.shields.io/badge/pnpm-%E2%89%A59-orange?logo=pnpm)
+![Astro](https://img.shields.io/badge/Astro-5.12.8-purple?logo=astro)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue?logo=typescript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 一个现代化、功能丰富的静态博客模板，基于 [Astro](https://astro.build) & [Mizuki](https://github.com/matsuzaka-yuki/mizuki) 构建，具有先进的功能和精美的设计。
