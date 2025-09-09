@@ -100,6 +100,10 @@ export type ProfileConfig = {
 	name: string;
 	location: string;
 	company: string;
+ status: {
+  emoji: string;
+  text: string;
+ };
 	links: {
 		name: string;
 		url: string;
