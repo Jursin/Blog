@@ -4,7 +4,8 @@
 ![pnpm ≥ 9](https://img.shields.io/badge/pnpm-%E2%89%A59-orange?logo=pnpm)
 ![Astro](https://img.shields.io/badge/Astro-5.12.8-purple?logo=astro)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue?logo=typescript)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/92d906bf-1bcf-41b5-ac06-77ac2d138406/deploy-status)](https://app.netlify.com/projects/blog-mizuki-astro/deploys)
 
 一个现代化、功能丰富的静态博客模板，基于 [Astro](https://astro.build) & [Mizuki](https://github.com/matsuzaka-yuki/mizuki) 构建，具有先进的功能和精美的设计。
 
