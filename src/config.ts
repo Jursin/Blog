@@ -192,11 +192,20 @@ export const profileConfig: ProfileConfig = {
 	name: "Jursin",
 	location: "湖北",
 	company: "长江大学",
+ status: {
+  emoji: "🌴",
+  text: "放假中",
+ },
 	links: [
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
 			url: "https://github.com/Jursin",
+		},
+		{
+			name: "GitLab",
+			icon: "fa6-brands:gitlab",
+			url: "https://gitlab.com/Jursin",
 		},
 		{
 			name: "QQ",
@@ -212,11 +221,6 @@ export const profileConfig: ProfileConfig = {
 			name: "Discord",
 			icon: "fa6-brands:discord",
 			url: "https://discord.gg/4rr8EkAZ",
-		},
-		{
-			name: "X",
-			icon: "fa6-brands:twitter",
-			url: "https://x.com/Hello_Jursin",
 		},
 		{
 			name: "Mail",
