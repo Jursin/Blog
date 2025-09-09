@@ -11,6 +11,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.4
         version: 0.9.4(typescript@5.9.2)
+      '@astrojs/mdx':
+        specifier: ^4.3.4
+        version: 4.3.4(astro@5.13.2(@types/node@24.2.0)(jiti@1.21.7)(lightningcss@1.29.3)(rollup@2.79.2)(sass@1.80.4)(stylus@0.64.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.7.0))
       '@astrojs/rss':
         specifier: ^4.0.12
         version: 4.0.12
@@ -23,6 +26,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^6.0.2
         version: 6.0.2(astro@5.13.2(@types/node@24.2.0)(jiti@1.21.7)(lightningcss@1.29.3)(rollup@2.79.2)(sass@1.80.4)(stylus@0.64.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.7.0))(tailwindcss@3.4.17)
+      '@astrojs/ts-plugin':
+        specifier: ^1.10.4
+        version: 1.10.4
       '@expressive-code/core':
         specifier: ^0.41.3
         version: 0.41.3
@@ -38,6 +44,9 @@ importers:
       '@fontsource/roboto':
         specifier: ^5.2.6
         version: 5.2.6
+      '@iconify-json/eva':
+        specifier: ^1.2.3
+        version: 1.2.3
       '@iconify-json/fa6-brands':
         specifier: ^1.2.6
         version: 1.2.6
@@ -50,6 +59,9 @@ importers:
       '@iconify-json/material-symbols':
         specifier: ^1.2.33
         version: 1.2.33
+      '@iconify-json/mdi':
+        specifier: ^1.2.3
+        version: 1.2.3
       '@iconify/svelte':
         specifier: ^4.2.0
         version: 4.2.0(svelte@5.38.2)
@@ -144,16 +156,10 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
     devDependencies:
-      '@astrojs/mdx':
-        specifier: ^4.3.4
-        version: 4.3.4(astro@5.13.2(@types/node@24.2.0)(jiti@1.21.7)(lightningcss@1.29.3)(rollup@2.79.2)(sass@1.80.4)(stylus@0.64.0)(terser@5.43.1)(typescript@5.9.2)(yaml@2.7.0))
-      '@astrojs/ts-plugin':
-        specifier: ^1.10.4
-        version: 1.10.4
       '@biomejs/biome':
         specifier: 2.2.0
         version: 2.2.0
-      '@iconify-json/mdi':
+      '@iconify-json/ep':
         specifier: ^1.2.3
         version: 1.2.3
       '@rollup/plugin-yaml':
@@ -1106,6 +1112,12 @@ packages:
 
   '@fontsource/roboto@5.2.6':
     resolution: {integrity: sha512-hzarG7yAhMoP418smNgfY4fO7UmuUEm5JUtbxCoCcFHT0hOJB+d/qAEyoNjz7YkPU5OjM2LM8rJnW8hfm0JLaA==}
+
+  '@iconify-json/ep@1.2.3':
+    resolution: {integrity: sha512-bESiKz5aTcbT4chTVSKjR5P+Nk81ibRtWgR7Gng5JPdF1Az+91+bIOof/OCUKThFRWqWsQ9A4XmSSrakvjuJDQ==}
+
+  '@iconify-json/eva@1.2.3':
+    resolution: {integrity: sha512-67nZvxOHdoV2SaTLBw+seq+pbfB8OFRB7CVNI5gGJCGPXJKniPo/x9H/dYGovxq7q+GU0NwKrPxBcHyEFDwSUw==}
 
   '@iconify-json/fa6-brands@1.2.6':
     resolution: {integrity: sha512-twL3X4KWcxAhbc1vz/mIDsVr+CAItk1/EIfxKUVQtpv6O4eydk5KNYqTZWdvJNHGInUgd6vKg21aWfVgb5DXEg==}
@@ -6592,6 +6604,14 @@ snapshots:
   '@fontsource-variable/jetbrains-mono@5.2.6': {}
 
   '@fontsource/roboto@5.2.6': {}
+
+  '@iconify-json/ep@1.2.3':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/eva@1.2.3':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify-json/fa6-brands@1.2.6':
     dependencies:

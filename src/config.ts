@@ -141,12 +141,35 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
-		LinkPreset.Archive,
-		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
+		LinkPreset.Archive,		
 		{
-			name: "链接",
+			name: "我的",
+			url: "/content/",
+			icon: "material-symbols:person",
+			children: [				
+				LinkPreset.Games,
+				LinkPreset.Anime,
+			],
+		},
+		{
+			name: "项目展示",
+			url: "/projects/",
+			icon: "material-symbols:work",
+		},
+		{
+			name: "时间线",
+			url: "/timeline/",
+			icon: "material-symbols:timeline",
+		},
+		{
+			name: "友链",
 			url: "/links/",
 			icon: "material-symbols:link",
+		},
+		{
+			name: "外链",
+			url: "/links/",
+			icon: "eva:external-link-outline",
 			children: [
 				{
 					name: "导航站",
@@ -160,38 +183,15 @@ export const navBarConfig: NavBarConfig = {
 				}
 			],
 		},
-		{
-			name: "我的",
-			url: "/content/",
-			icon: "material-symbols:person",
-			children: [				
-				LinkPreset.Anime,
-				{
-					name: "游戏",
-					url: "/games/",
-					icon: "material-symbols:videogame-asset",
-				},
-			],
-		},
-		{
-			name: "项目展示",
-			url: "/projects/",
-			icon: "material-symbols:work",
-		},
-		{
-			name: "时间线",
-			url: "/timeline/",
-			icon: "material-symbols:timeline",
-		},
-		LinkPreset.Links,
 		LinkPreset.About,
 	],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "/avatar.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+	avatar: "/avatar.png",
 	name: "Jursin",
-	bio: "悟已往之不谏，知来者之可追",
+	location: "湖北",
+	company: "长江大学",
 	links: [
 		{
 			name: "GitHub",
@@ -272,14 +272,12 @@ export const commentConfig: CommentConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "公告", // 公告标题
-	content: "欢迎来到我的博客！", // 公告内容
+	title: "一言",
 	closable: true, // 允许用户关闭公告
 	link: {
-		enable: true, // 启用链接
-		text: "了解更多", // 链接文本
-		url: "/about/", // 链接 URL
-		external: false, // 内部链接
+		enable: true,
+		text: "了解更多",
+		url: "https://hitokoto.cn/",
 	},
 };
 

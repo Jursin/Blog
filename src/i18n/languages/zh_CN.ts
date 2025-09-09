@@ -59,7 +59,7 @@ export const zh_CN: Translation = {
 	[Key.animeStudio]: "制作",
 
 	// 游戏页面 
-    [Key.games]: "游戏统计",
+    [Key.games]: "游戏",
     [Key.games_stats]: "我的游戏库与游玩记录",
 	[Key.gamesList]: "游戏列表",    
     [Key.total_games]: "总游戏数",

@@ -8,30 +8,20 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 		url: "/",
 		icon: "material-symbols:home",
 	},
-	[LinkPreset.About]: {
-		name: i18n(I18nKey.about),
-		url: "/about/",
-		icon: "material-symbols:person",
-	},
 	[LinkPreset.Archive]: {
 		name: i18n(I18nKey.archive),
 		url: "/archive/",
 		icon: "material-symbols:archive",
 	},
-	[LinkPreset.Links]: {
-		name: i18n(I18nKey.links),
-		url: "/links/",
-		icon: "material-symbols:group",
+	[LinkPreset.Games]: {
+		name: i18n(I18nKey.games),
+		url: "/games/",
+		icon: "material-symbols:videogame-asset",
 	},
 	[LinkPreset.Anime]: {
 		name: i18n(I18nKey.anime),
 		url: "/anime/",
 		icon: "material-symbols:movie",
-	},
-	[LinkPreset.Diary]: {
-		name: i18n(I18nKey.diary),
-		url: "/diary/",
-		icon: "material-symbols:book",
 	},
 	[LinkPreset.Projects]: {
 		name: i18n(I18nKey.projects),
@@ -42,5 +32,10 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 		name: i18n(I18nKey.timeline),
 		url: "/timeline/",
 		icon: "material-symbols:timeline",
+	},
+	[LinkPreset.About]: {
+		name: i18n(I18nKey.about),
+		url: "/about/",
+		icon: "material-symbols:person",
 	},
 };
