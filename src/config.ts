@@ -192,10 +192,10 @@ export const profileConfig: ProfileConfig = {
 	name: "Jursin",
 	location: "湖北",
 	company: "长江大学",
- status: {
-  emoji: "🌴",
-  text: "放假中",
- },
+	status: {
+	emoji: "🌴",
+	text: "放假中",
+	},
 	links: [
 		{
 			name: "GitHub",
