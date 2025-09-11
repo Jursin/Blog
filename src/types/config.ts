@@ -41,10 +41,7 @@ export type SiteConfig = {
 		};
 		homeText?: {
 			enable: boolean; // 是否在首页显示自定义文字
-			title?: string; // 主标题
-			subtitle?: string | string[]; // 副标题，支持单个字符串或字符串数组
 			typewriter?: {
-				enable: boolean; // 是否启用打字机效果
 				speed: number; // 打字速度（毫秒）
 				deleteSpeed: number; // 删除速度（毫秒）
 				pauseTime: number; // 完整显示后的暂停时间（毫秒）

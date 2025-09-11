@@ -1,103 +1,97 @@
 ---
+import { siteConfig } from "../config";  // 假设你的siteConfig在这里
+
 export interface Props {
-    text: string | string[];
-    speed?: number;
-    deleteSpeed?: number;
-    pauseTime?: number;
-    class?: string;
+    enabled?: boolean;  // 控制是否开启Hitokoto功能
 }
 
-const { text, speed = 100, deleteSpeed = 50, pauseTime = 2000, class: className = "" } = Astro.props;
-const textData = Array.isArray(text) ? JSON.stringify(text) : text;
+const { 
+    enabled = true,
+} = Astro.props;
+
+// 从siteConfig获取打字机参数
+const speed = siteConfig.banner.homeText.typewriter.speed;
+const deleteSpeed = siteConfig.banner.homeText.typewriter.deleteSpeed;
+const pauseTime = siteConfig.banner.homeText.typewriter.pauseTime;
 ---
 
-<span class={`typewriter ${className}`} data-text={textData} data-speed={speed} data-delete-speed={deleteSpeed} data-pause-time={pauseTime}></span>
+<span 
+    class={`hitokoto-typewriter`} 
+    data-enabled={enabled}
+    data-speed={speed}
+    data-delete-speed={deleteSpeed}
+    data-pause-time={pauseTime}
+></span>
 
 <script>
-class TypewriterEffect {
+class HitokotoTypewriter {
     private element: HTMLElement;
-    private texts: string[];
-    private currentTextIndex: number = 0;
     private speed: number;
     private deleteSpeed: number;
     private pauseTime: number;
     private currentIndex: number = 0;
     private isDeleting: boolean = false;
     private timeoutId: number | null = null;
+    private enabled: boolean;
+    private currentText: string = '';
 
     constructor(element: HTMLElement) {
         this.element = element;
-        const textData = element.dataset.text || '';
-        
-        // 尝试解析为JSON数组，如果失败则作为单个字符串处理
-        try {
-            const parsed = JSON.parse(textData);
-            this.texts = Array.isArray(parsed) ? parsed : [textData];
-        } catch {
-            this.texts = [textData];
-        }
-        
+        this.enabled = element.dataset.enabled === 'true';
         this.speed = parseInt(element.dataset.speed || '100');
         this.deleteSpeed = parseInt(element.dataset.deleteSpeed || '50');
         this.pauseTime = parseInt(element.dataset.pauseTime || '2000');
-        
-        // 如果有多条文本且未启用打字机效果，随机显示一条
-        if (this.texts.length > 1 && !this.isTypewriterEnabled()) {
-            this.showRandomText();
+
+        if (this.enabled) {
+            this.fetchHitokoto().then(() => {
+                this.start();
+            });
         } else {
-            this.start();
+            this.element.textContent = '';
         }
     }
 
-    private isTypewriterEnabled(): boolean {
-        // 检查是否有打字机相关的数据属性
-        return this.element.dataset.speed !== undefined || 
-               this.element.dataset.deleteSpeed !== undefined || 
-               this.element.dataset.pauseTime !== undefined;
-    }
-
-    private showRandomText() {
-        const randomIndex = Math.floor(Math.random() * this.texts.length);
-        this.element.textContent = this.texts[randomIndex];
+    private async fetchHitokoto(): Promise<void> {
+        try {
+            const response = await fetch("https://international.v1.hitokoto.cn/?c=d&c=h&c=i");
+            const data = await response.json();
+            this.currentText = data.hitokoto;
+            // 如果需要可以设置链接
+            // const link = document.createElement('a');
+            // link.href = `https://hitokoto.cn/?uuid=${data.uuid}`;
+            // link.textContent = this.currentText;
+            // this.element.appendChild(link);
+        } catch (error) {
+            console.error('Failed to fetch Hitokoto:', error);
+            this.currentText = ':D 获取一言失败';
+        }
     }
 
     private start() {
-        if (this.texts.length === 0) return;
+        if (!this.currentText) return;
         this.type();
     }
 
-    private getCurrentText(): string {
-        return this.texts[this.currentTextIndex] || '';
-    }
-
     private type() {
-        const currentText = this.getCurrentText();
-        
         if (this.isDeleting) {
-            // 删除字符
             if (this.currentIndex > 0) {
                 this.currentIndex--;
-                this.element.textContent = currentText.substring(0, this.currentIndex);
+                this.element.textContent = this.currentText.substring(0, this.currentIndex);
                 this.timeoutId = window.setTimeout(() => this.type(), this.deleteSpeed);
             } else {
-                // 删除完成，切换到下一条文本
                 this.isDeleting = false;
-                this.currentTextIndex = (this.currentTextIndex + 1) % this.texts.length;
-                this.timeoutId = window.setTimeout(() => this.type(), this.speed);
+                this.fetchHitokoto().then(() => {
+                    this.timeoutId = window.setTimeout(() => this.type(), this.speed);
+                });
             }
         } else {
-            // 添加字符
-            if (this.currentIndex < currentText.length) {
+            if (this.currentIndex < this.currentText.length) {
                 this.currentIndex++;
-                this.element.textContent = currentText.substring(0, this.currentIndex);
+                this.element.textContent = this.currentText.substring(0, this.currentIndex);
                 this.timeoutId = window.setTimeout(() => this.type(), this.speed);
             } else {
-                // 打字完成，暂停后开始删除（如果有多条文本）
-                if (this.texts.length > 1) {
-                    this.isDeleting = true;
-                    this.timeoutId = window.setTimeout(() => this.type(), this.pauseTime);
-                }
-                // 如果只有一条文本，保持显示不删除
+                this.isDeleting = true;
+                this.timeoutId = window.setTimeout(() => this.type(), this.pauseTime);
             }
         }
     }
@@ -109,29 +103,29 @@ class TypewriterEffect {
     }
 }
 
-// 初始化所有打字机效果
+// 初始化
 document.addEventListener('DOMContentLoaded', () => {
-    const typewriterElements = document.querySelectorAll('.typewriter');
-    typewriterElements.forEach((element) => {
-        new TypewriterEffect(element as HTMLElement);
+    const elements = document.querySelectorAll('.hitokoto-typewriter');
+    elements.forEach((element) => {
+        new HitokotoTypewriter(element as HTMLElement);
     });
 });
 
 // 支持页面切换时重新初始化
 document.addEventListener('swup:contentReplaced', () => {
-    const typewriterElements = document.querySelectorAll('.typewriter');
-    typewriterElements.forEach((element) => {
-        new TypewriterEffect(element as HTMLElement);
+    const elements = document.querySelectorAll('.hitokoto-typewriter');
+    elements.forEach((element) => {
+        new HitokotoTypewriter(element as HTMLElement);
     });
 });
 </script>
 
 <style>
-.typewriter {
+.hitokoto-typewriter {
     position: relative;
 }
 
-.typewriter::after {
+.hitokoto-typewriter::after {
     content: '|';
     animation: blink 1s infinite;
     margin-left: 2px;

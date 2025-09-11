@@ -73,21 +73,11 @@ export const siteConfig: SiteConfig = {
 		// 请自行搭建API
 
 		homeText: {
-			enable: false, // 在主页显示自定义文本
-			title: "Beautiful Mizuki!", // 主页横幅主标题
-
-			subtitle: [
-				"A Showcase Demo Site",
-				"Carousel Highlight: Innovation",
-				"Carousel Focus: User Experience",
-				"Carousel Spot: Core Advantages",
-			],
+			enable: true, // 在主页显示自定义文本
 			typewriter: {
-				enable: true, // 启用副标题打字机效果
-
 				speed: 100, // 打字速度（毫秒）
 				deleteSpeed: 50, // 删除速度（毫秒）
-				pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
+				pauseTime: 4000, // 完全显示后的暂停时间（毫秒）
 			},
 		},
 
