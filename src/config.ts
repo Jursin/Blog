@@ -183,8 +183,8 @@ export const profileConfig: ProfileConfig = {
 	location: "湖北",
 	company: "长江大学",
 	status: {
-	emoji: "🌴",
-	text: "放假中",
+	emoji: "🏫",
+	text: "上学中",
 	},
 	links: [
 		{
