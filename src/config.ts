@@ -97,12 +97,9 @@ export const siteConfig: SiteConfig = {
 		depth: 3, // 目录深度，1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推
 	},
 	favicon: [
-		// 留空以使用默认 favicon
-		// {
-		//   src: '/favicon/icon.png',    // 图标文件路径
-		//   theme: 'light',              // 可选，指定主题 'light' | 'dark'
-		//   sizes: '32x32',              // 可选，图标大小
-		// }
+		{
+		  src: '/avatar.png', 
+		}
 	],
 };
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
@@ -164,6 +161,11 @@ export const navBarConfig: NavBarConfig = {
 				{
 					name: "导航站",
 					url: "https://nav.jursin.top/",
+					external: true,
+				},
+				{
+					name: "电教委指南",
+					url: "https://cec-guide.jursin.top/",
 					external: true,
 				},
 				{
@@ -280,7 +282,8 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 };
 
 export const footerConfig: FooterConfig = {
-	enable: false, // 是否启用Footer HTML注入功能
+	github: "https://github.com/Jursin/Blog", // GitHub 仓库链接
+	enable: true, // 是否启用Footer HTML注入功能
 };
 
 // 直接编辑 FooterConfig.html 文件来添加备案号等自定义内容
