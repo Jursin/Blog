@@ -164,7 +164,7 @@ export const navBarConfig: NavBarConfig = {
 					external: true,
 				},
 				{
-					name: "电教委指南",
+					name: "电教委手册",
 					url: "https://eec-manual.jursin.top/",
 					external: true,
 				},
