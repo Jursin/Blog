@@ -596,10 +596,6 @@ export default config
 @[code](../snippet/snippet-1.js)
 ```
 
-**输出：**
-
-@[code](../../snippet/snippet-1.js)
-
 如果你只想导入这个文件的一部分：
 
 ```md

@@ -24,14 +24,16 @@ const route = useRoute()
 const locale = computed(() => locales[lang.value])
 
 const copyPageLink = () => {
-  const url = window.location.origin + route.path
-  navigator.clipboard.writeText(url)
-    .then(() => {
-      alert(locale.value.copied)
-    })
-    .catch(err => {
-      console.error('复制失败:', err)
-    })
+  if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
+    const url = window.location.origin + route.path
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        alert(locale.value.copied)
+      })
+      .catch(err => {
+        console.error('复制失败:', err)
+      })
+  }
 }
 </script>
 
