@@ -1,0 +1,43 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build VuePress
+        run: pnpm run docs:build
+
+      - name: Setup SSH and deploy with rsync
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.REMOTE_PORT }} -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+          rsync -avz -e "ssh -p ${{ secrets.REMOTE_PORT }}" \
+          --delete \
+          --exclude='proxy_cache_dir/' \
+          docs/.vuepress/dist/ \
+          ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/www/wwwroot/${{ secrets.DEPLOY_TARGET }}/
