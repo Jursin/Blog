@@ -126,6 +126,7 @@
 .vp-friend {
   border-radius: 16px !important;
   transition: transform 0.3s;
+  background-color: #c8c8c81a !important;
 }
 
 .vp-friend:hover {
@@ -146,12 +147,13 @@
   padding: 8px;
   border-radius: 16px !important;
   display: flex;
+  background-color: transparent !important;
 }
 
 .avatar img {
   object-fit: contain !important;
   object-position: center !important;
-  border-radius: 10px !important;
+  border-radius: 50% !important;
 }
 
 .vp-link.title {

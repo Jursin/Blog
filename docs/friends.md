@@ -13,6 +13,10 @@ groups:
         link: https://hellowrc.dev/
         avatar: https://hellowrc.dev/avatar-circle.png
         desc: ClassIsland 开发者
+      - name: 落雪无痕LxHTT
+        link: https://www.lxhtt.cn/
+        avatar: https://www.lxhtt.cn/img/avatar.webp
+        desc: 活着就是为了改变世界。
       - name: SRInternet
         link: https://srinternet.github.io/
         avatar: https://avatars.githubusercontent.com/u/89620382
