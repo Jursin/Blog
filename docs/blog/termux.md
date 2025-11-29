@@ -40,7 +40,7 @@ createTime: 2025/08/29 15:52:51
   pkg install fastfetch oh-my-posh fish
   ```
 - 配置 bash
-  ```bashrc
+  ```
   fastfetch // 隐藏 logo: fastfetch --logo none
   exec fish
   ```
@@ -49,7 +49,7 @@ createTime: 2025/08/29 15:52:51
   curl -s https://ohmyposh.dev/install.sh | bash -s
   ```
 - 配置 fish
-  ```fish
+  ```
   set -g fish_greeting ""
   oh-my-posh init fish --config ~/.cache/oh-my-posh/themes/montys.omp.json | source
   echo -ne "\e[5 q" // 光标形状：下划线
