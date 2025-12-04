@@ -31,7 +31,7 @@ createTime: 2025/12/04 17:12:45
       :::
 3. 授予执行权限
     ```bash
-    chmod +x $PREFIX/bin/um
+    chmod 550 $PREFIX/bin/um
     ```
 4. 检查是否安装成功
     ```bash

@@ -43,7 +43,7 @@ export default defineThemeConfig({
   /* 页脚 */
   footer: {
     message: 'Powered by <a target="_blank" href="https://v2.vuepress.vuejs.org/">VuePress</a> & <a target="_blank" href="https://theme-plume.vuejs.press">vuepress-theme-plume</a>',
-    copyright: '<img src="/icon/miit.ico" width="14" height="14" style="margin-right: 5px; display: inline-block; vertical-align: middle;"><a href="http://beian.miit.gov.cn/" target="_blank" >鄂ICP备2025157296号-1</a> | Copyright © 2025 Jursin | <a href="/sitemap.xml">Sitemap</a>',
+    copyright: '<img src="/icon/miit.ico" width="14" height="14" style="margin-right: 5px; display: inline-block; vertical-align: middle;"><a href="http://beian.miit.gov.cn/" target="_blank" >鄂ICP备2025157296号-1</a> | Copyright © 2025 Jursin',
   },
 
   profile: {
