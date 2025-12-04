@@ -1,5 +1,8 @@
 ---
 title: 在安卓手机上使用 Unlock Music CLI 版
+tags:
+  - Termux
+  - Unlock Music
 createTime: 2025/12/04 17:12:45
 ---
 
