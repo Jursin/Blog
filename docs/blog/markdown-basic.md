@@ -2,8 +2,7 @@
 title: Markdown 基础
 createTime: 2024/03/06 22:43:52
 tags:
-  - markdown
-  - 教程
+  - Markdown
 copyright:
   license: 
     name: "MIT"

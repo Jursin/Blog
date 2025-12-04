@@ -1,9 +1,8 @@
 ---
-title: markdown 扩展
+title: Markdown 扩展
 createTime: 2024/03/05 22:49:39
 tags:
-  - markdown
-  - 教程
+  - Markdown
 copyright:
   license: 
     name: "MIT"
