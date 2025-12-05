@@ -7,7 +7,7 @@ export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
   title: 'Jursin 的博客',
-  description: '',
+  description: 'Jursin 的个人博客 VuePress Theme Plume 搭建',
 
   head: [
     ['link', { rel: 'icon', type: 'image/png', href: '/avatar.png' }],
