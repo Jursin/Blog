@@ -2,7 +2,7 @@ import { defineThemeConfig } from 'vuepress-theme-plume'
 import navbar from './navbar'
 
 export default defineThemeConfig({
-  logo: '/favicon.ico',
+  logo: '/avatar.png',
   appearance: true,
   social: [
     { icon: 'github', link: 'https://github.com/Jursin/Blog' },

@@ -10,7 +10,7 @@ export default defineUserConfig({
   description: 'Jursin 的个人博客 VuePress Theme Plume 搭建',
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/avatar.png' }],
   ],
 
   bundler: viteBundler(),
