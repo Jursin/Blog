@@ -58,7 +58,7 @@ export default defineThemeConfig({
 
   navbar,
   collections: [ 
-    { type: 'post', dir: 'blog', title: '博客' }
+    { type: 'post', dir: 'blog', title: '博客', meta: { createTime: "long" } }
   ],
 
   /**
@@ -78,5 +78,4 @@ export default defineThemeConfig({
   //   postList: true,    // 启用 博客文章列表过渡动画
     appearance: 'circle-clip',  // 启用 深色模式切换过渡动画, 或配置过渡动画类型
   },
-
 })
