@@ -13,7 +13,7 @@ interface Locale {
 const locales: Record<string, Locale> = {
   '/': { 
     star: '在 GitHub 上 Star', 
-    issue: '遇到问题？',
+    issue: '指出发现的问题',
     share: '分享此页面',
     copied: '链接已复制！'
   },
