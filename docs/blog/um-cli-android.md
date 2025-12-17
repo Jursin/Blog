@@ -60,20 +60,22 @@ destination="/storage/emulated/0/Music/"
 for file in "$source_dir"*; do
     timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
     warning="\033[1;33mWARNING\033[0m"
-    if [[ "$file" == *"_HQ"* ]] || [[ "$file" == *"_SQ"* ]]; then
+    
+    if [[ "$file" == *.kgm.flac ]]; then
         new_file="${file//_HQ/}"
         new_file="${new_file//_SQ/}"
         new_file="${new_file//.kgm.flac/.kgm}"
         mv -- "$file" "$new_file"
         um -i "$new_file" -o "$destination"
-        if [[ "$file" == *.flac ]]; then
-            mv -- "$new_file" "$destination"
-            echo -e "$timestamp    $warning    successfully moved \"$new_file\" to \"$destination$(basename "$new_file")\""
-        else
-            rm "$new_file"
-            echo -e "$timestamp    $warning    successfully removed \"$new_file\""
-        fi
+        rm "$new_file"
+        echo -e "$timestamp    $warning    successfully removed \"$new_file\""
     elif [[ "$file" == *.mp3 ]]; then
+        new_file="${file//_HQ/}"
+        new_file="${new_file//_SQ/}"
+        if [[ "$file" != "$new_file" ]]; then
+            mv -- "$file" "$new_file"
+            file="$new_file"
+        fi
         mv -- "$file" "$destination"
         echo -e "$timestamp    $warning    successfully moved \"$file\" to \"$destination$(basename "$file")\""
     fi
@@ -87,30 +89,27 @@ title: 脚本流程图
 flowchart TD
     A([开始]) --> B[设置源目录和目标目录]
     B --> C[遍历源目录所有文件]
-    C --> D{文件是否包含_HQ或_SQ?}
+    C --> D{文件是.kgm.flac格式?}
     
     D -->|是| E[移除_HQ和_SQ后缀<br>将.kgm.flac改为.kgm]
     E --> F[执行重命名文件]
     F --> G[使用um命令解锁文件并输出到目标目录]
-    G --> H{原文件是.flac格式?}
+    G --> H[删除重命名后的加密文件]
+    H --> I[输出删除成功日志]
     
-    H -->|是| I[移动新文件到目标目录]
-    H -->|否| J[删除新文件]
+    D -->|否| J{文件是.mp3格式?}
     
-    D -->|否| K{文件是.mp3格式?}
+    J -->|是| K[移除_HQ和_SQ后缀<br>重命名文件]
+    K --> L[移动处理后的文件到目标目录]
+    L --> M[输出移动成功日志]
     
-    I --> L[记录移动成功日志]
-    J --> M[记录删除成功日志]
-    K -->|是| N[移动MP3文件到目标目录]
-    K -->|否| O[跳过处理]
+    J -->|否| N[跳过处理<br>不记录日志]
     
-    N --> P[记录移动成功日志]
-    O --> Q[继续下一个文件]
-    L --> Q
-    M --> Q
-    P --> Q
+    I --> O[继续下一个文件]
+    M --> O
+    N --> O
     
-    Q --> R{还有更多文件?}
-    R -->|是| C
-    R -->|否| S([结束])
+    O --> P{还有更多文件?}
+    P -->|是| C
+    P -->|否| Q([结束])
 ```
