@@ -21,6 +21,10 @@ groups:
         link: https://srinternet.github.io/
         avatar: https://avatars.githubusercontent.com/u/89620382
         desc: SR思锐开发者
+      - name: 克里斯凪
+        link: https://www.crisglea.top/
+        avatar: https://pub-5ba3d0ad40a24ef592534696f7db2ba7.r2.dev/avatar.png
+        desc: 明天再说吧
       - name: AkatsukiMioの小窝
         link: https://blog.akatsukimio.top/
         avatar: https://blog.akatsukimio.top/favicon/favicon.ico
