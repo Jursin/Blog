@@ -98,6 +98,15 @@
   width: 300px !important;
 }
 
+/* posts */
+.posts-container.no-profile {
+  max-width: 1400px !important;
+}
+
+.vp-posts-nav.local .nav-link {
+  max-width: 175px !important;
+}
+
 /* friends */
 .vp-friends {
   max-width: 1400px !important;

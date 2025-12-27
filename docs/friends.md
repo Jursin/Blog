@@ -35,7 +35,7 @@ groups:
     list:
       - name: 智教联盟论坛
         link: https://forum.smart-teach.cn/
-        avatar: /icon/SmartTeach.png
+        avatar: /icon/SmartTeach.svg
         desc: 全国最大的电教委交流社区
       - name: Awesome-Iwb
         link: https://github.com/awesome-iwb/awesome-iwb

@@ -1,0 +1,40 @@
+{
+  "techStack": [
+    {
+      "icon": "devicon:git",
+      "name": "Git"
+    },
+    {
+      "icon": "material-icon-theme:html",
+      "name": "HTML"
+    },
+    {
+      "icon": "material-icon-theme:css",
+      "name": "CSS"
+    },
+    {
+      "icon": "material-icon-theme:javascript",
+      "name": "JavaScript"
+    },
+    {
+      "icon": "material-icon-theme:typescript",
+      "name": "TypeScript"
+    },
+    {
+      "icon": "material-icon-theme:vue",
+      "name": "Vue"
+    },
+    {
+      "icon": "material-icon-theme:python",
+      "name": "Python"
+    },
+    {
+      "icon": "material-icon-theme:markdown",
+      "name": "Markdown"
+    },
+    {
+      "icon": "logos:mysql",
+      "name": "MySql"
+    }
+  ]
+}

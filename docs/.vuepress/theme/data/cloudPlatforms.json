@@ -1,0 +1,24 @@
+{
+  "cloudPlatforms": [
+    {
+      "icon": "logos:vercel-icon",
+      "name": "Vercel"
+    },
+    {
+      "icon": "logos:netlify-icon",
+      "name": "Netlify"
+    },
+    {
+      "icon": "logos:cloudflare-icon",
+      "name": "Cloudflare"
+    },
+    {
+      "icon": "logos:mongodb-icon",
+      "name": "MongoDB Cloud"
+    },
+    {
+      "icon": "logos:neon-icon",
+      "name": "Neon"
+    }
+  ]
+}

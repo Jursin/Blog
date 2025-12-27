@@ -7,7 +7,16 @@
 import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export default defineNavbarConfig([
-  { text: '主页', icon: 'mdi:home', link: 'https://www.jursin.top' },
+  { text: '主页', icon: 'mdi:home', link: '/' },
   { text: '博客', icon: 'mdi:blog', link: '/blog/' },
+  { text: '技术', icon: 'mdi:code-tags', link: '/tech' },
   { text: '友链', icon: 'mdi:link', link: '/friends' },
+  {
+    text: '我的网站',
+    icon: 'streamline-plump:web',
+    items: [
+      { text: 'MC 指南', link: 'https://mc-guide.jursin.top/' },
+      { text: 'Openlist', link: 'https://openlist.jursin.top/' },
+    ]
+  },
 ])
