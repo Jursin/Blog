@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.26.2",
   "author": "Jursin <jursin@126.com>",
   "license": "MIT",
   "scripts": {
@@ -24,7 +24,7 @@
     "typescript": "^5.9.3",
     "vue": "^3.5.25",
     "vuepress": "2.0.0-rc.26",
-    "vuepress-theme-plume": "1.0.0-rc.183"
+    "vuepress-theme-plume": "1.0.0-rc.184"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

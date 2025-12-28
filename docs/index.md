@@ -26,14 +26,14 @@ pageLayout: page
       <span class="cursor">_</span>
     </div>
     <div class="tags-container">
-      <div class="tag">
+      <span class="tag">
         <Icon name="mdi:location" width="16" height="16" />
         湖北荆州
-      </div>
-      <div class="tag">
+      </span>
+      <span class="tag">
         <Icon name="ep:school" width="16" height="16" />
         长江大学
-      </div>
+      </span>
     </div>
     <p class="career">
       <mark class="vp-mark-visible" style=" margin-right: 0.5rem;">大学生</mark>
@@ -88,8 +88,7 @@ pageLayout: page
   height: 350px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 24px var(--vp-c-brand-soft);
 }
 
 .avatar {
@@ -154,18 +153,18 @@ pageLayout: page
 .career {
   margin: 0 0 1rem;
   font-size: 22px;
-  color: var(--vp-c-text-2, #666);
+  color: var(--vp-c-text-2);
 }
 .desc {
   font-size: 20px;
-  color: var(--vp-c-text-1, #333);
+  color: var(--vp-c-text-1);
   padding-left: 16px;
   border-left: 3px solid var(--vp-c-brand-1);
 }
 .hitokoto {
   margin: 0;
   font-size: 20px !important;
-  color: var(--vp-c-text-2, #666);
+  color: var(--vp-c-text-2);
 }
 
 .social {
@@ -178,7 +177,7 @@ pageLayout: page
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.08);
+  background: var(--vp-c-bg-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,7 +197,7 @@ pageLayout: page
   transform: scale(1.1);
 }
 
-@media (max-width: 640px) {
+@media screen and (max-width: 768px) {
   .home {
     flex-direction: column;
     text-align: center;
@@ -212,11 +211,14 @@ pageLayout: page
     height: 35px;
     font-size: 20px;
   }
-}
-@media (prefers-color-scheme: dark) {
-  .avatar img { border-color: rgba(255,255,255,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
-  .desc { color: var(--vp-c-text-1, #ddd); }
-  .career, .hitokoto { color: var(--vp-c-text-2, #aaa); }
+  .tags-container {
+    justify-content: center;
+    align-items: center;
+  }
+  .social {
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>
 

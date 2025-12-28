@@ -108,6 +108,10 @@
 }
 
 /* friends */
+.vp-posts {
+  padding: 30px !important;
+}
+
 .vp-friends {
   max-width: 1400px !important;
   padding: 0 !important;
@@ -163,4 +167,9 @@
 
 .vp-link.title {
   color: var(--vp-c-text-1) !important;
+}
+
+/* comment */
+.vp-comment {
+  padding: 0 30px !important;
 }

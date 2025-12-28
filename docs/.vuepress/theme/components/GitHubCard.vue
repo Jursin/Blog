@@ -309,8 +309,16 @@ export default {
   }
   
   .stats {
-    flex-direction: column;
-    gap: 6px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .stat-item {
+    flex: 0 0 auto;
+    width: auto;
   }
   
   .footer {
