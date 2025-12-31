@@ -208,7 +208,7 @@ pageLayout: page
 
 .tag {
   padding: 7px 10px;
-  background: var(--vp-c-bg-soft);
+  background: var(--vp-c-default-soft);
   border-radius: 8px;
   font-size: 16px;
   display: inline-flex;
@@ -247,7 +247,7 @@ pageLayout: page
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--vp-c-bg-soft);
+  background: var(--vp-c-default-soft);
   display: flex;
   align-items: center;
   justify-content: center;
