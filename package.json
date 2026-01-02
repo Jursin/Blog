@@ -24,7 +24,9 @@
     "typescript": "^5.9.3",
     "vue": "^3.5.25",
     "vuepress": "2.0.0-rc.26",
-    "vuepress-theme-plume": "1.0.0-rc.184"
+    "vuepress-theme-plume": "1.0.0-rc.184",
+    "postprocessing": "^6.38.2",
+    "three": "^0.182.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
