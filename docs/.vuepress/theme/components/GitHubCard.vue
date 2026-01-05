@@ -21,19 +21,19 @@
       
       <div class="stats">
         <div class="stat-item" @click="starRepo">
-          <Icon name="octicon:star-fill-16" size="1.2em" color="#E3B341" />
+          <Icon name="octicon:star-fill-16" size="0.8em" color="#E3B341" />
           <span>星标 {{ repoData.stargazers_count }}</span>
         </div>
         <div class="stat-item" @click="issueRepo">
-          <Icon name="octicon:issue-opened-16" size="1.2em" color="#3FB950" />
+          <Icon name="octicon:issue-opened-16" size="0.8em" color="#3FB950" />
           <span>议题 {{ repoData.open_issues_count }}</span>
         </div>
         <div class="stat-item" @click="watchRepo">
-          <Icon name="octicon:eye-16" size="1.2em" color="#3FB950" />
+          <Icon name="octicon:eye-16" size="0.8em" color="#3FB950" />
           <span>关注 {{ repoData.subscribers_count }}</span>
         </div>
         <div class="stat-item" v-if="repoData.license" @click="viewLicense">
-          <Icon name="lucide:scale" size="1.2em" />
+          <Icon name="lucide:scale" size="0.8em" />
           <span>{{ repoData.license.spdx_id }}</span>
         </div>
       </div>
@@ -45,15 +45,15 @@
         </span>
         <div class="dates" :class="{ 'no-language': !repoData.language }">
           <span class="created">
-            <Icon name="octicon:clock-16" />
+            <Icon name="octicon:clock-16" size="0.8em" />
             创建于：{{ formatDate(repoData.created_at) }}
           </span>
           <span class="updated">
-            <Icon name="material-symbols:update-rounded" size="1.3em" />
+            <Icon name="material-symbols:update-rounded" size="1em" />
             更新于：{{ formatDate(repoData.updated_at) }}
           </span>
           <span class="branch">
-            <Icon name="octicon:git-branch-16" />
+            <Icon name="octicon:git-branch-16" size="0.8em" />
             默认分支：{{ repoData.default_branch }}
           </span>
         </div>
@@ -78,6 +78,7 @@ export default {
         'CSS': '#563d7c',
         'JavaScript': '#f1e05a',
         'TypeScript': '#3178c6',
+        'Vue': '#41b883',
         'Python': '#3572A5',
         'Java': '#b07219',
         'Go': '#00ADD8',
@@ -88,7 +89,12 @@ export default {
         'C#': '#178600',
         'Shell': '#89e051',
         'Markdown': '#083FA1',
-        'MDX': '#FCB32C'
+        'MDX': '#FCB32C',
+        'React': '#61dafb',
+        'Swift': '#ffac45',
+        'Kotlin': '#F18E33',
+        'Rust': '#dea584',
+        'Dart': '#00B4AB'
       }
     }
   },
