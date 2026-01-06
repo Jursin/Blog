@@ -19,8 +19,12 @@ groups:
         desc: 活着就是为了改变世界。
       - name: SRInternet
         link: https://srinternet.github.io/
-        avatar: https://avatars.githubusercontent.com/u/89620382
+        avatar: https://avatars.githubusercontent.com/u/89620382?v=4
         desc: SR思锐开发者
+      - name: imsyy
+        link: https://www.imsyy.top/
+        avatar: https://avatars.githubusercontent.com/u/42232682?v=4
+        desc: 挖坑一时爽，一直挖坑一直爽
       - name: 克里斯凪
         link: https://www.crisglea.top/
         avatar: https://pub-5ba3d0ad40a24ef592534696f7db2ba7.r2.dev/avatar.png

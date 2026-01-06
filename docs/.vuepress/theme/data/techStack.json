@@ -25,6 +25,14 @@
       "name": "Vue"
     },
     {
+      "icon": "material-icon-theme:nodejs",
+      "name": "Node.js"
+    },
+    {
+      "icon": "skill-icons:electron",
+      "name": "Electron"
+    },
+    {
       "icon": "material-icon-theme:python",
       "name": "Python"
     },

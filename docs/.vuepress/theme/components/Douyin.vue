@@ -3,6 +3,7 @@
     <iframe
       :src="`https://open.douyin.com/player/video?vid=${vid}&autoplay=${autoplay ? 1 : 0}`"
       frameborder="0"
+      scrolling="no"
       referrerpolicy="unsafe-url"
       :allowfullscreen="allowFullscreen"
     ></iframe>
@@ -32,14 +33,17 @@ export default {
 
 <style scoped>
 .douyin {
-  width: max(730px, 100%);
+  width: 100%;
   margin-inline: auto;
   padding: 0.5rem 0;
 }
 
 .douyin iframe {
-  aspect-ratio: 1.778;
+  aspect-ratio: 16/9;
   width: 100%;
+  height: auto;
   border: none;
+  display: block;
+  border-radius: 8px;
 }
 </style>

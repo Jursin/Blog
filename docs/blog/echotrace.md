@@ -13,7 +13,7 @@ copyright:
   source: "https://github.com/ycccccccy/echotrace/blob/main/docs/beginner_guide.md"
 ---
 
-> 本文根据项目文档编写，仅供参考。遇到问题请在 GitHub 提交 Issue 或向他人请教，也建议有能力的人给该项目一个 Star 鼓励作者 🌟
+> 本文根据项目文档编写，仅供参考。遇到问题请在 GitHub 提交 [Issue](https://github.com/ycccccccy/echotrace/issues) 或向他人请教，也建议有能力的人给该项目一个 Star 鼓励作者 🌟
 
 ::: tip
 **适用平台**：Windows 10+
@@ -160,3 +160,6 @@ copyright:
 <Douyin vid="7590668016951081307" />
 
 <Douyin vid="7590759984041729957" />
+
+## Star 历史
+[![Stargazers over time](https://starchart.cc/ycccccccy/echotrace.svg?variant=adaptive)](https://starchart.cc/ycccccccy/echotrace)
