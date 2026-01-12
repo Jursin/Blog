@@ -50,6 +50,11 @@
   font-size: 1.3em;
 }
 
+.vp-social-link .vp-icon {
+  width : 20px !important;
+  height: 20px !important;
+}
+
 /* blog */
 .vp-posts {
   display: flex !important;
