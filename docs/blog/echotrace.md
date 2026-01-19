@@ -20,7 +20,7 @@ copyright:
 
 **发行版下载**：[https://github.com/ycccccccy/echotrace/releases](https://github.com/ycccccccy/echotrace/releases)
 
-**镜像下载**<Badge text="国内推荐" />：[https://openlist.jursin.top/@s/S7Frr60o](https://openlist.jursin.top/@s/S7Frr60o)
+**镜像下载**<Badge text="国内推荐" />：[https://ghproxy.jursin.top/?url=https://github.com/ycccccccy/echotrace&fetchReleases=true](https://ghproxy.jursin.top/?url=https://github.com/ycccccccy/echotrace&fetchReleases=true)
 :::
 
 <GitHubCard owner="ycccccccy" repo="echotrace" />
