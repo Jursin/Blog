@@ -64,9 +64,9 @@
         <Icon name="octicon:repo-16" size="1em" />
         <h2>开源项目</h2>
       </div>
-      <GitHubCard owner="Jursin" repo="MC-Guide" /><br />
-      <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares" /><br />
-      <GitHubCard owner="Jursin" repo="student-info-system" />
+      <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares" /><br/>
+      <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares-Web" /><br/>
+      <GitHubCard owner="Jursin" repo="MC-Guide" /><br/>
     </div>
   </div>
 </template>

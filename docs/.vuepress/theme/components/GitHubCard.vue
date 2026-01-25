@@ -73,33 +73,12 @@ export default {
       repoData: null,
       loading: true,
       error: null,
-      languageColors: {
-        'HTML': '#e34c26',
-        'CSS': '#563d7c',
-        'JavaScript': '#f1e05a',
-        'TypeScript': '#3178c6',
-        'Vue': '#41b883',
-        'Python': '#3572A5',
-        'Java': '#b07219',
-        'Go': '#00ADD8',
-        'Ruby': '#701516',
-        'PHP': '#4F5D95',
-        'C++': '#f34b7d',
-        'C': '#555555',
-        'C#': '#178600',
-        'Shell': '#89e051',
-        'Markdown': '#083FA1',
-        'MDX': '#FCB32C',
-        'React': '#61dafb',
-        'Swift': '#ffac45',
-        'Kotlin': '#F18E33',
-        'Rust': '#dea584',
-        'Dart': '#00B4AB'
-      }
+      languageColors: {}
     }
   },
   async mounted() {
     try {
+      this.loadLanguageColors()
       const response = await fetch(
         `https://api.github.com/repos/${this.owner}/${this.repo}`
       )
@@ -112,6 +91,24 @@ export default {
     }
   },
   methods: {
+    async loadLanguageColors() {
+      const LANGUAGE_COLOR_URL = 'https://gh.llkk.cc/https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
+      try {
+        const res = await fetch(LANGUAGE_COLOR_URL)
+        if (!res.ok) throw new Error(`语言颜色请求失败 ${res.status}`)
+        const data = await res.json()
+        const map = {}
+        for (const [lang, info] of Object.entries(data)) {
+          if (info && typeof info === 'object' && info.color) {
+            map[lang] = info.color
+          }
+        }
+        this.languageColors = map
+      } catch (e) {
+        console.warn('加载语言颜色失败，使用默认颜色:', e)
+        this.languageColors = {}
+      }
+    },
     formatDate(dateString) {
       const date = new Date(dateString)
       return date.toLocaleDateString()
