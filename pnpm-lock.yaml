@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@iconify/json':
-        specifier: ^2.2.431
-        version: 2.2.431
+        specifier: ^2.2.432
+        version: 2.2.432
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.26
         version: 2.0.0-rc.26(@types/node@25.0.2)(typescript@5.9.3)
@@ -46,7 +46,7 @@ importers:
         version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.2)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3))
       vuepress-theme-plume:
         specifier: 1.0.0-rc.187
-        version: 1.0.0-rc.187(@algolia/client-search@5.46.0)(@iconify/json@2.2.431)(@types/markdown-it@14.1.2)(@waline/client@3.8.0(typescript@5.9.3))(gsap@3.14.2)(markdown-it@14.1.0)(mermaid@11.12.2)(ogl@1.0.11)(postprocessing@6.38.2(three@0.182.0))(qrcode@1.5.4)(react@19.2.3)(search-insights@2.17.3)(swiper@12.0.3)(three@0.182.0)(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.2)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3)))
+        version: 1.0.0-rc.187(@algolia/client-search@5.46.0)(@iconify/json@2.2.432)(@types/markdown-it@14.1.2)(@waline/client@3.8.0(typescript@5.9.3))(gsap@3.14.2)(markdown-it@14.1.0)(mermaid@11.12.2)(ogl@1.0.11)(postprocessing@6.38.2(three@0.182.0))(qrcode@1.5.4)(react@19.2.3)(search-insights@2.17.3)(swiper@12.0.3)(three@0.182.0)(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.2)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3)))
 
 packages:
 
@@ -533,8 +533,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@iconify/json@2.2.431':
-    resolution: {integrity: sha512-pOJ8ntUspUj6MNpNVdc9r3ezsuP70bhXG6/w3y0id7vqJqXJasjdiWu6SXi9GPleTf2sHdRB6R+gTyCyiKajXg==}
+  '@iconify/json@2.2.432':
+    resolution: {integrity: sha512-W0Qa5ByXfJUEtami6b4Mm4DRfcAWWsKsUhJ2uiaEOE2QabREEcDSa1op9qP12yrhuArEPiCyuO04rHNxArZ4Xw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3391,7 +3391,7 @@ snapshots:
   '@esbuild/win32-x64@0.27.2':
     optional: true
 
-  '@iconify/json@2.2.431':
+  '@iconify/json@2.2.432':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -6119,7 +6119,7 @@ snapshots:
       - '@types/markdown-it'
       - typescript
 
-  vuepress-theme-plume@1.0.0-rc.187(@algolia/client-search@5.46.0)(@iconify/json@2.2.431)(@types/markdown-it@14.1.2)(@waline/client@3.8.0(typescript@5.9.3))(gsap@3.14.2)(markdown-it@14.1.0)(mermaid@11.12.2)(ogl@1.0.11)(postprocessing@6.38.2(three@0.182.0))(qrcode@1.5.4)(react@19.2.3)(search-insights@2.17.3)(swiper@12.0.3)(three@0.182.0)(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.2)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3))):
+  vuepress-theme-plume@1.0.0-rc.187(@algolia/client-search@5.46.0)(@iconify/json@2.2.432)(@types/markdown-it@14.1.2)(@waline/client@3.8.0(typescript@5.9.3))(gsap@3.14.2)(markdown-it@14.1.0)(mermaid@11.12.2)(ogl@1.0.11)(postprocessing@6.38.2(three@0.182.0))(qrcode@1.5.4)(react@19.2.3)(search-insights@2.17.3)(swiper@12.0.3)(three@0.182.0)(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.2)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3))):
     dependencies:
       '@iconify/utils': 3.1.0
       '@iconify/vue': 5.0.0(vue@3.5.27(typescript@5.9.3))
@@ -6163,7 +6163,7 @@ snapshots:
       vuepress: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.2)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3))
       vuepress-plugin-md-power: 1.0.0-rc.187(@types/markdown-it@14.1.2)(esbuild@0.27.2)(markdown-it@14.1.0)(typescript@5.9.3)(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.2)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3)))
     optionalDependencies:
-      '@iconify/json': 2.2.431
+      '@iconify/json': 2.2.432
       gsap: 3.14.2
       ogl: 1.0.11
       postprocessing: 6.38.2(three@0.182.0)

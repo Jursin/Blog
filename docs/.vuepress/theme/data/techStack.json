@@ -37,6 +37,14 @@
       "name": "Python"
     },
     {
+      "icon": "material-icon-theme:c",
+      "name": "C"
+    },
+    {
+      "icon": "material-icon-theme:cpp",
+      "name": "C++"
+    },
+    {
       "icon": "material-icon-theme:markdown",
       "name": "Markdown"
     },

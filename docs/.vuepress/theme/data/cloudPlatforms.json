@@ -13,12 +13,12 @@
       "name": "Cloudflare"
     },
     {
-      "icon": "logos:mongodb-icon",
-      "name": "MongoDB Cloud"
-    },
-    {
       "icon": "logos:neon-icon",
       "name": "Neon"
+    },
+    {
+      "icon": "logos:mongodb-icon",
+      "name": "MongoDB Cloud"
     }
   ]
 }
