@@ -9,7 +9,7 @@ import { defineNavbarConfig } from 'vuepress-theme-plume'
 export default defineNavbarConfig([
   { text: '主页', icon: 'mdi:home', link: '/' },
   { text: '博客', icon: 'mdi:blog', link: '/blog/' },
-  { text: '技术', icon: 'mdi:code-tags', link: '/tech' },
+  { text: '技能', icon: 'mdi:code-tags', link: '/skills' },
   { text: '友链', icon: 'mdi:link', link: '/friends' },
   {
     text: '我的网站',

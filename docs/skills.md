@@ -1,5 +1,5 @@
 ---
-title: 技术
+title: 技能
 aside: false
 editLink: false
 copyright: false

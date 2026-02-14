@@ -25,21 +25,6 @@ pageLayout: page
       <span style="color: var(--vp-c-text-1);">Jursin</span>
       <span class="cursor">_</span>
     </div>
-    <div class="tags-container">
-      <span class="tag">
-        <Icon name="mdi:location" width="16" height="16" />
-        湖北荆州
-      </span>
-      <span class="tag">
-        <Icon name="ep:school" width="16" height="16" />
-        长江大学
-      </span>
-    </div>
-    <p class="career">
-      <mark class="vp-mark-visible" style=" margin-right: 0.5rem;">大学生</mark>
-      <mark class="important vp-mark-visible">前端入门者</mark>
-    </p>
-		<p class="desc">若想梦想实现，先从梦中醒来。</p>
     <blockquote>
       <p class="hitokoto">
         <span id="hitokoto_text">一言加载中…</span>
@@ -49,8 +34,14 @@ pageLayout: page
       <a href="https://github.com/Jursin" target="_blank"><Icon name="mdi:github" /></a>
       <a href="https://space.bilibili.com/1575907920" target="_blank"><Icon name="mingcute:bilibili-line" color="#F9709A" /></a>
       <a href="https://t.me/Hello_Jursin" target="_blank"><Icon name="mingcute:telegram-fill" color="#62B8EB" /></a>
-      <a href="jursin@126.com" target="_blank"><Icon name="mdi:email-outline" color="#177F41" /></a>
+      <a href="mailto:jursin@126.com" target="_blank"><Icon name="mdi:email-outline" color="#177F41" /></a>
       <a href="https://forum.smart-teach.cn/u/Jursin" target="_blank"><img src="/icon/SmartTeach.svg" alt="SmartTeach" class="social-icon"></a>
+    </div>
+    <div class="actions">
+      <div class="action">
+        <VPButton text="博客" icon="mdi:blog" href="/blog/" theme="alt" />
+        <VPButton text="技能" icon="mdi:code-tags" href="/skills" theme="alt" />
+      </div>
     </div>
 	</div>
 </div>
@@ -174,37 +165,8 @@ pageLayout: page
   line-height: 1.2;
 }
 
-.tags-container {
-  display: flex;
-  gap: 0.4rem;
-  margin-bottom: 0.8rem;
-}
-
-.tag {
-  padding: 7px 10px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  font-size: 16px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
 .vp-icon {
   margin: 0 !important;
-}
-
-.career {
-  margin: 0 0 1rem;
-  font-size: 22px;
-  color: var(--vp-c-text-2);
-}
-
-.desc {
-  font-size: 20px;
-  color: var(--vp-c-text-1);
-  padding-left: 16px;
-  border-left: 3px solid var(--vp-c-brand-1);
 }
 
 .info > blockquote {
@@ -247,6 +209,21 @@ pageLayout: page
   transform: scale(1.1);
 }
 
+.actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.action {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.action :deep(.vp-button) {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 768px) {
   .home {
     flex-direction: column;
@@ -268,6 +245,9 @@ pageLayout: page
   .social {
     justify-content: center;
     align-items: center;
+  }
+  .actions {
+    justify-content: center;
   }
 }
 </style>
