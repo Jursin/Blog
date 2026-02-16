@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="skills">
+    <h2 class="title">技能</h2>
     <!-- 技术栈 -->
-    <h2>🫡使用的技术栈</h2>
+    <h3>🫡使用的技术栈</h3>
     <div class="itemGrid">
       <div
         v-for="(item, index) in techStackData.techStack"
@@ -21,7 +22,7 @@
     </div>
 
     <!-- 开发工具 -->
-    <h2>🛠️使用的编程工具</h2>
+    <h3>🛠️使用的编程工具</h3>
     <div class="itemGrid">
       <div
         v-for="(item, index) in devToolsData.devTools"
@@ -41,7 +42,7 @@
     </div>
 
     <!-- 云服务平台 -->
-    <h2>☁️使用的云服务平台</h2>
+    <h3>☁️使用的云服务平台</h3>
     <div class="itemGrid">
       <div
         v-for="(item, index) in cloudPlatformsData.cloudPlatforms"
@@ -61,12 +62,14 @@
     </div>
     <div class="project">
       <div class="project-header">
-        <Icon name="octicon:repo-16" size="1em" />
-        <h2>开源项目</h2>
+        <Icon name="octicon:repo-16" size="20px" />
+        <h3>开源项目</h3>
       </div>
-      <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares" /><br/>
-      <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares-Web" /><br/>
-      <GitHubCard owner="Jursin" repo="MC-Guide" /><br/>
+      <div class="github-cards-grid">
+        <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares" />
+        <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares-Web" />
+        <GitHubCard owner="Jursin" repo="MC-Guide" />
+      </div>
     </div>
   </div>
 </template>
@@ -78,7 +81,25 @@ import cloudPlatformsData from "../data/cloudPlatforms.json";
 </script>
 
 <style scoped>
-h2 {
+.skills {
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.title {
+  padding: 40px 0 0 0;
+  margin: 0 0 16px 0 !important;
+  padding: 0 !important;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  text-align: center;
+  outline: none;
+  transition: color var(--vp-t-color);
+}
+
+h3 {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
@@ -125,13 +146,24 @@ h2 {
 
 .project-header {
   display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
+  align-items: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
-.project-header h2 {
+.project-header h3 {
   margin: 0;
+}
+
+.github-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .github-cards-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

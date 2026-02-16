@@ -52,10 +52,6 @@
             <Icon name="material-symbols:update-rounded" size="1em" />
             更新于：{{ formatDate(repoData.updated_at) }}
           </span>
-          <span class="branch">
-            <Icon name="octicon:git-branch-16" size="0.8em" />
-            默认分支：{{ repoData.default_branch }}
-          </span>
         </div>
       </div>
     </div>
@@ -145,7 +141,7 @@ export default {
   padding: 16px;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   position: relative;
-  background-color: transparent;
+  background-color: var(--vp-c-bg);
   color: var(--vp-c-text-1);
   transition: border-color var(--vp-t-color), box-shadow var(--vp-t-color), background-color var(--vp-t-color);
   width: 100%;
@@ -274,12 +270,6 @@ export default {
   margin-left: auto;
 }
 
-.branch {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
 .language-color {
   width: 16px;
   height: 16px;
@@ -325,15 +315,17 @@ export default {
   }
   
   .footer {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
-    gap: 8px;
+    gap: 12px;
   }
   
   .dates {
     flex-direction: column;
     gap: 8px;
-    align-items: flex-start;
+    align-items: flex-end;
+    margin-left: auto;
   }
 }
 </style>

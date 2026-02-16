@@ -7,6 +7,7 @@ import AsideNav from './theme/components/AsideNav.vue'
 import GitHubCard from './theme/components/GitHubCard.vue'
 import ItemGrid from './theme/components/ItemGrid.vue'
 import Douyin from './theme/components/Douyin.vue'
+import PostsTop from './theme/components/PostsTop.vue'
 
 import './theme/styles/custom.css'
 
@@ -23,6 +24,7 @@ export default defineClientConfig({
     Layout: h(Layout, null, {
       'doc-title-after': () => h(PageContextMenu),
       'aside-outline-after': () => h(AsideNav),
+      'posts-top': () => h(PostsTop),
     }),
   },
 })

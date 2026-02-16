@@ -25,7 +25,7 @@ groups:
       - name: 黎泽懿
         link: https://aionflux.cn/
         avatar: https://aionflux.cn/lzy.png
-        desc: 黎泽懿_Aionflux 的博客
+        desc: SECTL 创始人
       - name: imsyy
         link: https://www.imsyy.top/
         avatar: https://avatars.githubusercontent.com/u/42232682?v=4
@@ -50,4 +50,8 @@ groups:
         link: https://github.com/awesome-iwb/awesome-iwb
         avatar: /icon/Aiwb.png
         desc: 为广大电教倾情撰写，让班级大屏更好用！
+      - name: SECTL
+        link: https://sectl.top
+        avatar: https://sectl.top/logo.svg
+        desc: 开源教学软件团队
 ---
