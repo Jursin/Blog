@@ -11,6 +11,7 @@ copyright:
     url: "https://github.com/ycccccccy"
   creation: "reprint"
   source: "https://github.com/ycccccccy/echotrace/blob/main/docs/beginner_guide.md"
+draft: true
 ---
 
 > 本文根据项目文档编写，仅供参考。遇到问题请在 GitHub 提交 [Issue](https://github.com/ycccccccy/echotrace/issues) 或向他人请教，也建议有能力的人给该项目一个 Star 鼓励作者 🌟

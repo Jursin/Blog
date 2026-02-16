@@ -1,8 +1,8 @@
 ---
 title: Termux 安装与美化
+createTime: 2025/08/29 15:52:51
 tags:
   - Termux
-createTime: 2025/08/29 15:52:51
 ---
 
 @[bilibili](BV17CekzXEEh)

@@ -22,6 +22,10 @@ groups:
         link: https://srinternet.github.io/
         avatar: https://avatars.githubusercontent.com/u/89620382?v=4
         desc: SR思锐开发者
+      - name: 黎泽懿
+        link: https://aionflux.cn/
+        avatar: https://aionflux.cn/lzy.png
+        desc: 黎泽懿_Aionflux 的博客
       - name: imsyy
         link: https://www.imsyy.top/
         avatar: https://avatars.githubusercontent.com/u/42232682?v=4
