@@ -4,18 +4,16 @@ import { VPLink } from 'vuepress-theme-plume/client'
 import { useRouteLocale, useRoute } from 'vuepress/client'
 
 interface Locale {
-  star: string
   issue: string
   share: string
   copied: string
 }
 
 const locales: Record<string, Locale> = {
-  '/': { 
-    star: '在 GitHub 上 Star', 
+  '/': {
     issue: '指出发现的问题',
     share: '分享此页面',
-    copied: '链接已复制！'
+    copied: '链接复制成功！'
   },
 }
 
@@ -31,7 +29,7 @@ const copyPageLink = () => {
         alert(locale.value.copied)
       })
       .catch(err => {
-        console.error('复制失败:', err)
+        console.error('链接复制失败:', err)
       })
   }
 }
@@ -39,12 +37,7 @@ const copyPageLink = () => {
 
 <template>
   <div class="aside-nav-wrapper">
-    <VPLink class="link" no-icon href="https://github.com/Jursin/MC-Guide">
-      <span class="vpi-github-star" />
-      <span class="link-text">{{ locale.star }}</span>
-      <span class="vpi-arrow-right" />
-    </VPLink>
-    <VPLink class="link" no-icon href="https://github.com/Jursin/MC-Guide/issues/new/choose">
+    <VPLink class="link" no-icon href="https://github.com/Jursin/Blog/issues/new/choose">
       <span class="vpi-github-issue" />
       <span class="link-text">{{ locale.issue }}</span>
       <span class="vpi-arrow-right" />
@@ -61,8 +54,9 @@ const copyPageLink = () => {
 .aside-nav-wrapper {
   display: flex;
   flex-direction: column;
+  gap: 4px;
   padding: 8px 0;
-  margin: 16px 16px 0;
+  margin: 8px 16px 0;
   border-top: solid 1px var(--vp-c-divider);
 }
 
@@ -81,11 +75,7 @@ const copyPageLink = () => {
 
 .aside-nav-wrapper .link .link-text {
   flex: 1 2;
-  font-size: 12px;
-}
-
-.vpi-github-star {
-  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m12 1.5l3.1 6.3l6.9 1l-5 4.8l1.2 6.9l-6.2-3.2l-6.2 3.2L7 13.6L2 8.8l6.9-1z'/%3E%3C/svg%3E");
+  font-size: 14px;
 }
 
 .vpi-github-issue {

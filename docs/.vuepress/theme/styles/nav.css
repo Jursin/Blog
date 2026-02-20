@@ -1,0 +1,21 @@
+/* 导航栏 */
+.vp-link.link.navbar-menu-link {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  color: var(--vp-c-text-2);
+  font-weight: 500 !important;
+  height: 36px;
+  margin: auto 4px;
+  transition: all 0.2s ease;
+}
+
+.vp-link.link.navbar-menu-link:hover {
+  background-color: var(--vp-c-default-soft) !important;
+  color: var(--vp-c-text-1);
+}
+
+.vp-link.link.navbar-menu-link.active {
+  background-color: var(--vp-c-default-soft) !important;
+  color: var(--vp-c-brand-1);
+}

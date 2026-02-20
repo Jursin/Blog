@@ -9,7 +9,11 @@ import ItemGrid from './theme/components/ItemGrid.vue'
 import Douyin from './theme/components/Douyin.vue'
 import PostsTop from './theme/components/PostsTop.vue'
 
-import './theme/styles/custom.css'
+import './theme/styles/var.css'
+import './theme/styles/posts-container.css'
+import './theme/styles/nav.css'
+import './theme/styles/doc.css'
+import './theme/styles/friends.css'
 
 export default defineClientConfig({
   enhance({ app }) {

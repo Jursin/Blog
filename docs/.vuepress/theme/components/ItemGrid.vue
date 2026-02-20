@@ -1,64 +1,71 @@
 <template>
   <div class="skills">
     <h2 class="title">技能</h2>
-    <!-- 技术栈 -->
-    <h3>🫡使用的技术栈</h3>
-    <div class="itemGrid">
-      <div
-        v-for="(item, index) in techStackData.techStack"
-        :key="'tech-' + index"
-        class="gridItem"
-        :data-name="item.name"
-      >
-        <template v-if="item.custom">
-          <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
-            <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
-          </svg>
-        </template>
-        <template v-else>
-          <Icon :name="item.icon" size="2rem" />
-        </template>
+    <div class="wrapper-left">
+      <!-- 技术栈 -->
+      <h3>🫡使用的技术栈</h3>
+      <div class="itemGrid">
+        <div
+          v-for="(item, index) in techStackData.techStack"
+          :key="'tech-' + index"
+          class="gridItem"
+          :data-name="item.name"
+        >
+          <template v-if="item.custom">
+            <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
+              <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
+            </svg>
+          </template>
+          <template v-else>
+            <Icon :name="item.icon" size="2rem" />
+          </template>
+        </div>
+      </div>
+
+      <!-- 开发工具 -->
+      <h3>🛠️使用的编程工具</h3>
+      <div class="itemGrid">
+        <div
+          v-for="(item, index) in devToolsData.devTools"
+          :key="'tool-' + index"
+          class="gridItem"
+          :data-name="item.name"
+        >
+          <template v-if="item.custom">
+            <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
+              <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
+            </svg>
+          </template>
+          <template v-else>
+            <Icon :name="item.icon" size="2rem" />
+          </template>
+        </div>
+      </div>
+
+      <!-- 云服务平台 -->
+      <h3>☁️使用的云服务平台</h3>
+      <div class="itemGrid">
+        <div
+          v-for="(item, index) in cloudPlatformsData.cloudPlatforms"
+          :key="'cloud-' + index"
+          class="gridItem"
+          :data-name="item.name"
+        >
+          <template v-if="item.custom">
+            <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
+              <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
+            </svg>
+          </template>
+          <template v-else>
+            <Icon :name="item.icon" size="2rem" />
+          </template>
+        </div>
       </div>
     </div>
-
-    <!-- 开发工具 -->
-    <h3>🛠️使用的编程工具</h3>
-    <div class="itemGrid">
-      <div
-        v-for="(item, index) in devToolsData.devTools"
-        :key="'tool-' + index"
-        class="gridItem"
-        :data-name="item.name"
-      >
-        <template v-if="item.custom">
-          <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
-            <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
-          </svg>
-        </template>
-        <template v-else>
-          <Icon :name="item.icon" size="2rem" />
-        </template>
-      </div>
-    </div>
-
-    <!-- 云服务平台 -->
-    <h3>☁️使用的云服务平台</h3>
-    <div class="itemGrid">
-      <div
-        v-for="(item, index) in cloudPlatformsData.cloudPlatforms"
-        :key="'cloud-' + index"
-        class="gridItem"
-        :data-name="item.name"
-      >
-        <template v-if="item.custom">
-          <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
-            <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
-          </svg>
-        </template>
-        <template v-else>
-          <Icon :name="item.icon" size="2rem" />
-        </template>
-      </div>
+    <div class="wrapper-right">
+      <figure>
+        <embed src="https://wakatime.com/share/@Jursin/a235ad1d-764d-4e34-bc33-02083dc0a213.svg"></embed>
+      </figure>
     </div>
     <div class="project">
       <div class="project-header">
@@ -85,9 +92,13 @@ import cloudPlatformsData from "../data/cloudPlatforms.json";
   max-width: 1400px;
   margin: 20px auto;
   padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .title {
+  grid-column: 1 / -1;
   padding: 40px 0 0 0;
   margin: 0 0 16px 0 !important;
   padding: 0 !important;
@@ -97,6 +108,29 @@ import cloudPlatformsData from "../data/cloudPlatforms.json";
   text-align: center;
   outline: none;
   transition: color var(--vp-t-color);
+}
+
+.wrapper-left {
+  grid-column: 1;
+}
+
+.wrapper-right {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper-right figure {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.wrapper-right embed {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 h3 {
@@ -144,6 +178,10 @@ h3 {
   opacity: 1;
 }
 
+.project {
+  grid-column: 1 / -1;
+}
+
 .project-header {
   display: flex;
   align-items: center;
@@ -162,6 +200,18 @@ h3 {
 }
 
 @media (max-width: 768px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
+  
+  .wrapper-left {
+    grid-column: 1;
+  }
+  
+  .wrapper-right {
+    grid-column: 1;
+  }
+
   .github-cards-grid {
     grid-template-columns: 1fr;
   }

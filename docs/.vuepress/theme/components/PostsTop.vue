@@ -149,6 +149,7 @@ canvas {
     box-shadow: var(--vp-shadow-1);
     border-radius: 8px;
     font-size: 20px;
+    font-family: "SimSun", serif;
     color: var(--vp-c-text-1);
     padding: 0.65em;
     margin: 16px 0;

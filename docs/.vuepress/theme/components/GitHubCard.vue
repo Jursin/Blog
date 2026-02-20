@@ -287,20 +287,15 @@ export default {
     border-radius: 10px;
     padding: 12px;
   }
-  
-  .avatar {
-    width: 50px;
-    height: 50px;
-  }
-  
+
   .repo-info h3 {
     font-size: 18px;
   }
-  
+
   .description {
     font-size: 14px;
   }
-  
+
   .stats {
     flex-direction: row;
     flex-wrap: wrap;
@@ -313,14 +308,14 @@ export default {
     flex: 0 0 auto;
     width: auto;
   }
-  
+
   .footer {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 12px;
   }
-  
+
   .dates {
     flex-direction: column;
     gap: 8px;

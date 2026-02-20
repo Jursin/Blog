@@ -1,0 +1,54 @@
+/* 友情链接页面 */
+.vp-posts {
+  padding: 30px !important;
+}
+
+.vp-friends {
+  .title {
+    color: var(--vp-c-brand-1) !important;
+    padding: 40px 0 0 0 !important;
+    margin-bottom: 16px !important;
+  }
+  max-width: 1400px !important;
+  padding: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .vp-friends {
+    padding-top: 20px !important;
+  }
+}
+
+.vp-friends-group {
+  .title {
+    border: none !important;
+    padding-top: 20px !important;
+  }
+  padding-top: 0 !important;
+}
+
+.vp-friend {
+  border: solid 1px var(--vp-c-divider);
+  border-radius: 12px !important;
+  background-color: var(--vp-c-bg) !important;
+}
+
+.vp-friend:hover {
+  border: solid 1px var(--vp-c-brand-2);
+}
+
+.avatar {
+  img {
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 50% !important;
+  }
+  padding: 8px;
+  border-radius: 16px !important;
+  display: flex;
+  background-color: transparent !important;
+}
+
+.vp-link.title {
+  color: var(--vp-c-text-1) !important;
+}

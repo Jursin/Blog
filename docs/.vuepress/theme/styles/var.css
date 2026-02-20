@@ -1,0 +1,70 @@
+:root {
+  --vp-layout-max-width: 1660px;
+  /** 主题颜色 */
+
+  /*
+  --vp-c-brand-1: #5086a1;
+  --vp-c-brand-2: #6aa1b7;
+  --vp-c-brand-3: #8cccd5;
+  --vp-c-brand-soft: rgba(131, 208, 218, 0.314);
+  */
+
+  /** 背景颜色 */
+
+  /*
+  --vp-c-bg: #fff;
+  --vp-c-bg-alt: #f6f6f7;
+  --vp-c-bg-elv: #fff;
+  --vp-c-bg-soft: #f6f6f7;
+  */
+
+  /** 文本颜色 */
+
+  --vp-c-text-1: rgba(60, 60, 67);
+  --vp-c-text-2: rgb(60, 60, 67);
+  --vp-c-text-3: rgb(60, 60, 67);
+}
+
+/** 深色模式 */
+[data-theme="dark"] {
+  /*
+  --vp-c-brand-1: #8cccd5;
+  --vp-c-brand-2: #6aa1b7;
+  --vp-c-brand-3: #5086a1;
+  --vp-c-brand-soft: rgba(131, 208, 218, 0.314);
+  */
+
+  /*
+  --vp-c-bg: #1b1b1f;
+  --vp-c-bg-alt: #161618;
+  --vp-c-bg-elv: #202127;
+  --vp-c-bg-soft: #202127;
+  */
+
+  --vp-c-text-1: rgb(255, 255, 245);
+  --vp-c-text-2: rgb(235, 235, 245);
+  --vp-c-text-3: rgb(235, 235, 245);
+}
+
+.vp-icon {
+  font-size: 1.3em;
+}
+
+/* 文章背景线条 */
+.home-posts, .vp-content {
+  --vp-doc-blog-bg: rgba(100, 190, 190, 0.12);
+  background-image:
+    linear-gradient(90deg, var(--vp-doc-blog-bg) 3%, transparent 0),
+    linear-gradient(1turn, var(--vp-doc-blog-bg) 3%, transparent 0);
+  background-position: 50%;
+  background-size: 20px 20px;
+}
+
+[data-theme="dark"] .home-posts, .vp-content {
+  --vp-doc-blog-bg: rgba(30, 120, 120, 0.15);
+}
+
+/* 评论组件 */
+.vp-comment {
+  padding: 0 30px !important;
+}

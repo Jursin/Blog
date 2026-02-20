@@ -1,0 +1,12 @@
+/* 博客列表页面 */
+.posts-container.no-profile {
+  max-width: 1400px !important;
+}
+
+.vp-posts-nav.local {
+  .nav-link {
+    flex: 0 0 auto !important;
+    max-width: 175px !important;
+  }
+  justify-content: flex-end !important;
+}
