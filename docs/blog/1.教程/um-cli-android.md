@@ -4,6 +4,7 @@ createTime: 2025/12/04 17:12:45
 tags:
   - Termux
   - Unlock Music
+permalink: /blog/1yclsy1c/
 ---
 
 > Unlock Music 是一个移除已购音乐加密保护的开源项目，支持多种格式。本文介绍如何在安卓手机上通过 Termux 应用使用 Unlock Music CLI 版，使用时请自觉**遵守项目相关协议**。

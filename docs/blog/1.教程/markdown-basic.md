@@ -4,14 +4,15 @@ createTime: 2024/03/06 22:43:52
 tags:
   - Markdown
 copyright:
-  license: 
-    name: "MIT"
-    url: "https://github.com/pengzhanbo/vuepress-theme-plume/blob/main/LICENSE"
-  author: 
-    name: "pengzhanbo"
-    url: "https://github.com/pengzhanbo"
-  creation: "reprint"
-  source: "https://theme-plume.vuejs.press/article/mcz1csb4/"
+  license:
+    name: MIT
+    url: https://github.com/pengzhanbo/vuepress-theme-plume/blob/main/LICENSE
+  author:
+    name: pengzhanbo
+    url: https://github.com/pengzhanbo
+  creation: reprint
+  source: https://theme-plume.vuejs.press/article/mcz1csb4/
+permalink: /blog/gv3vmu5w/
 ---
 
 > Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。

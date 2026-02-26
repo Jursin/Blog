@@ -1,17 +1,18 @@
 ---
 title: EchoTrace：开源微信聊天记录分析工具，支持数据分析、群聊分析与导出记录
 createTime: 2026/01/05 16:46:54
-tags: 
+tags:
   - 微信
   - 数据导出
   - 年度报告
 copyright:
-  author: 
-    name: "ycccccccy"
-    url: "https://github.com/ycccccccy"
-  creation: "reprint"
-  source: "https://github.com/ycccccccy/echotrace/blob/main/docs/beginner_guide.md"
+  author:
+    name: ycccccccy
+    url: https://github.com/ycccccccy
+  creation: reprint
+  source: https://github.com/ycccccccy/echotrace/blob/main/docs/beginner_guide.md
 draft: true
+permalink: /blog/ie50sqje/
 ---
 
 > 本文根据项目文档编写，仅供参考。遇到问题请在 GitHub 提交 [Issue](https://github.com/ycccccccy/echotrace/issues) 或向他人请教，也建议有能力的人给该项目一个 Star 鼓励作者 🌟

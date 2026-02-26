@@ -4,10 +4,11 @@ createTime: 2022/09/11 11:49:00
 tags:
   - 提问
 copyright:
-  author: 
-    name: "程序员阿水"
-  creation: "reprint"
-  source: "https://mp.weixin.qq.com/s/q461so9lWk4FKJGZ-p7Vcg"
+  author:
+    name: 程序员阿水
+  creation: reprint
+  source: https://mp.weixin.qq.com/s/q461so9lWk4FKJGZ-p7Vcg
+permalink: /blog/3f6v4l8j/
 ---
 
 > **Eric S. Raymond** 在2004年发表过一篇 `How To Ask Questions The Smart Way` 文章，最新版是2014年的3.10版，原文网址：[http://www.catb.org/~esr/faqs/smart-questions.html](http://www.catb.org/~esr/faqs/smart-questions.html)。 这篇文章写的非常好，令人深受启发。然**原文过于冗长**，有很多信息也已经过时；网上的中文版大多是照搬翻译，语感不佳，有浓厚的译制片配音的语调。且文章是站在国外程序员的视角写的，与中国特色社会主义程序员不符。为了更好的宣扬`提问的智慧`，本文对原文做了大量的删减和本土化改造，更贴近中国程序员的实际情况。

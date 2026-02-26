@@ -4,14 +4,15 @@ createTime: 2024/03/05 22:49:39
 tags:
   - Markdown
 copyright:
-  license: 
-    name: "MIT"
-    url: "https://github.com/pengzhanbo/vuepress-theme-plume/blob/main/LICENSE"
-  author: 
-    name: "pengzhanbo"
-    url: "https://github.com/pengzhanbo"
-  creation: "reprint"
-  source: "https://theme-plume.vuejs.press/article/mcgayb5w/"
+  license:
+    name: MIT
+    url: https://github.com/pengzhanbo/vuepress-theme-plume/blob/main/LICENSE
+  author:
+    name: pengzhanbo
+    url: https://github.com/pengzhanbo
+  creation: reprint
+  source: https://theme-plume.vuejs.press/article/mcgayb5w/
+permalink: /blog/4p05ruta/
 ---
 
 ## 标题锚点
