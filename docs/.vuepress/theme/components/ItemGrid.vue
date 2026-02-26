@@ -3,7 +3,10 @@
     <h2 class="title">技能</h2>
     <div class="wrapper-left">
       <!-- 技术栈 -->
-      <h3>🫡使用的技术栈</h3>
+      <h3 class="skill-header">
+        <Icon name="octicon:code-16" />
+        使用的技术栈
+      </h3>
       <div class="itemGrid">
         <div
           v-for="(item, index) in techStackData.techStack"
@@ -23,7 +26,10 @@
       </div>
 
       <!-- 开发工具 -->
-      <h3>🛠️使用的编程工具</h3>
+      <h3 class="skill-header">
+        <Icon name="octicon:terminal-16" />
+        使用的编程工具
+      </h3>
       <div class="itemGrid">
         <div
           v-for="(item, index) in devToolsData.devTools"
@@ -43,7 +49,10 @@
       </div>
 
       <!-- 云服务平台 -->
-      <h3>☁️使用的云服务平台</h3>
+      <h3 class="skill-header">
+        <Icon name="octicon:cloud-16" />
+        使用的云服务平台
+      </h3>
       <div class="itemGrid">
         <div
           v-for="(item, index) in cloudPlatformsData.cloudPlatforms"
@@ -68,10 +77,10 @@
       </figure>
     </div>
     <div class="project">
-      <div class="project-header">
+      <h3 class="skill-header">
         <Icon name="octicon:repo-16" size="20px" />
-        <h3>开源项目</h3>
-      </div>
+        开源项目
+      </h3>
       <div class="github-cards-grid">
         <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares" />
         <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares-Web" />
@@ -182,14 +191,13 @@ h3 {
   grid-column: 1 / -1;
 }
 
-.project-header {
+.skill-header {
   display: flex;
   align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin: 1.5rem 0;
 }
 
-.project-header h3 {
+.skill-header h3 {
   margin: 0;
 }
 

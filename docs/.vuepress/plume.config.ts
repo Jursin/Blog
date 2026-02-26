@@ -8,16 +8,9 @@ export default defineThemeConfig({
   appearance: true,
   social: [
     { icon: 'github', link: 'https://github.com/Jursin/Blog' },
-    {
-      icon: {
-        svg: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m20 8l-8 5l-8-5V6l8 5l8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>',
-        name: 'email'
-      },
-      link: 'mailto:jursin@126.com'
-    },
-    { icon: 'rss', link: '/rss.xml' },
+    { icon: 'bi:rss-fill', link: '/rss.xml' },
   ],
-  navbarSocialInclude: ['github', 'rss'], // 允许显示在导航栏的 social 社交链接
+  navbarSocialInclude: ['github', 'bi:rss-fill'], // 允许显示在导航栏的 social 社交链接
   // aside: true, // 页内侧边栏， 默认显示在右侧
   // outline: [2, 3], // 页内大纲， 默认显示 h2, h3
   copyright: { 

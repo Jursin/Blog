@@ -7,12 +7,12 @@
 import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export default defineNavbarConfig([
-  { text: '主页', icon: 'mdi:home', link: '/' },
-  { text: '技能', icon: 'mdi:code-tags', link: '/skills' },
-  { text: '友链', icon: 'mdi:link', link: '/friends' },
+  { text: '主页', icon: 'octicon:home-16', link: '/' },
+  { text: '技能', icon: 'octicon:ai-model-16', link: '/skills' },
+  { text: '友链', icon: 'octicon:link-16', link: '/friends' },
   {
     text: '我的网站',
-    icon: 'mingcute:web-line',
+    icon: 'octicon:browser-16',
     items: [
       {
         text: 'MC-Guide',

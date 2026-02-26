@@ -17,42 +17,26 @@
           </h3>
           <p class="description">{{ repoData.description }}</p>
         </div>
-      </div>
-      
-      <div class="stats">
-        <div class="stat-item" @click="starRepo">
-          <Icon name="octicon:star-fill-16" size="0.8em" color="#E3B341" />
-          <span>星标 {{ repoData.stargazers_count }}</span>
-        </div>
-        <div class="stat-item" @click="issueRepo">
-          <Icon name="octicon:issue-opened-16" size="0.8em" color="#3FB950" />
-          <span>议题 {{ repoData.open_issues_count }}</span>
-        </div>
-        <div class="stat-item" @click="watchRepo">
-          <Icon name="octicon:eye-16" size="0.8em" color="#3FB950" />
-          <span>关注 {{ repoData.subscribers_count }}</span>
-        </div>
-        <div class="stat-item" v-if="repoData.license" @click="viewLicense">
-          <Icon name="lucide:scale" size="0.8em" />
-          <span>{{ repoData.license.spdx_id }}</span>
-        </div>
-      </div>
-      
-      <div class="footer">
-        <span class="language" v-if="repoData.language">
+        <span v-if="repoData.language" class="language">
           <span class="language-color" :style="{ backgroundColor: getLanguageColor(repoData.language) }"></span>
           {{ repoData.language }}
         </span>
-        <div class="dates" :class="{ 'no-language': !repoData.language }">
-          <span class="created">
-            <Icon name="octicon:clock-16" size="0.8em" />
-            创建于：{{ formatDate(repoData.created_at) }}
-          </span>
-          <span class="updated">
-            <Icon name="material-symbols:update-rounded" size="1em" />
-            更新于：{{ formatDate(repoData.updated_at) }}
-          </span>
-        </div>
+      </div>
+      
+      <div class="meta-info">
+        <span class="meta-item" @click="starRepo">
+          <Icon name="octicon:star-fill-16" size="0.8em" color="#E3B341" />
+          {{ repoData.stargazers_count }}
+        </span><span v-if="repoData.license" class="meta-item" @click="viewLicense">
+          <Icon name="lucide:scale" size="0.8em" />
+          {{ repoData.license.spdx_id }}
+        </span><span class="meta-item">
+          <Icon name="octicon:clock-16" size="0.8em" />
+          创建于 {{ getRelativeTime(repoData.created_at) }}
+        </span><span class="meta-item">
+          <Icon name="octicon:issue-reopened-16" size="0.8em" />
+          更新于 {{ getRelativeTime(repoData.updated_at) }}
+        </span>
       </div>
     </div>
   </div>
@@ -105,9 +89,28 @@ export default {
         this.languageColors = {}
       }
     },
-    formatDate(dateString) {
+    getRelativeTime(dateString) {
       const date = new Date(dateString)
-      return date.toLocaleDateString()
+      const now = new Date()
+      const diffMs = now - date
+      const diffSecs = Math.floor(diffMs / 1000)
+      const diffMins = Math.floor(diffSecs / 60)
+      const diffHours = Math.floor(diffMins / 60)
+      const diffDays = Math.floor(diffHours / 24)
+      const diffMonths = Math.floor(diffDays / 30)
+      const diffYears = Math.floor(diffMonths / 12)
+
+      if (diffSecs < 60) return '1分钟前'
+      if (diffMins < 60) return `${diffMins}分钟前`
+      if (diffHours < 24) return `${diffHours}小时前`
+      if (diffDays < 30) return `${diffDays}天前`
+      if (diffMonths < 12) return `${diffMonths}个月前`
+      
+      const remainingMonths = diffMonths % 12
+      if (remainingMonths === 0) {
+        return `${diffYears}年前`
+      }
+      return `${diffYears}年${remainingMonths}个月前`
     },
     getLanguageColor(language) {
       return this.languageColors[language] || '#ccc'
@@ -115,14 +118,6 @@ export default {
     starRepo() {
       // 跳转到GitHub星标页面
       window.open(`${this.repoData.html_url}/stargazers`, '_blank')
-    },
-    issueRepo() {
-      // 跳转到GitHub议题页面
-      window.open(`${this.repoData.html_url}/issues`, '_blank')
-    },
-    watchRepo() {
-      // 跳转到GitHub关注页面
-      window.open(`${this.repoData.html_url}/watchers`, '_blank')
     },
     viewLicense() {
       // 跳转到许可证文件
@@ -138,7 +133,7 @@ export default {
 .github-card {
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 16px;
+  padding: 14px;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   position: relative;
   background-color: var(--vp-c-bg);
@@ -167,8 +162,10 @@ export default {
 
 .header {
   display: flex;
-  margin-bottom: 12px;
-  align-items: center;
+  margin-bottom: 6px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
 }
 
 .avatar {
@@ -178,10 +175,16 @@ export default {
   margin-right: 12px;
   border: 2px solid var(--vp-c-brand-light);
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .github-card:hover .avatar {
   transform: scale(1.05);
+}
+
+.repo-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .repo-info h3 {
@@ -206,75 +209,47 @@ export default {
   font-size: 16px;
 }
 
-.stats {
-  display: flex;
-  justify-content: space-between;
-  margin: 16px 8px;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  color: var(--vp-c-text-2);
-  padding: 6px 12px;
-  border-radius: 6px;
-  background-color: var(--vp-c-bg-alt);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.stat-item:hover {
-  background-color: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-}
-
-.github-card:hover .stat-item {
-  background-color: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-}
-
-.stat-item i {
-  margin-right: 4px;
-  color: var(--vp-c-brand);
-}
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.language {
+  position: absolute;
+  top: 0;
+  right: 0;
   font-size: 14px;
   color: var(--vp-c-text-2);
-  border-top: 1px solid var(--vp-c-divider);
-  padding-top: 16px;
-  margin-top: 16px;
-}
-
-.language {
+  white-space: nowrap;
   display: flex;
   align-items: center;
-  padding: 4px 8px;
-  border-radius: 6px;
-  background-color: var(--vp-c-bg-alt);
-}
-
-.dates {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.dates.no-language {
-  margin-left: auto;
+  gap: 4px;
 }
 
 .language-color {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  margin-right: 4px;
+}
+
+.meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+  padding: 6px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.meta-item:not(:last-child)::after {
+  content: '·';
+  margin: 0 2px;
+}
+
+.meta-item:hover {
+  color: var(--vp-c-text-1);
 }
 
 .fas {
@@ -288,39 +263,16 @@ export default {
     padding: 12px;
   }
 
+  .header {
+    padding-top: 24px;
+  }
+
   .repo-info h3 {
     font-size: 18px;
   }
 
   .description {
     font-size: 14px;
-  }
-
-  .stats {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .stat-item {
-    flex: 0 0 auto;
-    width: auto;
-  }
-
-  .footer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .dates {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-end;
-    margin-left: auto;
   }
 }
 </style>

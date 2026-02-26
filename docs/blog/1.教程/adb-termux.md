@@ -8,6 +8,8 @@ tags:
 
 > 由于需要启用无线调试，请确保 Android 版本在 11 及以上，且连接到 WLAN。
 
+<!-- more -->
+
 ::: steps
 1. 打开 `Termux`，安装 `android-tools` 包
 

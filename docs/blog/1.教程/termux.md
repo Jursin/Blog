@@ -9,6 +9,8 @@ tags:
 
 > Termux 是一个适用于 Android 的终端模拟器，其环境类似于 Linux 环境, 无需 Root 或设置即可使用。
 
+<!-- more -->
+
 ## 下载 Termux（任选一个渠道）
 
 <a href="https://github.com/termux/termux-app/releases/latest" ><img src="https://termux.dev/assets/globals/hosts/get-it-on-github.png" alt="GitHub" width="200" /></a>
