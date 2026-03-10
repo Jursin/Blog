@@ -173,6 +173,10 @@ export default defineUserConfig({
      * @see https://theme-plume.vuejs.press/guide/features/encryption/
      */
     // encrypt: {},
+
+    plugins: {
+      git: true
+    }
   }),
 
   plugins: [
@@ -183,5 +187,4 @@ export default defineUserConfig({
       image: '/avatar.png',
     }),
   ],
-
 })
