@@ -20,6 +20,10 @@
     {
       "icon": "devicon:clion",
       "name": "CLion"
+    },
+    {
+      "icon": "devicon:androidstudio",
+      "name": "Android Studio"
     }
   ]
 }
