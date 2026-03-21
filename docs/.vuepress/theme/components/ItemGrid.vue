@@ -85,8 +85,8 @@
         <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares" />
         <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares-Web" />
         <GitHubCard owner="Jursin" repo="MC-Guide" />
-        <GitHubCard owner="Jursin" repo="ShiGuang-Vela" />
-        <GitHubCard owner="Jursin" repo="ShiGuang-Sync" />
+        <GitHubCard owner="Jursin" repo="Schedule-Vela" />
+        <GitHubCard owner="Jursin" repo="Schedule-Sync" />
       </div>
     </div>
   </div>

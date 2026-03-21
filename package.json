@@ -14,7 +14,7 @@
     "vp-update": "pnpm dlx vp-update"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.451",
+    "@iconify/json": "^2.2.453",
     "@vuepress/bundler-vite": "2.0.0-rc.26",
     "@vuepress/plugin-feed": "2.0.0-rc.121",
     "@waline/client": "^3.13.0",
