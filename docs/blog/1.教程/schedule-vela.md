@@ -34,11 +34,7 @@ permalink: /blog/60fsmnc1/
     <p class="preview-image-title">首页</p>
   </div>
   <div class="preview-image-item">
-    <img src="/images/schedule-vela/详情页1.png" alt="详情页" class="preview-image-pic">
-    <p class="preview-image-title">详情页</p>
-  </div>
-  <div class="preview-image-item">
-    <img src="/images/schedule-vela/详情页2.png" alt="详情页" class="preview-image-pic">
+    <img src="/images/schedule-vela/详情页.png" alt="详情页" class="preview-image-pic">
     <p class="preview-image-title">详情页</p>
   </div>
   <div class="preview-image-item">
