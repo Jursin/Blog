@@ -25,6 +25,19 @@ export default defineUserConfig({
     docsDir: 'docs',
     docsBranch: 'main',
 
+    /* 文章版权所有 */
+    copyright: { 
+      license: {
+        name: 'CC-BY-SA-4.0',
+        url: 'https://creativecommons.org/licenses/by-sa/4.0/legalcode.zh-hans'
+      },
+      author: {
+        name: 'Jursin',
+        url: 'https://github.com/Jursin'
+      },
+      creation: 'original'
+    },
+
     /* 页内信息 */
     // editLink: true,
     // lastUpdated: true,
@@ -148,7 +161,6 @@ export default defineUserConfig({
       ],
       locales: {
         '/': {
-          placeholder: "请留言(审核通过后显示)",
           reaction0: "非常有用",
           reaction1: "有帮助",
           reaction2: "一般",
