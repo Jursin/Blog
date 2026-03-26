@@ -4,7 +4,7 @@
     <div class="wrapper-left">
       <!-- 技术栈 -->
       <h3 class="skill-header">
-        <Icon name="octicon:code-16" />
+        <Icon name="octicon:code-16" color="var(--vp-c-brand-1)" />
         使用的技术栈
       </h3>
       <div class="itemGrid">
@@ -27,7 +27,7 @@
 
       <!-- 开发工具 -->
       <h3 class="skill-header">
-        <Icon name="octicon:terminal-16" />
+        <Icon name="octicon:terminal-16" color="var(--vp-c-brand-1)" />
         使用的编程工具
       </h3>
       <div class="itemGrid">
@@ -50,7 +50,7 @@
 
       <!-- 云服务平台 -->
       <h3 class="skill-header">
-        <Icon name="octicon:cloud-16" />
+        <Icon name="octicon:cloud-16" color="var(--vp-c-brand-1)" />
         使用的云服务平台
       </h3>
       <div class="itemGrid">
@@ -78,7 +78,7 @@
     </div>
     <div class="project">
       <h3 class="skill-header">
-        <Icon name="octicon:repo-16" size="20px" />
+        <Icon name="octicon:repo-16" size="20px" color="var(--vp-c-brand-1)" />
         开源项目
       </h3>
       <div class="github-cards-grid">
