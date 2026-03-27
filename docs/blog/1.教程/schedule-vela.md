@@ -18,11 +18,10 @@ permalink: /blog/60fsmnc1/
 
 ## 特点
 - [X] 以卡片形式显示每日课程及详细信息
-- [X] 可自由切换显示上/下一天课程
-- [X] 当课程正在进行时显示进度条和下课倒计时
-- [X] 点击课程卡片进入全屏显示
-- [X] 支持课前倒计时
 - [X] 每日课程分时间段显示
+- [X] 可自由切换显示上/下一天课程
+- [X] 点击课程卡片进入全屏显示
+- [X] 显示上/下课倒计时和进度条
 - [ ] 为胶囊形和圆形屏幕添加弧形进度条
 
 > 目前支持导入[拾光课程表](https://sgschedule.jursin.top/)和 [WakeUp 课程表](https://www.wakeup.fun/)的配置文件
@@ -35,7 +34,11 @@ permalink: /blog/60fsmnc1/
     <p class="preview-image-title">首页</p>
   </div>
   <div class="preview-image-item">
-    <img src="/images/schedule-vela/详情页.png" alt="详情页" class="preview-image-pic">
+    <img src="/images/schedule-vela/详情页1.png" alt="详情页" class="preview-image-pic">
+    <p class="preview-image-title">详情页</p>
+  </div>
+  <div class="preview-image-item">
+    <img src="/images/schedule-vela/详情页2.png" alt="详情页" class="preview-image-pic">
     <p class="preview-image-title">详情页</p>
   </div>
   <div class="preview-image-item">
@@ -71,7 +74,7 @@ permalink: /blog/60fsmnc1/
 ### 在安卓端传递配置文件
 
 <div class="install-row">
-  <p class="install-desc">先确保<code>小米运动健康</code>已连接到穿戴设备<br/>打开<code>腕上课程表同步器</code>，会自动连接穿戴设备并打开快应用<br/>点击<code>选择配置文件</code>按钮选择 <code>json</code> 文件<br/>点击<code>确认导入</code>按钮，手环端应该会提示导入成功</p>
+  <p class="install-desc">先确保<code>小米运动健康</code>已连接到穿戴设备<br/>打开<code>腕上课程表同步器</code>，会自动连接穿戴设备并打开快应用<br/>点击<code>选择配置文件</code>按钮选择 <code>json</code> 文件<br/>点击<code>确认导入</code>按钮，手环端会提示导入成功</p>
   <img src="/images/schedule-vela/Schedule-Sync.png" alt="Schedule-Sync" class="install-img">
 </div>
 
