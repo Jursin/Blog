@@ -54,6 +54,11 @@ permalink: /blog/60fsmnc1/
   如果 AstroBox 不支持你的穿戴设备，可以使用[表盘自定义工具](https://www.bandbbs.cn/threads/9797/)
   :::
 - [手环端 `rpk` 文件](https://ghproxy.jursin.top/?url=https://github.com/Jursin/Schedule-Vela&fetchReleases=true)
+
+  <a href="https://www.bandbbs.cn/resources/5772/">
+    <img src="/images/schedule-vela/get-it-on-bandbbs.png" style="height:80px;">
+  </a>
+
 - [安卓端同步器](https://ghproxy.jursin.top/?url=https://github.com/Jursin/Schedule-Sync&fetchReleases=true)
 
 ::: important
