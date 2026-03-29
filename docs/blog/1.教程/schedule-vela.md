@@ -54,12 +54,11 @@ permalink: /blog/60fsmnc1/
   如果 AstroBox 不支持你的穿戴设备，可以使用[表盘自定义工具](https://www.bandbbs.cn/threads/9797/)
   :::
 - [手环端 `rpk` 文件](https://ghproxy.jursin.top/?url=https://github.com/Jursin/Schedule-Vela&fetchReleases=true)
+- [安卓端同步器](https://ghproxy.jursin.top/?url=https://github.com/Jursin/Schedule-Sync&fetchReleases=true)
 
   <a href="https://www.bandbbs.cn/resources/5772/">
     <img src="/images/schedule-vela/get-it-on-bandbbs.png" style="height:80px;">
   </a>
-
-- [安卓端同步器](https://ghproxy.jursin.top/?url=https://github.com/Jursin/Schedule-Sync&fetchReleases=true)
 
 ::: important
 本手环端快应用根据[Xiaomi Vela JS 应用开发文档](https://iot.mi.com/vela/quickapp/)开发，理论上支持小米 Vela 穿戴设备
@@ -72,10 +71,32 @@ permalink: /blog/60fsmnc1/
   <img src="/images/schedule-vela/AstroBox.png" alt="AstroBox" class="install-img">
 </div>
 
-### 在安卓端传递配置文件
+### 在手机端编辑课程表并导出配置文件
+:::  tip
+根据文档在对应应用添加课程表或从教务系统导入再导出课表配置文件
+:::
+
+- 拾光课程表
+  - [添加课表/时间表](https://sgschedule.jursin.top/guide/user/add-table.html)
+  - [从教务系统导入课表](https://sgschedule.jursin.top/guide/user/schedule-import.html#%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E5%AF%BC%E5%85%A5)
+  - [课程文件导出](https://sgschedule.jursin.top/guide/user/export-and-share.html#%E8%AF%BE%E7%A8%8B%E6%96%87%E4%BB%B6%E5%AF%BC%E5%87%BA)
+    ::: tip
+    后缀为 `json`
+    :::
+- WakeUp 课程表
+  - [添加/编辑课程](https://www.wakeup.fun/doc/add_course.html)
+  - [从教务系统导入课表](https://www.wakeup.fun/doc/import_from_eas.html)
+  - 导出为备份
+    ::: tip
+    后缀为 `wakeup_schedule`
+    :::
+
+    <img src="/images/schedule-vela/WakeUp课程表导出.png" style="height:800px;">
+
+### 在手机端传递配置文件
 
 <div class="install-row">
-  <p class="install-desc">先确保<code>小米运动健康</code>已连接到穿戴设备<br/>打开<code>腕上课程表同步器</code>，会自动连接穿戴设备并打开快应用<br/>点击<code>选择配置文件</code>按钮选择 <code>json</code> 文件<br/>点击<code>确认导入</code>按钮，手环端会提示导入成功</p>
+  <p class="install-desc">先确保<code>小米运动健康</code>已连接到穿戴设备<br/>打开<code>腕上课程表同步器</code>，会自动连接穿戴设备并打开快应用<br/>点击<code>选择配置文件</code>按钮选择 <code>json</code>/<code>wakeup_schedule</code> 文件<br/>点击<code>确认导入</code>按钮，手环端会提示导入成功</p>
   <img src="/images/schedule-vela/Schedule-Sync.png" alt="Schedule-Sync" class="install-img">
 </div>
 
