@@ -91,7 +91,7 @@ permalink: /blog/60fsmnc1/
     后缀为 `wakeup_schedule`
     :::
 
-    <img src="/images/schedule-vela/WakeUp课程表导出.png" style="height:800px;">
+    <img src="/images/schedule-vela/WakeUp课程表导出.png" class="wakeup-export" width="50%">
 
 ### 在手机端传递配置文件
 
@@ -139,6 +139,7 @@ permalink: /blog/60fsmnc1/
   align-items: center;
   justify-content: center;
   gap: 30px;
+  margin: 0 35px;
 }
 
 .install-desc {
@@ -146,6 +147,12 @@ permalink: /blog/60fsmnc1/
 }
 
 .install-img {
-  width: 40%;
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .wakeup-export {
+    width: 100%;
+  }
 }
 </style>

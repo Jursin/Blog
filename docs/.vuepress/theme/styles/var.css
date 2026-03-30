@@ -63,8 +63,3 @@
 [data-theme="dark"] .home-posts, .vp-content {
   --vp-doc-blog-bg: rgba(30, 120, 120, 0.15);
 }
-
-/* 评论组件 */
-.vp-comment {
-  padding: 0 30px !important;
-}
