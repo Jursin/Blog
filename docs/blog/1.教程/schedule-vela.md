@@ -24,28 +24,17 @@ permalink: /blog/60fsmnc1/
 - [X] 显示上/下课倒计时和进度条
 - [ ] 为胶囊形和圆形屏幕添加弧形进度条
 
-> 目前支持导入[拾光课程表](https://sgschedule.jursin.top/)和 [WakeUp 课程表](https://www.wakeup.fun/)的配置文件
+> 目前支持导入[拾光课程表](https://sgschedule.jursin.top/)、[WakeUp 课程表](https://www.wakeup.fun/)和 [CSES](https://cloud.smart-teach.cn/) 的配置文件
 
 ## 预览图
+### Xiaomi-Band
+![](/images/schedule-vela/Xiaomi-Band.png)
 
-<div class="preview-images-row">
-  <div class="preview-image-item">
-    <img src="/images/schedule-vela/首页.png" alt="首页" class="preview-image-pic">
-    <p class="preview-image-title">首页</p>
-  </div>
-  <div class="preview-image-item">
-    <img src="/images/schedule-vela/详情页.png" alt="详情页" class="preview-image-pic">
-    <p class="preview-image-title">详情页</p>
-  </div>
-  <div class="preview-image-item">
-    <img src="/images/schedule-vela/设置页.png" alt="设置页" class="preview-image-pic">
-    <p class="preview-image-title">设置页</p>
-  </div>
-  <div class="preview-image-item">
-    <img src="/images/schedule-vela/日期选择.png" alt="日期选择" class="preview-image-pic">
-    <p class="preview-image-title">日期选择</p>
-  </div>
-</div>
+### Xiaomi-Band-10
+![](/images/schedule-vela/Xiaomi-Band-10.png)
+
+### Xiaomi-Band-Pro
+![](/images/schedule-vela/Xiaomi-Band-Pro.png)
 
 ## 开始使用
 ### 准备
@@ -92,6 +81,7 @@ permalink: /blog/60fsmnc1/
     :::
 
     <img src="/images/schedule-vela/WakeUp课程表导出.png" class="wakeup-export" width="50%">
+- [CSES](https://cloud.smart-teach.cn/)
 
 ### 在手机端传递配置文件
 
@@ -111,27 +101,6 @@ permalink: /blog/60fsmnc1/
   .github-cards-grid {
     grid-template-columns: 1fr;
   }
-}
-
-.preview-images-row {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.preview-image-item {
-  text-align: center;
-  flex: 1;
-}
-
-.preview-image-pic {
-  width: 100%;
-}
-
-.preview-image-title {
-  margin-top: 10px;
-  font-weight: bold;
 }
 
 .install-row {
