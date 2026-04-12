@@ -11,6 +11,11 @@ export default defineUserConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['script', {
+      defer: true,
+      src: 'https://cloud.umami.is/script.js',
+      'data-website-id': 'ed87d21b-b880-47e3-8aad-0eabb781db74'
+    }]
   ],
 
   bundler: viteBundler(),
@@ -160,6 +165,7 @@ export default defineUserConfig({
       ],
       locales: {
         '/': {
+          placeholder: "请留言吧~",
           reaction0: "非常有用",
           reaction1: "有帮助",
           reaction2: "一般",
