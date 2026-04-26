@@ -11,6 +11,8 @@ permalink: /blog/60fsmnc1/
 
 <!-- more -->
 
+![banner](/images/schedule-vela/banner.png)
+
 <div class="github-cards-grid">
   <GitHubCard owner="Jursin" repo="Schedule-Vela" />
   <GitHubCard owner="Jursin" repo="Schedule-Sync" />

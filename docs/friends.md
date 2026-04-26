@@ -60,8 +60,8 @@ groups:
         link: https://github.com/awesome-iwb/awesome-iwb
         avatar: /icon/Aiwb.png
         desc: 为广大电教倾情撰写，让班级大屏更好用！
-      - name: SECTL
+      - name: SECTL | 思拓创联
         link: https://sectl.top
-        avatar: https://sectl.top/logo.svg
-        desc: 开源教学软件团队
+        avatar: https://sectl.top/SECTL-LOGO.svg
+        desc: 专注于教育场景的开源软件组织
 ---
