@@ -38,6 +38,10 @@ groups:
         link: https://makitoid.github.io/
         avatar: https://makitoid.github.io/images/0.webp
         desc: 不忘初心，方得始终
+      - name: apanzinc
+        link: https://apanzinc.top/
+        avatar: https://apanzinc.top/assets/logo-DtoFzsvf.png
+        desc: 热爱探索的前端开发者，正在不断学习与成长。
       - name: 克里斯凪
         link: https://www.crisglea.top/
         avatar: https://pub-5ba3d0ad40a24ef592534696f7db2ba7.r2.dev/avatar.png
