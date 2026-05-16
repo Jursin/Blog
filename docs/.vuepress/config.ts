@@ -46,12 +46,11 @@ export default defineUserConfig({
     /* 页内信息 */
     // editLink: true,
     // lastUpdated: true,
-    // contributors: true,
-    changelog: true,
-    llmstxt: true,
     contributors: {
       mode: 'block',
     },
+    changelog: true,
+    llmstxt: true,
 
     /**
      * 编译缓存，加快编译速度

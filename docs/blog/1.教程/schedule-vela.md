@@ -44,12 +44,14 @@ permalink: /blog/60fsmnc1/
   ::: tip
   如果 AstroBox 不支持你的穿戴设备，可以使用[表盘自定义工具](https://www.bandbbs.cn/threads/9797/)
   :::
-- [手环端 `rpk` 文件](https://ghproxy.jursin.top/?url=https://github.com/Jursin/Schedule-Vela&fetchReleases=true)
-- [安卓端同步器](https://ghproxy.jursin.top/?url=https://github.com/Jursin/Schedule-Sync&fetchReleases=true)
+- 手环端 `rpk` 文件
+- 安卓端同步器
 
   <a href="https://www.bandbbs.cn/resources/5772/">
     <img src="/images/schedule-vela/get-it-on-bandbbs.png" style="height:80px;">
   </a>
+
+  <Download />
 
 ::: important
 本手环端快应用根据[Xiaomi Vela JS 应用开发文档](https://iot.mi.com/vela/quickapp/)开发，理论上支持小米 Vela 穿戴设备
