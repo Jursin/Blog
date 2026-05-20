@@ -37,7 +37,7 @@ groups:
       - name: Makitoid
         link: https://makitoid.github.io/
         avatar: https://makitoid.github.io/images/0.webp
-        desc: 不忘初心，方得始终
+        desc: Somehow?
       - name: apanzinc
         link: https://apanzinc.top/
         avatar: https://apanzinc.top/assets/logo-DtoFzsvf.png

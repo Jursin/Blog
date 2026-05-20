@@ -23,7 +23,7 @@
                 <span class="cursor">_</span>
             </div>
             <div class="hitokoto">
-                <span id="hitokoto_text">一言加载中…</span>
+              <span>{{ hitokotoText }}</span>
             </div>
             <div class="social">
                 <a href="https://github.com/Jursin" target="_blank">
@@ -39,6 +39,9 @@
                 </a>
                 <a href="https://t.me/Hello_Jursin" target="_blank">
                     <Icon name="mingcute:telegram-fill" color="#62B8EB" />
+                </a>
+                <a href="https://www.coolapk.com/u/26772772" target="_blank">
+                    <Icon name="arcticons:coolapk" color="#109d58" />
                 </a>
                 <a href="mailto:jursin@126.com" target="_blank">
                     <Icon name="mdi:email-outline" color="#177F41" />
@@ -56,15 +59,9 @@
 
 <style scoped>
 @keyframes blink {
-
-    from,
-    to {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
+  from,
+  to { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 canvas {
@@ -77,164 +74,165 @@ canvas {
 }
 
 .home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3.5rem;
-    max-width: 1200px;
-    padding: 1.5rem;
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  max-width: 1200px;
+  padding: 1.5rem;
+  margin: 0 auto;
 }
 
 .avatar img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: var(--vp-shadow-1);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--vp-shadow-1);
 }
 
 .avatar {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .emoji {
-    position: absolute;
-    bottom: 24px;
-    right: 24px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background: var(--vp-c-bg);
-    border: 2px solid var(--vp-c-divider);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-divider);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .emoji:hover {
-    transform: scale(1.15);
+  transform: scale(1.15);
 }
 
 .info {
-    flex: 1;
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .name {
-    font-family: 'Google Sans Code', sans-serif;
-    font-size: 60px;
-    font-weight: bold;
-    line-height: 1.2;
+  font-family: 'Google Sans Code', sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 1.2;
 }
 
 .cursor {
-    animation: blink 1s step-end infinite;
-    color: var(--vp-c-brand-3);
-    display: inline-block;
-    width: 0.65ch;
+  animation: blink 1s step-end infinite;
+  color: var(--vp-c-brand-3);
+  display: inline-block;
+  width: 0.65ch;
 }
 
 .vp-icon {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 .info>blockquote {
-    background-color: var(--vp-c-bg);
+  background-color: var(--vp-c-bg);
 }
 
 .hitokoto {
-    background: var(--vp-c-bg);
-    box-shadow: var(--vp-shadow-1);
-    border-radius: 8px;
-    font-size: 20px;
-    font-family: "SimSun", serif;
-    color: var(--vp-c-text-1);
-    padding: 0.65em;
-    margin: 16px 0;
+  background: var(--vp-c-bg);
+  box-shadow: var(--vp-shadow-1);
+  border-radius: 8px;
+  font-size: 20px;
+  font-family: "SimSun", serif;
+  color: var(--vp-c-text-1);
+  padding: 0.65em;
+  margin: 16px 0;
 }
 
 .social {
-    font-size: 28px;
-    display: flex;
-    gap: 0.8rem;
+  font-size: 28px;
+  display: flex;
+  gap: 0.8rem;
 }
 
 .social a {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--vp-c-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: var(--vp-c-text-1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--vp-c-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--vp-c-text-1);
 }
 
 .social-icon {
-    width: 70%;
-    height: 70%;
-    border-radius: 50%;
-    object-fit: contain;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  object-fit: contain;
 }
 
 .social a:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 @media screen and (max-width: 768px) {
-    .home {
-        flex-direction: column;
-        text-align: center;
-    }
+  .home {
+      flex-direction: column;
+      text-align: center;
+  }
 
-    .name {
-        font-size: 36px;
-    }
+  .name {
+      font-size: 36px;
+  }
 
-    .avatar img {
-        width: 200px;
-        height: 200px;
-    }
+  .avatar img {
+      width: 200px;
+      height: 200px;
+  }
 
-    .emoji {
-        bottom: 18px;
-        right: 18px;
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
-    }
+  .emoji {
+      bottom: 18px;
+      right: 18px;
+      width: 35px;
+      height: 35px;
+      font-size: 20px;
+  }
 
-    .tags-container {
-        justify-content: center;
-        align-items: center;
-    }
+  .tags-container {
+      justify-content: center;
+      align-items: center;
+  }
 
-    .social {
-        justify-content: center;
-        align-items: center;
-    }
+  .social {
+      justify-content: center;
+      align-items: center;
+  }
 }
 </style>
 
 <script setup>
-(async function loadHitokoto() {
-    try {
-        const res = await fetch('https://v1.hitokoto.cn/?encode=json&c=d&c=i&c=k');
-        const data = await res.json();
-        const el = document.getElementById('hitokoto_text');
-        if (el && data && data.hitokoto) {
-            const from = data.from || data.from_who || '一言';
-            el.textContent = `${data.hitokoto} — ${from}`;
-        }
-    } catch (err) {
-        // 静默失败，保留占位文本
-    }
-})();
+import { onMounted, ref } from 'vue';
+
+const hitokotoText = ref('一言加载中…');
+
+onMounted(() => {
+  fetch('https://v1.hitokoto.cn/?encode=json&c=d&c=i&c=k')
+    .then(res => res.ok ? res.json() : null)
+    .then(data => {
+      if (!data?.hitokoto) return;
+      const from = data.from ?? data.from_who ?? '一言';
+      hitokotoText.value = `${data.hitokoto} — ${from}`;
+    })
+    .catch(() => {});
+});
 </script>
