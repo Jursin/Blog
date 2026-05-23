@@ -159,11 +159,16 @@ canvas {
   font-size: 28px;
   display: flex;
   gap: 0.8rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+  align-items: center;
 }
 
 .social a {
   width: 50px;
   height: 50px;
+  flex: 0 0 auto;
+  box-sizing: border-box;
   border-radius: 50%;
   background: var(--vp-c-bg);
   display: flex;
