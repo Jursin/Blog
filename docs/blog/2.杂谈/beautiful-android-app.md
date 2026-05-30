@@ -5,6 +5,8 @@ permalink: /blog/8bhf8vxn/
 ---
 
 ### 🛠️ 实用工具
+- **[Shizuku](https://github.com/RikkaApps/Shizuku)**
+- **[Dhizuku](https://github.com/iamr0s/Dhizuku)**
 - **[HybridFileXfer](https://github.com/weixiansen574/HybridFileXfer)** - 多轨快传，同时使用 USB、5G 与 2.4G WiFi 等通道传输文件到电脑
 - **[LocalSend](https://github.com/localsend/localsend)** - 局域网文件传输应用
 - **[MifareClassicTool](https://github.com/ikarus23/MifareClassicTool)** - 用于读取、写入、分析等的 Android NFC 应用
@@ -44,6 +46,7 @@ permalink: /blog/8bhf8vxn/
 - **[TiebaLite](https://github.com/zzc10086/TiebaLite)** - 非官方的贴吧客户端
 - **[zhihu-plus-plus](https://github.com/zly2006/zhihu-plus-plus)** - 去广告、占用低、AI大模型的新时代知乎安卓端
 - **[Droid-ify](https://github.com/Droid-ify/client)** - F-Droid 第三方客户端
+- **[Neo Store](https://github.com/NeoApplications/Neo-Store)** - F-Droid 第三方客户端
 - **[Nagram](https://github.com/NextAlone/Nagram)** - Telegram 第三方客户端
 - **[NagramX](https://github.com/risin42/NagramX)** - Nagram 的一个变体
 - **[Nullgram](https://github.com/qwq233/Nullgram)** - Telegram 第三方客户端
@@ -58,6 +61,12 @@ permalink: /blog/8bhf8vxn/
 
 > **其它闭源但好用的安卓应用**
 >
+> - [Apktool M](https://maximoff.su/apktool/?lang=zh) - 反编译和编译 Android 安装程序包（* .apk），包括系统应用程序
+>
+> - [Scene](https://omarea.com/#/) - 性能调节和测试工具
+> 
 > - [Quetta](https://www.quetta.net/) - 一款内置视频下载器的移动浏览器，支持 MP4、M3U8 和 HLS 格式，并具有广告拦截和强大的扩展功能。
 >
+> - [Obsidian](https://obsidian.md/) - 免费且灵活的私人笔记应用
+> 
 > - [1DM+](https://play.google.com/store/apps/details?id=idm.internet.download.manager.plus) - 功能强大的下载管理器
