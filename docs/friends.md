@@ -64,6 +64,10 @@ groups:
         desc: 保护你所爱！❤
   - title: 社区
     list:
+      - name: BlogsClub
+        link: https://www.blogsclub.org/
+        avatar: https://www.blogsclub.org/usr/themes/default/favicon.png
+        desc: 个人博客俱乐部
       - name: 智教联盟论坛
         link: https://forum.smart-teach.cn/
         avatar: /icon/SmartTeach.svg
