@@ -13,11 +13,11 @@ groups:
       - name: jiangyin14 的 Blog
         link: https://blog.jiangyin14.top/
         avatar: https://blog.jiangyin14.top/images/author.jpeg
-        desc: 让好的教学应用，来到每间课堂。
+        desc: 让好的教学应用，来到每间课堂
       - name: 落雪无痕LxHTT
         link: https://www.lxhtt.cn/
         avatar: https://www.lxhtt.cn/img/avatar.webp
-        desc: 活着就是为了改变世界。
+        desc: 活着就是为了改变世界
       - name: HelloWRC
         link: https://hellowrc.dev/
         avatar: https://hellowrc.dev/avatar-circle.png
@@ -41,7 +41,15 @@ groups:
       - name: apanzinc
         link: https://apanzinc.top/
         avatar: https://apanzinc.top/assets/logo-DtoFzsvf.png
-        desc: 热爱探索的前端开发者，正在不断学习与成长。
+        desc: 热爱探索的前端开发者，正在不断学习与成长
+      - name: YuXuann
+        link: https://rinty.xyz/
+        avatar: https://rinty.xyz/upload/897409385.jpg
+        desc: 活着就是一种伟大
+      - name: LC
+        link: https://lcwebsite.cn
+        avatar: https://lcwebsite.cn/favicon.svg
+        desc: 信念创造奇迹，科技改变生活。
       - name: 克里斯凪
         link: https://www.crisglea.top/
         avatar: https://pub-5ba3d0ad40a24ef592534696f7db2ba7.r2.dev/avatar.png
