@@ -6,11 +6,14 @@
 .vp-friends {
   .title {
     color: var(--vp-c-brand-1) !important;
-    padding: 40px 0 0 0 !important;
     margin-bottom: 16px !important;
   }
   max-width: 1400px !important;
   padding: 0 !important;
+}
+
+.vp-friends > .title {
+  padding: 40px 0 0 0 !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -51,4 +54,8 @@
 
 .vp-link.title {
   color: var(--vp-c-text-1) !important;
+}
+
+.vp-card-wrapper {
+  background-color: var(--vp-c-bg);
 }

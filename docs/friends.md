@@ -77,3 +77,11 @@ groups:
         avatar: https://sectl.top/SECTL-LOGO.svg
         desc: 专注于教育场景的开源软件组织
 ---
+
+::: card title="本站友情链接" icon="mdi:web"
+- 名称：`Jursin 的博客`
+- 链接：`https://blog.jursin.top/`
+- 头像：`https://blog.jursin.top/avatar.png`
+- 描述：`若要梦想实现，先从梦中醒来`
+- 订阅：`https://blog.jursin.top/rss.xml`
+:::
