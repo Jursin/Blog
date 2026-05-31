@@ -62,6 +62,10 @@ groups:
         link: https://blog.ayaka0.top/
         avatar: https://image.ayaka0.top/file/1754200173748_1754199767568.webp
         desc: 保护你所爱！❤
+      - name: Pfolg's Blog
+        link: https://pg25-lsae.eu.org
+        avatar: https://avatars.githubusercontent.com/u/237149328
+        desc: 于二进制潮汐中求索
   - title: 社区
     list:
       - name: BlogsClub
@@ -83,6 +87,7 @@ groups:
 ---
 
 ::: card title="本站友情链接" icon="mdi:web"
+
 - 名称：`Jursin 的博客`
 - 链接：`https://blog.jursin.top/`
 - 头像：`https://blog.jursin.top/avatar.png`
