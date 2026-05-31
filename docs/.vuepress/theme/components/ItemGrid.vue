@@ -15,12 +15,10 @@
           :data-name="item.name"
         >
           <template v-if="item.custom">
-            <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
-              <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
-            </svg>
+            <img :src="item.svg" :alt="item.name" class="icon-img" />
           </template>
           <template v-else>
-            <Icon :name="item.icon" size="2rem" />
+            <Icon :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
           </template>
         </div>
       </div>
@@ -38,12 +36,10 @@
           :data-name="item.name"
         >
           <template v-if="item.custom">
-            <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
-              <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
-            </svg>
+            <img :src="item.svg" :alt="item.name" class="icon-img" />
           </template>
           <template v-else>
-            <Icon :name="item.icon" size="2rem" />
+            <Icon :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
           </template>
         </div>
       </div>
@@ -61,12 +57,10 @@
           :data-name="item.name"
         >
           <template v-if="item.custom">
-            <svg width="2rem" height="2rem" viewBox="0 0 24 24" :fill="item.fill || 'currentColor'">
-              <path :d="item.svg" :fill="item.fill || 'currentColor'"/>
-            </svg>
+            <img :src="item.svg" :alt="item.name" class="icon-img" />
           </template>
           <template v-else>
-            <Icon :name="item.icon" size="2rem" />
+            <Icon :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
           </template>
         </div>
       </div>
@@ -82,12 +76,12 @@
         开源项目
       </h3>
       <div class="github-cards-grid">
-        <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares" />
-        <GitHubCard owner="Jursin" repo="Awesome-Class-Softwares-Web" />
-        <GitHubCard owner="Jursin" repo="MC-Guide" />
-        <GitHubCard owner="Jursin" repo="student-info-system" />
-        <GitHubCard owner="Jursin" repo="Schedule-Vela" />
-        <GitHubCard owner="Jursin" repo="Schedule-Sync" />
+        <GitHubCard
+          v-for="(project, index) in projectsData.projects"
+          :key="'project-' + index"
+          :owner="project.owner"
+          :repo="project.repo"
+        />
       </div>
     </div>
   </div>
@@ -97,6 +91,7 @@
 import techStackData from "../data/techStack.json";
 import devToolsData from "../data/devTools.json";
 import cloudPlatformsData from "../data/cloudPlatforms.json";
+import projectsData from "../data/projects.json";
 </script>
 
 <style scoped>
@@ -188,6 +183,11 @@ h3 {
 .gridItem:hover::before {
   transform: translate(-50%, 0);
   opacity: 1;
+}
+
+.icon-img {
+  width: 2rem;
+  height: 2rem;
 }
 
 .project {

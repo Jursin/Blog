@@ -17,8 +17,9 @@
       "name": "Neon"
     },
     {
-      "icon": "logos:mongodb-icon",
-      "name": "MongoDB Cloud"
+      "icon": "ant-design:aliyun-outlined",
+      "color": "#ff6a00",
+      "name": "阿里云"
     }
   ]
 }

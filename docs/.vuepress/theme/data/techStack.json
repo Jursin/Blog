@@ -41,10 +41,6 @@
       "name": "C"
     },
     {
-      "icon": "material-icon-theme:cpp",
-      "name": "C++"
-    },
-    {
       "icon": "material-icon-theme:kotlin",
       "name": "Kotlin"
     },

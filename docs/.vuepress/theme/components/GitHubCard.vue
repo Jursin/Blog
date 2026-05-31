@@ -4,7 +4,7 @@
       <Icon name="fa:spinner" />
     </div>
     <div v-else-if="error" class="error-message">
-      <Icon name="fa-exclamation-triangle" /> {{ error }}
+      <Icon name="fa-exclamation-triangle" /> 加载失败
     </div>
     <div v-else class="card-content">
       <div class="header">
@@ -43,6 +43,12 @@
 </template>
 
 <script>
+const MIRROR_SOURCES = [
+  'https://gh.dpik.top/',
+  'https://ghfile.geekertao.top/',
+  ''
+]
+
 export default {
   props: {
     owner: { type: String, required: true },
@@ -52,31 +58,52 @@ export default {
     return {
       repoData: null,
       loading: true,
-      error: null,
+      error: false,
       languageColors: {}
     }
   },
   async mounted() {
     try {
       this.loadLanguageColors()
-      const response = await fetch(
+      this.repoData = await this.fetchJsonWithMirrors(
         `https://api.github.com/repos/${this.owner}/${this.repo}`
       )
-      if (!response.ok) throw new Error('Failed to fetch repository data')
-      this.repoData = await response.json()
     } catch (err) {
-      this.error = err.message
+      this.error = true
     } finally {
       this.loading = false
     }
   },
   methods: {
+    buildMirrorUrl(baseUrl, targetUrl) {
+      return `${baseUrl.replace(/\/?$/, '/')}${targetUrl}`
+    },
+
+    async fetchJsonWithMirrors(targetUrl) {
+      let lastError = null
+
+      for (const mirror of MIRROR_SOURCES) {
+        try {
+          const requestUrl = this.buildMirrorUrl(mirror, targetUrl)
+          const response = await fetch(requestUrl)
+          if (!response.ok) {
+            lastError = new Error(`请求失败: ${requestUrl} (${response.status})`)
+            continue
+          }
+
+          return await response.json()
+        } catch (error) {
+          lastError = error
+        }
+      }
+
+      throw lastError || new Error('请求失败')
+    },
     async loadLanguageColors() {
-      const LANGUAGE_COLOR_URL = 'https://gh.llkk.cc/https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
       try {
-        const res = await fetch(LANGUAGE_COLOR_URL)
-        if (!res.ok) throw new Error(`语言颜色请求失败 ${res.status}`)
-        const data = await res.json()
+        const data = await this.fetchJsonWithMirrors(
+          'https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
+        )
         const map = {}
         for (const [lang, info] of Object.entries(data)) {
           if (info && typeof info === 'object' && info.color) {

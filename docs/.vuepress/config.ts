@@ -43,6 +43,10 @@ export default defineUserConfig({
       creation: 'original'
     },
 
+    copyCode: {
+      inline: true,
+    },
+
     /* 页内信息 */
     // editLink: true,
     // lastUpdated: true,

@@ -42,10 +42,10 @@ groups:
         link: https://apanzinc.top/
         avatar: https://apanzinc.top/assets/logo-DtoFzsvf.png
         desc: 热爱探索的前端开发者，正在不断学习与成长
-      - name: YuXuann
+      - name: Rinty 雨屋
         link: https://rinty.xyz/
         avatar: https://rinty.xyz/upload/897409385.jpg
-        desc: 活着就是一种伟大
+        desc: 活着就是一种伟大！
       - name: LC
         link: https://lcwebsite.cn
         avatar: https://lcwebsite.cn/favicon.svg
@@ -66,6 +66,10 @@ groups:
         link: https://pg25-lsae.eu.org
         avatar: https://avatars.githubusercontent.com/u/237149328
         desc: 于二进制潮汐中求索
+      - name: 博客集市
+        link: https://cnb.cool/Blog_Bazaar/
+        avatar: https://cnb.cool/Blog_Bazaar/-/logos/s
+        desc: 来这里摆摊，让更多人认识你！
   - title: 社区
     list:
       - name: BlogsClub
@@ -86,11 +90,15 @@ groups:
         desc: 专注于教育场景的开源软件组织
 ---
 
-::: card title="本站友情链接" icon="mdi:web"
-
+:::: card title="本站友情链接" icon="mdi:web"
 - 名称：`Jursin 的博客`
 - 链接：`https://blog.jursin.top/`
 - 头像：`https://blog.jursin.top/avatar.png`
 - 描述：`若要梦想实现，先从梦中醒来`
 - 订阅：`https://blog.jursin.top/rss.xml`
+
+::: info 提示
+- 双击可复制行内代码内容
+- 互换友链时请在评论区提供贵站信息
 :::
+::::
