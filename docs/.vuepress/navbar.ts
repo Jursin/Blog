@@ -15,6 +15,11 @@ export default defineNavbarConfig([
     icon: 'octicon:browser-16',
     items: [
       {
+        text: '站点监测',
+        icon: 'carbon:circle-filled',
+        link: 'https://status.jursin.top/'
+      },
+      {
         text: 'Openlist',
         icon: '/icon/openlist.svg',
         link: 'https://openlist.jursin.top/'

@@ -79,7 +79,6 @@
         <GitHubCard
           v-for="(project, index) in projectsData.projects"
           :key="'project-' + index"
-          :owner="project.owner"
           :repo="project.repo"
         />
       </div>

@@ -1,0 +1,41 @@
+{
+  "avatar": "/avatar.png",
+  "emoji": "😋",
+  "name": "Jursin",
+  "socialLinks": [
+    {
+      "link": "https://github.com/Jursin",
+      "icon": "mdi:github"
+    },
+    {
+      "link": "https://space.bilibili.com/1575907920",
+      "icon": "mingcute:bilibili-line",
+      "color": "#F9709A"
+    },
+    {
+      "link": "https://www.douyin.com/user/MS4wLjABAAAAQGQcpmhfTWT-dnMkBX1Dtdw4mqk-WUPiz1Stbb5nn7Q",
+      "icon": "logos:tiktok-icon",
+      "size": "0.75em"
+    },
+    {
+      "link": "https://ifdian.net/a/jursin",
+      "icon": "simple-icons:afdian",
+      "color": "#946ce6"
+    },
+    {
+      "link": "https://t.me/Hello_Jursin",
+      "icon": "mingcute:telegram-fill",
+      "color": "#62B8EB"
+    },
+    {
+      "link": "https://www.coolapk.com/u/26772772",
+      "icon": "arcticons:coolapk",
+      "color": "#109d58"
+    },
+    {
+      "link": "mailto:jursin@126.com",
+      "icon": "mdi:email-outline",
+      "color": "#177F41"
+    }
+  ]
+}

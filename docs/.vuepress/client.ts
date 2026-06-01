@@ -8,7 +8,6 @@ import GitHubCard from './theme/components/GitHubCard.vue'
 import ItemGrid from './theme/components/ItemGrid.vue'
 import Douyin from './theme/components/Douyin.vue'
 import PostsTop from './theme/components/PostsTop.vue'
-import Download from './theme/components/Download.vue'
 
 import './theme/styles/var.css'
 import './theme/styles/posts-container.css'
@@ -23,7 +22,6 @@ export default defineClientConfig({
     app.component('GitHubCard', GitHubCard)
     app.component('ItemGrid', ItemGrid)
     app.component('Douyin', Douyin)
-    app.component('Download', Download)
   },
 
   layouts: {

@@ -1,67 +1,74 @@
 <template>
-    <div class="home">
-        <div class="avatar">
-            <img src="/avatar.png" alt="Avatar" loading="lazy" />
-            <div class="emoji">😋</div>
-        </div>
-        <div class="info">
-            <div style="
+  <div class="home">
+    <div class="avatar">
+      <img :src="profileData.avatar" :alt="avatar" loading="lazy" />
+      <div class="emoji">{{ profileData.emoji }}</div>
+    </div>
+    <div class="info">
+      <div style="
             margin-bottom: 0.5rem;
             font-family: 'Google Sans Code', sans-serif;
             font-size: 24px;
             animation: fadeInUp 1s ease-out 0.1s;
         ">
-                <span style="color: rgb(0, 217, 255);">user@Jursin</span>
-                <span style="color: rgb(110, 118, 129);">:</span>
-                <span style="color: rgb(167, 139, 250);">~</span>
-                <span style="color: rgb(110, 118, 129);">$</span>
-                <span style="color: var(--vp-c-text-1); margin-left: 0.5rem;">whoami</span>
-            </div>
-            <div class="name">
-                <span style="color: var(--vp-c-brand-1); margin-right: 6px;">&gt;</span>
-                <span style="color: var(--vp-c-text-1);">Jursin</span>
-                <span class="cursor">_</span>
-            </div>
-            <div class="hitokoto">
-              <span>{{ hitokotoText }}</span>
-            </div>
-            <div class="social">
-                <a href="https://github.com/Jursin" target="_blank">
-                    <Icon name="mdi:github" />
-                </a>
-                <a href="https://space.bilibili.com/1575907920" target="_blank">
-                    <Icon name="mingcute:bilibili-line" color="#F9709A" />
-                </a><a href="https://www.douyin.com/user/MS4wLjABAAAAQGQcpmhfTWT-dnMkBX1Dtdw4mqk-WUPiz1Stbb5nn7Q" target="_blank">
-                    <Icon name="logos:tiktok-icon" size="0.75em" />
-                </a>
-                <a href="https://ifdian.net/a/jursin" target="_blank">
-                    <Icon name="simple-icons:afdian" color="#946ce6" />
-                </a>
-                <a href="https://t.me/Hello_Jursin" target="_blank">
-                    <Icon name="mingcute:telegram-fill" color="#62B8EB" />
-                </a>
-                <a href="https://www.coolapk.com/u/26772772" target="_blank">
-                    <Icon name="arcticons:coolapk" color="#109d58" />
-                </a>
-                <a href="mailto:jursin@126.com" target="_blank">
-                    <Icon name="mdi:email-outline" color="#177F41" />
-                </a>
-            </div>
-        </div>
+        <span style="color: rgb(0, 217, 255);">user@{{ profileData.name }}</span>
+        <span style="color: rgb(110, 118, 129);">:</span>
+        <span style="color: rgb(167, 139, 250);">~</span>
+        <span style="color: rgb(110, 118, 129);">$</span>
+        <span style="color: var(--vp-c-text-1); margin-left: 0.5rem;">whoami</span>
+      </div>
+      <div class="name">
+        <span style="color: var(--vp-c-brand-1); margin-right: 6px;">&gt;</span>
+        <span style="color: var(--vp-c-text-1);">{{ profileData.name }}</span>
+        <span class="cursor">_</span>
+      </div>
+      <div class="hitokoto">
+        <span>{{ hitokotoText }}</span>
+      </div>
+      <div class="social">
+        <a v-for="item in profileData.socialLinks" :key="item.link" :href="item.link" target="_blank">
+          <Icon :name="item.icon" :size="item.size || undefined" :color="item.color || undefined" />
+        </a>
+      </div>
     </div>
+  </div>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&amp;family=Google+Sans+Flex:opsz,wght@6..144,1..1000&amp;display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&amp;family=Google+Sans+Flex:opsz,wght@6..144,1..1000&amp;display=swap"
+    rel="stylesheet">
 </template>
+
+<script setup>
+import { onMounted, ref } from 'vue';
+import profileData from '../data/profile.json';
+
+const hitokotoText = ref('一言加载中…');
+
+onMounted(() => {
+  fetch('https://v1.hitokoto.cn/?encode=json&c=d&c=i&c=k')
+    .then(res => res.ok ? res.json() : null)
+    .then(data => {
+      if (!data?.hitokoto) return;
+      const from = data.from ?? data.from_who ?? '一言';
+      hitokotoText.value = `${data.hitokoto} — ${from}`;
+    })
+    .catch(() => { });
+});
+</script>
 
 <style scoped>
 @keyframes blink {
+
   from,
-  to { opacity: 1; }
-  50% { opacity: 0; }
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 canvas {
@@ -192,52 +199,35 @@ canvas {
 
 @media screen and (max-width: 768px) {
   .home {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 
   .name {
-      font-size: 36px;
+    font-size: 36px;
   }
 
   .avatar img {
-      width: 200px;
-      height: 200px;
+    width: 200px;
+    height: 200px;
   }
 
   .emoji {
-      bottom: 18px;
-      right: 18px;
-      width: 35px;
-      height: 35px;
-      font-size: 20px;
+    bottom: 18px;
+    right: 18px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
   }
 
   .tags-container {
-      justify-content: center;
-      align-items: center;
+    justify-content: center;
+    align-items: center;
   }
 
   .social {
-      justify-content: center;
-      align-items: center;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
-
-<script setup>
-import { onMounted, ref } from 'vue';
-
-const hitokotoText = ref('一言加载中…');
-
-onMounted(() => {
-  fetch('https://v1.hitokoto.cn/?encode=json&c=d&c=i&c=k')
-    .then(res => res.ok ? res.json() : null)
-    .then(data => {
-      if (!data?.hitokoto) return;
-      const from = data.from ?? data.from_who ?? '一言';
-      hitokotoText.value = `${data.hitokoto} — ${from}`;
-    })
-    .catch(() => {});
-});
-</script>

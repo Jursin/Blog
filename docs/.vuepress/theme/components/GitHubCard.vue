@@ -51,7 +51,6 @@ const MIRROR_SOURCES = [
 
 export default {
   props: {
-    owner: { type: String, required: true },
     repo: { type: String, required: true }
   },
   data() {
@@ -66,7 +65,7 @@ export default {
     try {
       this.loadLanguageColors()
       this.repoData = await this.fetchJsonWithMirrors(
-        `https://api.github.com/repos/${this.owner}/${this.repo}`
+        `https://api.github.com/repos/${this.repo}`
       )
     } catch (err) {
       this.error = true

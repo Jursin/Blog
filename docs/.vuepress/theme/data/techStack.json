@@ -29,10 +29,6 @@
       "name": "Node.js"
     },
     {
-      "icon": "skill-icons:electron",
-      "name": "Electron"
-    },
-    {
       "icon": "material-icon-theme:python",
       "name": "Python"
     },
@@ -49,8 +45,8 @@
       "name": "Markdown"
     },
     {
-      "icon": "logos:mysql",
-      "name": "MySql"
+      "icon": "logos:postgresql",
+      "name": "PostgreSQL"
     }
   ]
 }

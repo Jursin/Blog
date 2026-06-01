@@ -4,6 +4,7 @@ createTime: 2026/03/22 16:36:47
 tags:
     - 小米
     - Vela 穿戴设备
+cover: /images/schedule-vela/banner.png
 permalink: /blog/60fsmnc1/
 ---
 
@@ -14,8 +15,8 @@ permalink: /blog/60fsmnc1/
 ![banner](/images/schedule-vela/banner.png)
 
 <div class="github-cards-grid">
-  <GitHubCard owner="Jursin" repo="Schedule-Vela" />
-  <GitHubCard owner="Jursin" repo="Schedule-Sync" />
+  <GitHubCard repo="Jursin/Schedule-Vela" />
+  <GitHubCard repo="Jursin/Schedule-Sync" />
 </div>
 
 ## 特点
@@ -24,7 +25,6 @@ permalink: /blog/60fsmnc1/
 - [X] 可自由切换显示上/下一天课程
 - [X] 点击课程卡片进入全屏显示
 - [X] 显示上/下课倒计时和进度条
-- [ ] 为胶囊形和圆形屏幕添加弧形进度条
 
 > 目前支持导入[拾光课程表](https://sgschedule.jursin.top/)、[WakeUp 课程表](https://www.wakeup.fun/)和 [CSES](https://cloud.smart-teach.cn/) 的配置文件
 
@@ -44,14 +44,12 @@ permalink: /blog/60fsmnc1/
   ::: tip
   如果 AstroBox 不支持你的穿戴设备，可以使用[表盘自定义工具](https://www.bandbbs.cn/threads/9797/)
   :::
-- 手环端 `rpk` 文件
-- 安卓端同步器
+- [手环端 `rpk` 文件](https://github.com/Jursin/Schedule-Vela/releases/latest)
+- [安卓端同步器](https://github.com/Jursin/Schedule-Sync/releases/latest)
 
   <a href="https://www.bandbbs.cn/resources/5772/">
     <img src="/images/schedule-vela/get-it-on-bandbbs.png" style="height:80px;">
   </a>
-
-  <Download />
 
 ::: important
 本手环端快应用根据[Xiaomi Vela JS 应用开发文档](https://iot.mi.com/vela/quickapp/)开发，理论上支持小米 Vela 穿戴设备

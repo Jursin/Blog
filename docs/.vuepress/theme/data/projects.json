@@ -1,28 +1,10 @@
 {
   "projects": [
-    {
-      "owner": "Jursin",
-      "repo": "Awesome-Class-Softwares"
-    },
-    {
-      "owner": "Jursin",
-      "repo": "Awesome-Class-Softwares-Web"
-    },
-    {
-      "owner": "Jursin",
-      "repo": "MC-Guide"
-    },
-    {
-      "owner": "Jursin",
-      "repo": "student-info-system"
-    },
-    {
-      "owner": "Jursin",
-      "repo": "Schedule-Vela"
-    },
-    {
-      "owner": "Jursin",
-      "repo": "Schedule-Sync"
-    }
+    { "repo": "Jursin/Awesome-Class-Softwares" },
+    { "repo": "Jursin/Awesome-Class-Softwares-Web" },
+    { "repo": "Jursin/MC-Guide" },
+    { "repo": "Jursin/student-info-system" },
+    { "repo": "Jursin/Schedule-Vela" },
+    { "repo": "Jursin/Schedule-Sync" }
   ]
 }
