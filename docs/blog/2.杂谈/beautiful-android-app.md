@@ -59,8 +59,8 @@ permalink: /blog/8bhf8vxn/
 - **[Olib](https://github.com/shiyi-0x7f/olib-mobile)** - Z-Library 第三方客户端
 
 ### 📖 阅读与漫画
-- **[legado](https://github.com/gedoor/legado)** - 可添加书源的阅读应用
 - **[legado-with-MD3](https://github.com/HapeLee/legado-with-MD3)** - 使用 Material Design 3 全新设计的 legado
+- **[legado Plus](https://github.com/Luoyacheng/legado)** - 继承自 legado，在其基础上新增更多功能
 - **[Animeko](https://github.com/open-ani/animeko)** - 集找番、追番、看番的一站式弹幕追番平台
 - **[Kazumi](https://github.com/Predidit/Kazumi)** - 基于自定义规则的番剧采集 APP
 - **[Venera](https://github.com/venera-app/venera)** - 支持阅读本地和网络漫画的应用
