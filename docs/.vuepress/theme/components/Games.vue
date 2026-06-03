@@ -87,23 +87,25 @@ export default {
   },
   methods: {
     async fetchAchievements() {
-      const promises = this.games
-        .filter(game => game.has_community_visible_stats)
-        .map(async (game) => {
-        try {
-          const url = `${PROXY}/ISteamUserStats/GetPlayerAchievements/v1/?appid=${game.appid}`
-          const data = await this.fetchSteamApi(url)
-          const stats = data.playerstats
-          if (stats && stats.success && stats.achievements) {
-            const total = stats.achievements.length
-            const unlocked = stats.achievements.filter(a => a.achieved === 1).length
-            game.achievements = { total, unlocked }
+      const tasks = this.games.filter(game => game.has_community_visible_stats)
+      const CONCURRENCY = 5
+      for (let i = 0; i < tasks.length; i += CONCURRENCY) {
+        const batch = tasks.slice(i, i + CONCURRENCY)
+        await Promise.allSettled(batch.map(async (game) => {
+          try {
+            const url = `${PROXY}/ISteamUserStats/GetPlayerAchievements/v1/?appid=${game.appid}`
+            const data = await this.fetchSteamApi(url)
+            const stats = data.playerstats
+            if (stats && stats.success && stats.achievements) {
+              const total = stats.achievements.length
+              const unlocked = stats.achievements.filter(a => a.achieved === 1).length
+              game.achievements = { total, unlocked }
+            }
+          } catch {
+            // 部分游戏无成就数据，静默跳过
           }
-        } catch {
-          // 部分游戏无成就数据，静默跳过
-        }
-      })
-      await Promise.allSettled(promises)
+        }))
+      }
     },
     formatPlaytime(minutes) {
       if (minutes < 60) return `${minutes} 分钟`
@@ -131,10 +133,17 @@ export default {
     getAchievementPercent({ unlocked, total }) {
       return total ? Math.round((unlocked / total) * 100) : 0
     },
-    async fetchSteamApi(url) {
-      const res = await fetch(url)
-      if (!res.ok) throw new Error(`请求失败: ${res.status}`)
-      return res.json()
+    async fetchSteamApi(url, retries = 2) {
+      for (let i = 0; i < retries; i++) {
+        try {
+          const res = await fetch(url)
+          if (!res.ok) throw new Error(`请求失败: ${res.status}`)
+          return await res.json()
+        } catch (err) {
+          if (i === retries - 1) throw err
+          await new Promise(r => setTimeout(r, 1000))
+        }
+      }
     }
   }
 }
@@ -148,7 +157,7 @@ export default {
 }
 
 .title {
-  margin: 0 0 24px 0 !important;
+  margin: 0 0 40px 0 !important;
   padding: 0 !important;
   font-size: 28px;
   font-weight: 700;
