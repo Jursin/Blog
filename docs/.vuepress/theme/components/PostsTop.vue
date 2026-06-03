@@ -32,12 +32,6 @@
       </div>
     </div>
   </div>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&amp;family=Google+Sans+Flex:opsz,wght@6..144,1..1000&amp;display=swap"
-    rel="stylesheet">
 </template>
 
 <script setup>
@@ -47,14 +41,18 @@ import profileData from '../data/profile.json';
 const hitokotoText = ref('一言加载中…');
 
 onMounted(() => {
-  fetch('https://v1.hitokoto.cn/?encode=json&c=d&c=i&c=k')
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 3000);
+
+  fetch('https://v1.hitokoto.cn/?encode=json&c=d&c=i&c=k', { signal: controller.signal })
     .then(res => res.ok ? res.json() : null)
     .then(data => {
       if (!data?.hitokoto) return;
       const from = data.from ?? data.from_who ?? '一言';
       hitokotoText.value = `${data.hitokoto} — ${from}`;
     })
-    .catch(() => { });
+    .catch(() => {})
+    .finally(() => clearTimeout(timer));
 });
 </script>
 

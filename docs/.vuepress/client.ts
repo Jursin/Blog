@@ -8,6 +8,9 @@ import GitHubCard from './theme/components/GitHubCard.vue'
 import ItemGrid from './theme/components/ItemGrid.vue'
 import Douyin from './theme/components/Douyin.vue'
 import PostsTop from './theme/components/PostsTop.vue'
+import Games from './theme/components/Games.vue'
+import Anime from './theme/components/Anime.vue'
+import SongList from './theme/components/SongList.vue'
 
 import './theme/styles/var.css'
 import './theme/styles/posts-container.css'
@@ -22,6 +25,9 @@ export default defineClientConfig({
     app.component('GitHubCard', GitHubCard)
     app.component('ItemGrid', ItemGrid)
     app.component('Douyin', Douyin)
+    app.component('Games', Games)
+    app.component('Anime', Anime)
+    app.component('SongList', SongList)
   },
 
   layouts: {
