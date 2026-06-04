@@ -3,6 +3,14 @@ import navbar from './navbar'
 
 const currentYear = new Date().getFullYear()
 
+const countDaysFrom = (startDate: string | number | Date) =>
+  Math.floor(
+    (Date.now() - new Date(startDate).setHours(0, 0, 0, 0)) /
+      (1000 * 60 * 60 * 24)
+  );
+
+const days = countDaysFrom('2025-08-31');
+
 export default defineThemeConfig({
   logo: '/favicon.ico',
   appearance: true,
@@ -19,7 +27,7 @@ export default defineThemeConfig({
 
   /* 页脚 */
   footer: {
-    message: `Powered by <a target="_blank" href="https://v2.vuepress.vuejs.org/">VuePress</a> & <a target="_blank" href="https://theme-plume.vuejs.press">vuepress-theme-plume</a> | Copyright © 2025-${currentYear} Jursin`,
+    message: `<span style="color: var(--vp-c-brand-1);">©</span> 2025-${currentYear} Jursin | 本站已运行 <span style="color: var(--vp-c-brand-1);">${days}</span> 天 | 由 <a target="_blank" href="https://v2.vuepress.vuejs.org/" style="color: var(--vp-c-brand-1);">VuePress</a> & <a target="_blank" href="https://theme-plume.vuejs.press" style="color: var(--vp-c-brand-1);">vuepress-theme-plume</a> 驱动`,
     copyright: '<img src="/icon/miit.png" width="14" height="14" style="margin-right: 5px; display: inline-block; vertical-align: middle;"><a href="http://beian.miit.gov.cn/" target="_blank" >鄂ICP备2025157296号-1</a> | <img src="/icon/mps.png" width="14" height="14" style="margin-right: 5px; display: inline-block; vertical-align: middle;"><a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank">鄂公网安备42100302000228号</a>',
   },
 

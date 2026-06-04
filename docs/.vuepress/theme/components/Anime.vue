@@ -407,7 +407,7 @@ export default {
 }
 
 .page-input {
-  width: 48px;
+  width: 36px;
   height: 32px;
   text-align: center;
   border: 1px solid var(--vp-c-divider);

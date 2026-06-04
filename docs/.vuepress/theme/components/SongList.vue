@@ -11,10 +11,13 @@
     </div>
     <div v-else>
       <div class="song-grid">
-        <div
+        <a
           v-for="(song, index) in songs"
           :key="song.hash"
           class="song-card"
+          :href="`https://cn.bing.com/search?q=${encodeURIComponent(song.name)}%20site:y.qq.com%20OR%20site:music.163.com%20OR%20site:kugou.com%20OR%20site:kuwo.cn%20OR%20site:music.apple.com`"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span class="song-index">{{ (page - 1) * pageSize + index + 1 }}</span>
           <img
@@ -37,7 +40,7 @@
               {{ formatCollectTime(song.collecttime) }}
             </span>
           </div>
-        </div>
+        </a>
       </div>
       <div class="pagination">
         <button
@@ -209,6 +212,8 @@ export default {
   padding: 10px 14px;
   min-width: 0;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   background: var(--vp-c-bg);
@@ -322,7 +327,7 @@ export default {
 }
 
 .page-input {
-  width: 48px;
+  width: 36px;
   height: 32px;
   text-align: center;
   border: 1px solid var(--vp-c-divider);
