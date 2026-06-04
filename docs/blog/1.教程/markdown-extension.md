@@ -3,6 +3,7 @@ title: Markdown 扩展
 createTime: 2024/03/05 22:49:39
 tags:
   - Markdown
+cover: /images/markdown.png
 copyright:
   license:
     name: MIT
@@ -14,6 +15,10 @@ copyright:
   source: https://theme-plume.vuejs.press/article/mcgayb5w/
 permalink: /blog/4p05ruta/
 ---
+
+> 适用于本博客主题的 Markdown 扩展语法
+
+<!-- more -->
 
 ## 标题锚点
 

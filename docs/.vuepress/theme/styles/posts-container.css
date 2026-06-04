@@ -10,3 +10,15 @@
   }
   justify-content: flex-end !important;
 }
+
+.vp-post-item {
+  border-radius: 8px;
+}
+
+.vp-post-item.has-cover.top .post-cover {
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.posts-container.no-profile {
+  padding-top: 0 !important;
+}

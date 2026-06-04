@@ -25,3 +25,5 @@ pnpm vp-update
 
 - [vuepress](https://vuepress.vuejs.org/)
 - [vuepress-theme-plume](https://theme-plume.vuejs.press/)
+- [Steam Web API](https://partner.steamgames.com/doc/webapi_overview)
+- [KuGouMusicApi](https://kugoumusicapi-docs.4everland.app/)

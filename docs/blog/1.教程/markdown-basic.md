@@ -3,6 +3,7 @@ title: Markdown 基础
 createTime: 2024/03/06 22:43:52
 tags:
   - Markdown
+cover: /images/markdown.png
 copyright:
   license:
     name: MIT

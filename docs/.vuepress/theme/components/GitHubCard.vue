@@ -1,10 +1,10 @@
 <template>
   <div class="github-card" :class="{ loading, error }">
     <div v-if="loading" class="loading-spinner">
-      <Icon name="fa:spinner" />
+      <Icon name="line-md:loading-twotone-loop" />
     </div>
     <div v-else-if="error" class="error-message">
-      <Icon name="fa-exclamation-triangle" /> 加载失败
+      <Icon name="material-symbols:error-outline" /> 加载失败
     </div>
     <div v-else class="card-content">
       <div class="header">

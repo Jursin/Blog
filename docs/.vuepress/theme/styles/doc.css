@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .posts-container {
     padding-top: 72px !important;
   }

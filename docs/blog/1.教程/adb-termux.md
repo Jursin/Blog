@@ -4,6 +4,7 @@ createTime: 2026/02/16 16:13:57
 tags:
   - Termux
   - adb
+cover: /images/termux.png
 permalink: /blog/nddmqo09/
 ---
 
