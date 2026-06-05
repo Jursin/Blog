@@ -28,15 +28,15 @@ export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {
       envDir: resolve(__dirname, '../../'),
+      build: {
+        cssMinify: 'esbuild',
+      },
     },
   }),
   shouldPrefetch: false, // 站点较大，页面数量较多时，不建议启用
 
   theme: plumeTheme({
-    /* 添加您的部署域名, 有助于 SEO, 生成 sitemap */
     hostname: 'https://blog.jursin.top',
-
-    /* 文档仓库配置，用于 editLink */
     docsRepo: 'https://github.com/Jursin/Blog',
     docsDir: 'docs',
     docsBranch: 'main',
