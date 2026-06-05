@@ -13,7 +13,6 @@ copyright:
     url: https://github.com/pengzhanbo
   creation: reprint
   source: https://theme-plume.vuejs.press/article/mcgayb5w/
-permalink: /blog/4p05ruta/
 ---
 
 > 适用于本博客主题的 Markdown 扩展语法

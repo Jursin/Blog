@@ -74,7 +74,7 @@ export default defineUserConfig({
     cache: 'filesystem',
 
     autoFrontmatter: {
-    //   permalink: true,  // 是否生成永久链接
+      permalink: false,  // 是否生成永久链接
     //   createTime: true, // 是否生成创建时间
     //   title: true,      // 是否生成标题
     },
@@ -135,16 +135,16 @@ export default defineUserConfig({
     //   echarts: true,      // 启用 ECharts
     //  mermaid: true,      // 启用 mermaid
     //   flowchart: true,    // 启用 flowchart
-      image: {
+    //  image: {
     //     figure: true,     // 启用 figure
-        lazyload: true,   // 启用图片懒加载
+    //    lazyload: true,   // 启用图片懒加载
     //     mark: true,       // 启用图片标记
     //     size: true,       // 启用图片大小
-      },
+    //  },
     //   include: true,      // 在 Markdown 文件中导入其他 markdown 文件内容
       imageSize: 'local', // 启用 自动填充 图片宽高属性，避免页面抖动
       mark: 'lazy',
-      timeline: true,
+      field: true,
     },
 
     /**

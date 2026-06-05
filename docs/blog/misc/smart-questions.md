@@ -8,7 +8,6 @@ copyright:
     name: 程序员阿水
   creation: reprint
   source: https://mp.weixin.qq.com/s/q461so9lWk4FKJGZ-p7Vcg
-permalink: /blog/3f6v4l8j/
 ---
 
 > **Eric S. Raymond** 在 2004 年发表过一篇 [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) 文章，最新版是 2014 年的 3.10 版。这篇文章写的非常好，令人深受启发。本文对原文做了大量的删减和本土化改造，更贴近中国程序员的实际情况。

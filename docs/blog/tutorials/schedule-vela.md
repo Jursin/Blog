@@ -5,10 +5,11 @@ tags:
     - 小米
     - Vela 穿戴设备
 cover: /images/schedule-vela/banner.png
-permalink: /blog/60fsmnc1/
+coverStyle:
+  ratio: 3/2
 ---
 
-> 我在 AI 辅助下开发了一个适用于 Vela 设备的课程表快应用，欢迎 Star 🌟
+> 我在 AI 辅助下开发了一个适用于 Vela 设备的==课程表快应用==，欢迎 ==Star 🌟==
 
 <!-- more -->
 

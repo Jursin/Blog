@@ -33,7 +33,25 @@ export default defineThemeConfig({
 
   navbar,
   collections: [ 
-    { type: 'post', dir: 'blog', title: '博客', meta: { createTime: "long" } }
+    {
+      type: 'post',
+      dir: 'blog',
+      title: '博客',
+      meta: { createTime: "long" },
+      categoriesTransform: (categories) => {
+        const categoryNames: Record<string, string> = {
+          'tutorials': '教程',
+          'misc': '杂谈',
+        }
+        const transformed = categories.map(cat => ({
+          ...cat,
+          name: categoryNames[cat.name] || cat.name
+        }))
+        return transformed.sort((a, b) => {
+          return a.name.localeCompare(b.name, 'zh-CN')
+        })
+      }
+    }
   ],
 
   /**

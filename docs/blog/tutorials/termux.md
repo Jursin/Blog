@@ -4,7 +4,6 @@ createTime: 2025/08/29 15:52:51
 tags:
   - Termux
 cover: /images/termux.png
-permalink: /blog/wks79poy/
 ---
 
 @[bilibili](BV17CekzXEEh)
