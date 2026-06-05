@@ -74,7 +74,7 @@ export default {
   },
   async mounted() {
     try {
-      const url = `${PROXY}/IPlayerService/GetOwnedGames/v1/?format=json&include_appinfo=1&include_played_free_games=1`
+      const url = `${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_played_free_games=true`
       const data = await this.fetchSteamApi(url)
       const gamesList = data.response.games || []
       this.games = gamesList

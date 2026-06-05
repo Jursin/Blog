@@ -212,6 +212,7 @@ export default defineUserConfig({
       rss: true,
       count: 100,
       image: '/avatar.png',
+      icon: '/favicon.ico',
     }),
   ],
 })

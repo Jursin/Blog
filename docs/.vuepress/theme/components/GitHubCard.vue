@@ -34,8 +34,8 @@
           <Icon name="octicon:clock-16" size="0.8em" />
           创建于 {{ getRelativeTime(repoData.created_at) }}
         </span><span class="meta-item">
-          <Icon name="octicon:issue-reopened-16" size="0.8em" />
-          更新于 {{ getRelativeTime(repoData.updated_at) }}
+          <Icon name="octicon:git-commit-16" size="0.8em" />
+          更新于 {{ getRelativeTime(lastCommitAt) }}
         </span>
       </div>
     </div>
@@ -56,6 +56,7 @@ export default {
   data() {
     return {
       repoData: null,
+      lastCommitAt: null,
       loading: true,
       error: false,
       languageColors: {}
@@ -64,9 +65,12 @@ export default {
   async mounted() {
     try {
       this.loadLanguageColors()
-      this.repoData = await this.fetchJsonWithMirrors(
-        `https://api.github.com/repos/${this.repo}`
-      )
+      const [repoData, commits] = await Promise.all([
+        this.fetchJsonWithMirrors(`https://api.github.com/repos/${this.repo}`),
+        this.fetchJsonWithMirrors(`https://api.github.com/repos/${this.repo}/commits?per_page=1`)
+      ])
+      this.repoData = repoData
+      this.lastCommitAt = commits[0]?.commit?.committer?.date || repoData.updated_at
     } catch (err) {
       this.error = true
     } finally {

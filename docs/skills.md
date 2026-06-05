@@ -1,6 +1,5 @@
 ---
+pageLayout: ItemGrid
 title: 技能
-pageLayout: page
+feed: false
 ---
-
-<ItemGrid />

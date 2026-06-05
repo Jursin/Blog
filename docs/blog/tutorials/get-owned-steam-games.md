@@ -53,7 +53,7 @@ Steamworks Web API 用户验证密钥。
 
 ### 示例
 ```
-GET https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=your_web_api_key&steamid=your_steamid&include_appinfo=true&include_played_free_games=true&appids_filter=appid
+GET https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=your_web_api_key&steamid=your_steamid&include_appinfo=true&include_played_free_games=true
 ```
 
 ### 示例响应
