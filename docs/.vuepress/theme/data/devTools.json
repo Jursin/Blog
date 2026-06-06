@@ -5,11 +5,6 @@
       "name": "VS Code"
     },
     {
-      "custom": true,
-      "svg": "/icon/trae-cn.svg",
-      "name": "Trae CN"
-    },
-    {
       "icon": "devicon:pycharm",
       "name": "PyCharm"
     },

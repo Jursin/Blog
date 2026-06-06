@@ -5,7 +5,7 @@ import Swiper from 'vuepress-theme-plume/features/Swiper.vue'
 import PageContextMenu from 'vuepress-theme-plume/features/PageContextMenu.vue'
 import AsideNav from './theme/components/AsideNav.vue'
 import GitHubCard from './theme/components/GitHubCard.vue'
-import ItemGrid from './theme/components/ItemGrid.vue'
+import Skills from './theme/components/Skills.vue'
 import PostsTop from './theme/components/PostsTop.vue'
 import Games from './theme/components/Games.vue'
 import Anime from './theme/components/Anime.vue'
@@ -22,7 +22,7 @@ export default defineClientConfig({
     app.component('Swiper', Swiper)
     app.component('AsideNav', AsideNav)
     app.component('GitHubCard', GitHubCard)
-    app.component('ItemGrid', ItemGrid)
+    app.component('Skills', Skills)
     app.component('Games', Games)
     app.component('Anime', Anime)
     app.component('SongList', SongList)

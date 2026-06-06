@@ -54,10 +54,13 @@ tags:
 - **[AuroraStore](https://github.com/whyorean/AuroraStore)** - 允许下载 Google Play 商店中的应用的非官方商店
 - **[Droid-ify](https://github.com/Droid-ify/client)** - F-Droid 第三方客户端
 - **[Neo Store](https://github.com/NeoApplications/Neo-Store)** - F-Droid 第三方客户端
-- **[Nagram](https://github.com/NextAlone/Nagram)** - Telegram 第三方客户端
-- **[NagramX](https://github.com/risin42/NagramX)** - Nagram 的一个变体
 - **[pixez-flutter](https://github.com/Notsfsssf/pixez-flutter)** - 支持免代理直连及查看动图的第三方 Pixiv Flutter 客户端
 - **[Olib](https://github.com/shiyi-0x7f/olib-mobile)** - Z-Library 第三方客户端
+
+::: details
+- **[!!Nagram!!{.blur}](https://github.com/NextAlone/Nagram)**
+- **[!!NagramX!!{.blur}](https://github.com/risin42/NagramX)**
+:::
 
 ### 📖 阅读与漫画
 - **[legado-with-MD3](https://github.com/HapeLee/legado-with-MD3)** - 使用 Material Design 3 全新设计的 legado

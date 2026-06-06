@@ -41,12 +41,12 @@
       "name": "Kotlin"
     },
     {
-      "icon": "material-icon-theme:markdown",
-      "name": "Markdown"
-    },
-    {
       "icon": "logos:postgresql",
       "name": "PostgreSQL"
+    },
+    {
+      "icon": "material-icon-theme:markdown",
+      "name": "Markdown"
     }
   ]
 }

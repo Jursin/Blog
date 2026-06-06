@@ -39,17 +39,17 @@ export default defineThemeConfig({
       title: '博客',
       meta: { createTime: "long" },
       categoriesTransform: (categories) => {
-        const categoryNames: Record<string, string> = {
-          'tutorials': '教程',
-          'misc': '杂谈',
-        }
-        const transformed = categories.map(cat => ({
-          ...cat,
-          name: categoryNames[cat.name] || cat.name
-        }))
-        return transformed.sort((a, b) => {
-          return a.name.localeCompare(b.name, 'zh-CN')
-        })
+        const order = [
+          ['tutorials', '教程'],
+          ['resources', '资源'],
+          ['misc', '杂谈']
+        ] as const
+        return categories
+          .flatMap(c => {
+            const i = order.findIndex(([k]) => k === c.name)
+            return i >= 0 ? [{ ...c, name: order[i][1], sort: i }] : []
+          })
+          .sort((a, b) => a.sort - b.sort)
       }
     }
   ],

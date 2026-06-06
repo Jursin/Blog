@@ -1,6 +1,11 @@
 {
   "cloudPlatforms": [
     {
+      "icon": "ant-design:aliyun-outlined",
+      "color": "#ff6a00",
+      "name": "阿里云"
+    },
+    {
       "icon": "logos:vercel-icon",
       "name": "Vercel"
     },
@@ -15,11 +20,6 @@
     {
       "icon": "logos:neon-icon",
       "name": "Neon"
-    },
-    {
-      "icon": "ant-design:aliyun-outlined",
-      "color": "#ff6a00",
-      "name": "阿里云"
     }
   ]
 }
