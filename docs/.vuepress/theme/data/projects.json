@@ -1,10 +1,12 @@
 {
   "projects": [
-    { "repo": "Jursin/Awesome-Class-Softwares" },
-    { "repo": "Jursin/Awesome-Class-Softwares-Web" },
-    { "repo": "Jursin/MC-Guide" },
-    { "repo": "Jursin/student-info-system" },
+    { "repo": "Jursin/Blog" },
+    { "repo": "Jursin/ShiGuangSchedule-Docs" },
     { "repo": "Jursin/Schedule-Vela" },
-    { "repo": "Jursin/Schedule-Sync" }
+    { "repo": "Jursin/Schedule-Sync" },
+    { "repo": "Jursin/student-info-system" },
+    { "repo": "Jursin/MC-Guide" },
+    { "repo": "Jursin/Awesome-Class-Softwares" },
+    { "repo": "Jursin/Awesome-Class-Softwares-Web" }
   ]
 }

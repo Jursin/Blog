@@ -67,8 +67,13 @@
     </div>
     <div class="wrapper-right">
       <figure>
-        <embed src="https://wakatime.com/share/@Jursin/a235ad1d-764d-4e34-bc33-02083dc0a213.svg"></embed>
+        <embed src="https://wakatime.com/share/@Jursin/c2f20ab6-1cd1-49af-b934-fb182d51d395.svg" class="light"></embed>
+        <embed src="https://wakatime.com/share/@Jursin/54676273-e2e1-46c3-962b-12999092aaf7.svg" class="dark"></embed>
       </figure>
+    </div>
+    <div class="activity-graph">
+      <img src="https://github-readme-activity-graph.vercel.app/graph?username=Jursin&theme=github-compact&bg_color=ffffff&title_color=26A641&custom_title=Jursin%20%E7%9A%84%20GitHub%20%E8%B4%A1%E7%8C%AE%E5%9B%BE%E8%A1%A8&radius=8" alt="GitHub 贡献图" class="light">
+      <img src="https://github-readme-activity-graph.vercel.app/graph?username=Jursin&theme=github-compact&bg_color=1b1b1f&title_color=26A641&custom_title=Jursin%20%E7%9A%84%20GitHub%20%E8%B4%A1%E7%8C%AE%E5%9B%BE%E8%A1%A8&radius=8" alt="GitHub 贡献图" class="dark">
     </div>
     <div class="project">
       <h3 class="skill-header">
@@ -142,6 +147,8 @@ import projectsData from "../data/projects.json";
 h3 {
   margin-top: 2rem;
   margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .itemGrid {
@@ -225,5 +232,16 @@ h3 {
   .github-cards-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.activity-graph {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.activity-graph img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
 }
 </style>

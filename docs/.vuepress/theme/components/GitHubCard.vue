@@ -24,19 +24,22 @@
       </div>
       
       <div class="meta-info">
-        <span class="meta-item" @click="starRepo">
-          <Icon name="octicon:star-fill-16" size="0.8em" color="#E3B341" />
-          {{ repoData.stargazers_count }}
-        </span><span v-if="repoData.license" class="meta-item" @click="viewLicense">
-          <Icon name="lucide:scale" size="0.8em" />
-          {{ repoData.license.spdx_id }}
-        </span><span class="meta-item">
-          <Icon name="octicon:clock-16" size="0.8em" />
-          创建于 {{ getRelativeTime(repoData.created_at) }}
-        </span><span class="meta-item">
-          <Icon name="octicon:git-commit-16" size="0.8em" />
-          更新于 {{ getRelativeTime(lastCommitAt) }}
-        </span>
+        <div class="meta-items-left">
+          <span class="meta-item" @click="starRepo">
+            <Icon name="octicon:star-fill-16" size="0.8em" color="#E3B341" />
+            {{ repoData.stargazers_count }}
+          </span><span v-if="repoData.license" class="meta-item" @click="viewLicense">
+            <Icon name="lucide:scale" size="0.8em" />
+            {{ repoData.license.spdx_id }}
+          </span><span class="meta-item">
+            <Icon name="octicon:clock-16" size="0.8em" />
+            创建于 {{ getRelativeTime(repoData.created_at) }}
+          </span><span class="meta-item">
+            <Icon name="octicon:git-commit-16" size="0.8em" />
+            更新于 {{ getRelativeTime(lastCommitAt) }}
+          </span>
+        </div>
+        <span v-if="repoData.archived" class="archive-label">公共存档</span>
       </div>
     </div>
   </div>
@@ -260,10 +263,18 @@ export default {
 .meta-info {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   font-size: 14px;
   color: var(--vp-c-text-2);
   padding: 6px;
   border-top: 1px solid var(--vp-c-divider);
+}
+
+.meta-items-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .meta-item {
@@ -273,7 +284,7 @@ export default {
   transition: color 0.3s ease;
 }
 
-.meta-item:not(:last-child)::after {
+.meta-items-left .meta-item:not(:last-child)::after {
   content: '·';
   margin: 0 2px;
 }
@@ -284,6 +295,19 @@ export default {
 
 .fas {
   font-size: 16px;
+}
+
+.archive-label {
+  border: 1px solid #9a6700;
+  border-radius: 625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0 0.375rem;
+  white-space: nowrap;
+  line-height: 18px;
+  color: #9a6700;
+  vertical-align: middle;
+  transition: color var(--vp-t-color), border-color var(--vp-t-color);
 }
 
 /* 响应式调整 */

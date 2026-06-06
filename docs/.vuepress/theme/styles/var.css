@@ -63,3 +63,13 @@
 [data-theme="dark"] .home-posts, .vp-content {
   --vp-doc-blog-bg: rgba(30, 120, 120, 0.15);
 }
+
+[data-theme="dark"] .vp-content img:where(.light),
+[data-theme="dark"] .vp-content embed:where(.light) {
+  display: none;
+}
+
+[data-theme="light"] .vp-content img:where(.dark),
+[data-theme="light"] .vp-content embed:where(.dark){
+  display: none;
+}
