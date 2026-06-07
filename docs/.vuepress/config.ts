@@ -4,6 +4,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { umamiAnalyticsPlugin } from '@vuepress/plugin-umami-analytics'
 
 const __dirname = resolve(fileURLToPath(import.meta.url), '..')
 
@@ -18,11 +19,6 @@ export default defineUserConfig({
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap' }],
-    ['script', {
-      defer: true,
-      src: 'https://cloud.umami.is/script.js',
-      'data-website-id': 'ed87d21b-b880-47e3-8aad-0eabb781db74'
-    }]
   ],
 
   bundler: viteBundler({
@@ -40,6 +36,12 @@ export default defineUserConfig({
     docsRepo: 'https://github.com/Jursin/Blog',
     docsDir: 'docs',
     docsBranch: 'main',
+
+    plugins: {
+      seo: {
+        fallBackImage: 'https://blog.jursin.top/avatar.png',
+      }
+    },
 
     /* 文章版权所有 */
     copyright: { 
@@ -213,6 +215,10 @@ export default defineUserConfig({
       count: 100,
       image: '/avatar.png',
       icon: '/favicon.ico',
+    }),
+    umamiAnalyticsPlugin({
+      id: 'ed87d21b-b880-47e3-8aad-0eabb781db74',
+      link: 'https://cloud.umami.is/script.js',
     }),
   ],
 })

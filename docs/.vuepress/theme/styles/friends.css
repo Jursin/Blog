@@ -1,12 +1,8 @@
 /* 友情链接页面 */
-.vp-posts {
-  padding: 30px !important;
-}
-
 .vp-friends {
   .title {
     color: var(--vp-c-brand-1) !important;
-    margin-bottom: 16px !important;
+    margin-bottom: 0 !important;
   }
   max-width: 1400px !important;
   padding: 0 !important;
@@ -16,18 +12,17 @@
   padding: 40px 0 0 0 !important;
 }
 
-@media (max-width: 768px) {
-  .vp-friends {
-    padding-top: 20px !important;
-  }
-}
-
 .vp-friends-group {
   .title {
     border: none !important;
-    padding-top: 20px !important;
+    padding: 20px 0 !important;
+    margin-bottom: 0 !important;
   }
   padding-top: 0 !important;
+}
+
+.friends-list {
+  margin-top: 0 !important;
 }
 
 .vp-friend {
@@ -58,4 +53,8 @@
 
 .vp-card-wrapper {
   background-color: var(--vp-c-bg);
+}
+
+.vp-doc.plume-content.after, .vp-comment {
+  padding: 0 20px !important;
 }

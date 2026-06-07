@@ -109,17 +109,18 @@ canvas {
   height: 55px;
   border-radius: 50%;
   background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 32px;
+  box-shadow: var(--vp-shadow-1);
   transition: transform 0.3s ease;
   cursor: pointer;
 }
 
 .emoji:hover {
-  transform: scale(1.15);
+  box-shadow: var(--vp-shadow-2);
+  transform: scale(1.02);
 }
 
 .info {
@@ -179,6 +180,7 @@ canvas {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--vp-shadow-1);
   transition: all 0.3s ease;
   text-decoration: none;
   color: var(--vp-c-text-1);
@@ -192,7 +194,8 @@ canvas {
 }
 
 .social a:hover {
-  transform: scale(1.1);
+  box-shadow: var(--vp-shadow-2);
+  transform: scale(1.02);
 }
 
 @media screen and (max-width: 768px) {

@@ -43,38 +43,12 @@
 }
 
 /* 引用容器 */
-.vp-doc {
-  blockquote {
-    margin: 15px 0;
-    border-left: 4px solid #26c6da;
-    background: rgba(77, 208, 225, 0.15);
-    position: relative;
+.vp-doc blockquote::before {
+  all: unset !important;
+}
 
-    &::before {
-      content: "❝";
-      top: 8px;
-      left: 8px;
-      color: #4dd0e1;
-      font-size: 30px;
-      line-height: 1;
-      font-weight: 700;
-      position: absolute;
-      opacity: 0.7;
-      background-color: transparent !important;
-      -webkit-mask: none !important;
-      mask: none !important;
-    }
-
-    &::after {
-      content: "❞";
-      font-size: 30px;
-      position: absolute;
-      right: 8px;
-      bottom: 0;
-      color: #4dd0e1;
-      opacity: 0.7;
-    }
-  }
+blockquote {
+  padding: 8px 16px !important;
 }
 
 /* 多级标题 */

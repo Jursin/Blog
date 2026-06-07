@@ -1,4 +1,9 @@
 /* 博客列表页面 */
+.vp-posts.home-posts {
+  background-color: transparent !important;
+  padding: 32px 20px !important;
+}
+
 .posts-container.no-profile {
   max-width: 1400px !important;
 }
