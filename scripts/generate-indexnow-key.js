@@ -1,8 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import 'dotenv/config';
 
 const key = process.env.INDEXNOW_KEY;
 
