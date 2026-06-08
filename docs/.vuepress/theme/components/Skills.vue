@@ -1,92 +1,72 @@
 <template>
   <div class="skills">
     <h2 class="title">技能</h2>
-    <div class="wrapper-left">
-      <!-- 技术栈 -->
-      <h3 class="skill-header">
-        <Icon name="octicon:code-16" color="var(--vp-c-brand-1)" />
-        使用的技术栈
-      </h3>
-      <div class="itemGrid">
-        <div
-          v-for="(item, index) in techStackData.techStack"
-          :key="'tech-' + index"
-          class="gridItem"
-          :data-name="item.name"
-        >
-          <template v-if="item.custom">
-            <img :src="item.svg" :alt="item.name" class="icon-img" />
-          </template>
-          <template v-else>
-            <Icon :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
-          </template>
-        </div>
+    <!-- 技术栈 -->
+    <h3 class="skill-header">
+      <Icon name="octicon:code-16" color="var(--vp-c-brand-1)" />
+      使用的技术栈
+    </h3>
+    <div class="itemGrid">
+      <div
+        v-for="(item, index) in techStackData.techStack"
+        :key="'tech-' + index"
+        class="gridItem"
+        :data-name="item.name"
+      >
+        <img v-if="item.custom" :src="item.svg" :alt="item.name" class="icon-img" />
+        <Icon v-else :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
       </div>
+    </div>
 
-      <!-- 开发工具 -->
-      <h3 class="skill-header">
-        <Icon name="octicon:terminal-16" color="var(--vp-c-brand-1)" />
-        使用的编程工具
-      </h3>
-      <div class="itemGrid">
-        <div
-          v-for="(item, index) in devToolsData.devTools"
-          :key="'tool-' + index"
-          class="gridItem"
-          :data-name="item.name"
-        >
-          <template v-if="item.custom">
-            <img :src="item.svg" :alt="item.name" class="icon-img" />
-          </template>
-          <template v-else>
-            <Icon :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
-          </template>
-        </div>
+    <!-- 开发工具 -->
+    <h3 class="skill-header">
+      <Icon name="octicon:terminal-16" color="var(--vp-c-brand-1)" />
+      使用的编程工具
+    </h3>
+    <div class="itemGrid">
+      <div
+        v-for="(item, index) in devToolsData.devTools"
+        :key="'tool-' + index"
+        class="gridItem"
+        :data-name="item.name"
+      >
+        <img v-if="item.custom" :src="item.svg" :alt="item.name" class="icon-img" />
+        <Icon v-else :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
       </div>
+    </div>
 
-      <!-- 云服务平台 -->
-      <h3 class="skill-header">
-        <Icon name="octicon:cloud-16" color="var(--vp-c-brand-1)" />
-        使用的云服务平台
-      </h3>
-      <div class="itemGrid">
-        <div
-          v-for="(item, index) in cloudPlatformsData.cloudPlatforms"
-          :key="'cloud-' + index"
-          class="gridItem"
-          :data-name="item.name"
-        >
-          <template v-if="item.custom">
-            <img :src="item.svg" :alt="item.name" class="icon-img" />
-          </template>
-          <template v-else>
-            <Icon :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
-          </template>
-        </div>
+    <!-- 云服务平台 -->
+    <h3 class="skill-header">
+      <Icon name="octicon:cloud-16" color="var(--vp-c-brand-1)" />
+      使用的云服务平台
+    </h3>
+    <div class="itemGrid">
+      <div
+        v-for="(item, index) in cloudPlatformsData.cloudPlatforms"
+        :key="'cloud-' + index"
+        class="gridItem"
+        :data-name="item.name"
+      >
+        <img v-if="item.custom" :src="item.svg" :alt="item.name" class="icon-img" />
+        <Icon v-else :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
       </div>
     </div>
-    <div class="wrapper-right">
-      <figure>
-        <embed src="https://wakatime.com/share/@Jursin/c2f20ab6-1cd1-49af-b934-fb182d51d395.svg" class="light"></embed>
-        <embed src="https://wakatime.com/share/@Jursin/54676273-e2e1-46c3-962b-12999092aaf7.svg" class="dark"></embed>
-      </figure>
+
+    <div class="contribution-section">
+      <GitHubContributionGraph />
     </div>
-    <div class="activity-graph">
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=Jursin&theme=github-compact&bg_color=ffffff&title_color=26A641&custom_title=Jursin%20%E7%9A%84%20GitHub%20%E8%B4%A1%E7%8C%AE%E5%9B%BE%E8%A1%A8&radius=8" alt="GitHub 贡献图" class="light">
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=Jursin&theme=github-compact&bg_color=1b1b1f&title_color=26A641&custom_title=Jursin%20%E7%9A%84%20GitHub%20%E8%B4%A1%E7%8C%AE%E5%9B%BE%E8%A1%A8&radius=8" alt="GitHub 贡献图" class="dark">
-    </div>
-    <div class="project">
-      <h3 class="skill-header">
-        <Icon name="octicon:repo-16" size="20px" color="var(--vp-c-brand-1)" />
-        开源项目
-      </h3>
-      <div class="github-cards-grid">
-        <GitHubCard
-          v-for="(project, index) in projectsData.projects"
-          :key="'project-' + index"
-          :repo="project.repo"
-        />
-      </div>
+
+    <!-- 开源项目 -->
+    <h3 class="skill-header">
+      <Icon name="octicon:repo-16" size="20px" color="var(--vp-c-brand-1)" />
+      开源项目
+    </h3>
+    <div class="github-cards-grid">
+      <GitHubCard
+        v-for="(project, index) in projectsData.projects"
+        :key="'project-' + index"
+        :repo="project.repo"
+      />
     </div>
   </div>
 </template>
@@ -103,50 +83,24 @@ import projectsData from "../data/projects.json";
   max-width: 1400px;
   margin: 20px auto;
   padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
 .title {
-  grid-column: 1 / -1;
-  padding: 40px 0 0 0;
   margin: 0 0 16px 0 !important;
-  padding: 0 !important;
   font-size: 28px;
   font-weight: 700;
   color: var(--vp-c-brand-1);
   text-align: center;
-  outline: none;
   transition: color var(--vp-t-color);
 }
 
-.wrapper-left {
-  grid-column: 1;
-}
-
-.wrapper-right {
-  grid-column: 2;
+.skill-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.wrapper-right figure {
-  width: 100%;
-  height: auto;
-  margin: 0;
-}
-
-.wrapper-right embed {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-h3 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin: 1.5rem 0 1rem;
   font-size: 20px;
   font-weight: 600;
 }
@@ -196,18 +150,8 @@ h3 {
   height: 2rem;
 }
 
-.project {
-  grid-column: 1 / -1;
-}
-
-.skill-header {
-  display: flex;
-  align-items: center;
-  margin: 1.5rem 0;
-}
-
-.skill-header h3 {
-  margin: 0;
+.contribution-section {
+  min-width: 0;
 }
 
 .github-cards-grid {
@@ -217,31 +161,8 @@ h3 {
 }
 
 @media (max-width: 768px) {
-  .skills {
-    grid-template-columns: 1fr;
-  }
-  
-  .wrapper-left {
-    grid-column: 1;
-  }
-  
-  .wrapper-right {
-    grid-column: 1;
-  }
-
   .github-cards-grid {
     grid-template-columns: 1fr;
   }
-}
-
-.activity-graph {
-  grid-column: 1 / -1;
-  text-align: center;
-}
-
-.activity-graph img {
-  max-width: 100%;
-  height: auto;
-  display: inline-block;
 }
 </style>

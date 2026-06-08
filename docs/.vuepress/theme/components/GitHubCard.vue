@@ -17,24 +17,27 @@
           </h3>
           <p class="description">{{ repoData.description }}</p>
         </div>
-        <span v-if="repoData.language" class="language">
-          <span class="language-color" :style="{ backgroundColor: getLanguageColor(repoData.language) }"></span>
-          {{ repoData.language }}
-        </span>
       </div>
-      
+
       <div class="meta-info">
-        <div class="meta-items-left">
+        <div class="meta-items">
+          <span v-if="repoData.language" class="language">
+            <span class="language-color" :style="{ backgroundColor: getLanguageColor(repoData.language) }"></span>
+            {{ repoData.language }}
+          </span>
           <span class="meta-item" @click="starRepo">
             <Icon name="octicon:star-fill-16" size="0.8em" color="#E3B341" />
             {{ repoData.stargazers_count }}
-          </span><span v-if="repoData.license" class="meta-item" @click="viewLicense">
+          </span>
+          <span v-if="repoData.license" class="meta-item" @click="viewLicense">
             <Icon name="lucide:scale" size="0.8em" />
             {{ repoData.license.spdx_id }}
-          </span><span class="meta-item">
+          </span>
+          <span class="meta-item">
             <Icon name="octicon:clock-16" size="0.8em" />
             创建于 {{ getRelativeTime(repoData.created_at) }}
-          </span><span class="meta-item">
+          </span>
+          <span class="meta-item">
             <Icon name="octicon:git-commit-16" size="0.8em" />
             更新于 {{ getRelativeTime(lastCommitAt) }}
           </span>
@@ -197,8 +200,6 @@ export default {
   display: flex;
   margin-bottom: 6px;
   align-items: flex-start;
-  justify-content: space-between;
-  position: relative;
 }
 
 .avatar {
@@ -243,9 +244,6 @@ export default {
 }
 
 .language {
-  position: absolute;
-  top: 0;
-  right: 0;
   font-size: 14px;
   color: var(--vp-c-text-2);
   white-space: nowrap;
@@ -271,22 +269,18 @@ export default {
   border-top: 1px solid var(--vp-c-divider);
 }
 
-.meta-items-left {
+.meta-items {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 2px 8px;
 }
 
 .meta-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
   transition: color 0.3s ease;
-}
-
-.meta-items-left .meta-item:not(:last-child)::after {
-  content: '·';
-  margin: 0 2px;
 }
 
 .meta-item:hover {
@@ -298,6 +292,7 @@ export default {
 }
 
 .archive-label {
+  margin-left: auto;
   border: 1px solid #9a6700;
   border-radius: 625rem;
   font-size: 0.75rem;
@@ -312,15 +307,6 @@ export default {
 
 /* 响应式调整 */
 @media (max-width: 768px) {
-  .github-card {
-    border-radius: 10px;
-    padding: 12px;
-  }
-
-  .header {
-    padding-top: 24px;
-  }
-
   .repo-info h3 {
     font-size: 18px;
   }
