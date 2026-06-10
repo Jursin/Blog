@@ -165,6 +165,7 @@ export default defineUserConfig({
       emoji: [
           "https://unpkg.com/@waline/emojis@1.4.0/bilibili",
           "https://unpkg.com/@waline/emojis@1.4.0/bmoji",
+          "https://gcore.jsdelivr.net/gh/Jursin/wechat-emoji@v1.0.0/",
           'https://unpkg.com/@waline/emojis@1.4.0/qq',
           'https://unpkg.com/@waline/emojis@1.4.0/tieba',
           "https://unpkg.com/@waline/emojis@1.4.0/weibo",

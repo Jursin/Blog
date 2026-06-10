@@ -5,31 +5,31 @@
       "name": "Git"
     },
     {
-      "icon": "material-icon-theme:html",
+      "icon": "devicon:html5",
       "name": "HTML"
     },
     {
-      "icon": "material-icon-theme:css",
+      "icon": "devicon:css",
       "name": "CSS"
     },
     {
-      "icon": "material-icon-theme:javascript",
+      "icon": "devicon:javascript",
       "name": "JavaScript"
     },
     {
-      "icon": "material-icon-theme:typescript",
+      "icon": "devicon:typescript",
       "name": "TypeScript"
     },
     {
-      "icon": "material-icon-theme:vue",
+      "icon": "devicon:vuejs",
       "name": "Vue"
     },
     {
-      "icon": "material-icon-theme:nodejs",
+      "icon": "devicon:nodejs",
       "name": "Node.js"
     },
     {
-      "icon": "material-icon-theme:python",
+      "icon": "devicon:python",
       "name": "Python"
     },
     {
@@ -37,7 +37,11 @@
       "name": "C"
     },
     {
-      "icon": "material-icon-theme:kotlin",
+      "icon": "devicon:cplusplus",
+      "name": "C++"
+    },
+    {
+      "icon": "devicon:kotlin",
       "name": "Kotlin"
     },
     {
@@ -45,7 +49,7 @@
       "name": "PostgreSQL"
     },
     {
-      "icon": "material-icon-theme:markdown",
+      "icon": "devicon:markdown",
       "name": "Markdown"
     }
   ]

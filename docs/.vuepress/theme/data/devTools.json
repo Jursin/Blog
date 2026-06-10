@@ -1,8 +1,12 @@
 {
   "devTools": [
     {
-      "icon": "vscode-icons:file-type-vscode",
+      "icon": "devicon:vscode",
       "name": "VS Code"
+    },
+    {
+      "icon": "devicon:visualstudio",
+      "name": "Visual Studio"
     },
     {
       "icon": "devicon:pycharm",
