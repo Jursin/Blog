@@ -219,8 +219,8 @@ export default defineUserConfig({
       icon: '/favicon.ico',
     }),
     umamiAnalyticsPlugin({
-      id: 'ed87d21b-b880-47e3-8aad-0eabb781db74',
-      link: 'https://cloud.umami.is/script.js',
+      id: 'd072a3ac-3b82-41de-89c9-5c8d4192b39b',
+      link: 'https://umami.jursin.top/script.js',
     }),
   ],
 })
