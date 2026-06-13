@@ -84,15 +84,23 @@ GET ${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_playe
 
 ### 参数
 :::: field-group
-::: field name="include_appinfo" type="bool" optional
+::: field include_appinfo
+@type boolean
+@optional
+@default `false`
 如果我们需要各游戏的更多信息（如名称、图标等），为 true。
 :::
 
-::: field name="include_played_free_games" type="bool" optional
+::: field include_played_free_games
+@type boolean
+@optional
+@default `false`
 默认不包含免费游戏。若设置，将返回用户玩过的免费游戏。
 :::
 
-::: field name="appids_filter" type="uint32" optional
+::: field appids_filter
+@type uint32
+@optional
 若设置，将结果集限制在传入的应用。格式为 `appids_filter[0]=xxx`，一次传一个。
 :::
 ::::
@@ -176,51 +184,63 @@ GET ${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_playe
 #### 数据说明
 
 :::: field-group
-::: field name="response.games.appid" type="integer"
+::: field response.games.appid
+@type integer
 游戏唯一标识 ID
 :::
 
-::: field name="response.games.name" type="string"
+::: field response.games.name
+@type string
 游戏名称
 :::
 
-::: field name="response.games.playtime_2weeks" type="integer"
+::: field response.games.playtime_2weeks
+@type integer
 过去 2 周游玩时间（分钟）
 :::
 
-::: field name="response.games.playtime_forever" type="integer"
+::: field response.games.playtime_forever
+@type integer
 总游玩时间（分钟）
 :::
 
-::: field name="response.games.img_icon_url" type="string"
+::: field response.games.img_icon_url
+@type string
 游戏图标的文件名
 :::
 
-::: field name="response.games.has_community_visible_stats" type="boolean"
+::: field response.games.has_community_visible_stats
+@type boolean
 是否公开社区统计数据
 :::
 
-::: field name="response.games.playtime_windows_forever" type="integer"
+::: field response.games.playtime_windows_forever
+@type integer
 Windows 平台总游玩时间（分钟）
 :::
 
-::: field name="response.games.playtime_mac_forever" type="integer"
+::: field response.games.playtime_mac_forever
+@type integer
 Mac 平台总游玩时间（分钟）
 :::
 
-::: field name="response.games.playtime_linux_forever" type="integer"
+::: field response.games.playtime_linux_forever
+@type integer
 Linux 平台总游玩时间（分钟）
 :::
 
-::: field name="response.games.playtime_deck_forever" type="integer"
+::: field response.games.playtime_deck_forever
+@type integer
 Steam Deck 平台总游玩时间（分钟）
 :::
 
-::: field name="response.games.rtime_last_played" type="integer"
+::: field response.games.rtime_last_played
+@type integer
 上次游玩的 Unix 时间戳
 :::
 
-::: field name="response.games.playtime_disconnected" type="integer"
+::: field response.games.playtime_disconnected
+@type integer
 离线状态下游玩的分钟数
 :::
 ::::

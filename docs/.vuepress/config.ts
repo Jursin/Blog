@@ -7,6 +7,7 @@ import { feedPlugin } from '@vuepress/plugin-feed'
 import { umamiAnalyticsPlugin } from '@vuepress/plugin-umami-analytics'
 
 const __dirname = resolve(fileURLToPath(import.meta.url), '..')
+const UMAMI_WEBSITE_ID = 'd072a3ac-3b82-41de-89c9-5c8d4192b39b'
 
 export default defineUserConfig({
   base: '/',
@@ -24,6 +25,9 @@ export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {
       envDir: resolve(__dirname, '../../'),
+      define: {
+        __UMAMI_WEBSITE_ID__: JSON.stringify(UMAMI_WEBSITE_ID),
+      },
       build: {
         cssMinify: 'esbuild',
       },
@@ -219,8 +223,12 @@ export default defineUserConfig({
       icon: '/favicon.ico',
     }),
     umamiAnalyticsPlugin({
-      id: 'd072a3ac-3b82-41de-89c9-5c8d4192b39b',
+      id: UMAMI_WEBSITE_ID,
       link: 'https://umami.jursin.top/script.js',
     }),
   ],
+
+  alias: {
+    '@theme/VPDocMeta.vue': resolve(__dirname, './theme/components/VPDocMeta.vue'),
+  },
 })

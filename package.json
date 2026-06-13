@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "packageManager": "pnpm@11.5.2",
+  "packageManager": "pnpm@11.6.0",
   "author": "Jursin <jursin@126.com>",
   "license": "MIT",
   "scripts": {
@@ -21,6 +21,7 @@
     "@vuepress/plugin-feed": "2.0.0-rc.128",
     "@vuepress/plugin-git": "2.0.0-rc.130",
     "@vuepress/plugin-markdown-chart": "2.0.0-rc.130",
+    "@vuepress/plugin-reading-time": "2.0.0-rc.130",
     "@vuepress/plugin-umami-analytics": "2.0.0-rc.130",
     "@vueuse/core": "14.3.0",
     "@vueuse/integrations": "14.3.0",
@@ -32,9 +33,10 @@
     "minisearch": "7.2.0",
     "swiper": "^12.2.0",
     "typescript": "^6.0.3",
-    "vue": "^3.5.35",
+    "vue": "^3.5.38",
+    "vue-router": "^5.1.0",
     "vuepress": "2.0.0-rc.30",
-    "vuepress-theme-plume": "1.0.0-rc.202"
+    "vuepress-theme-plume": "1.0.0-rc.203"
   },
   "engines": {
     "node": "^22.22.2 || >=24.0.0"
