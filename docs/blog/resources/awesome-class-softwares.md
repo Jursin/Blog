@@ -1,6 +1,9 @@
 ---
 title: 适用于班级一体机的优质软件合集
 createTime: 2026/06/06 12:29:22
+tags:
+  - 一体机
+  - 软件
 cover: /images/ACS.png
 coverStyle:
   ratio: 1/1
