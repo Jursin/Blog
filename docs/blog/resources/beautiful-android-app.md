@@ -14,6 +14,7 @@ tags:
 - **[Breezy Weather](https://github.com/breezy-weather/breezy-weather)** - 功能丰富的免费开源 Material 3 Expressive 天气应用程序
 - **[RikkaHub](https://github.com/rikkahub/rikkahub)** - 支持多个 LLM 提供商的 Android 应用
 - **[ReadYou](https://github.com/ReadYouApp/ReadYou)** - 小巧的安卓 RSS 阅读器
+- **[FeedFlow](https://github.com/prof18/feed-flow)** - 一款极简、快速的跨平台 RSS 阅读器
 
 ### 📂 文件与应用相关
 - **[flut-renamer](https://github.com/sun-jiao/flut-renamer)** - 用 Flutter 编写的批量文件重命名应用
