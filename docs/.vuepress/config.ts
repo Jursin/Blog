@@ -187,7 +187,6 @@ export default defineUserConfig({
       ],
       locales: {
         '/': {
-          placeholder: '请留言吧~',
           reaction0: '非常有用',
           reaction1: '有帮助',
           reaction2: '一般',
