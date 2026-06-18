@@ -9,7 +9,7 @@ createTime: 2026/06/16 21:49:45
 
 <GitHubCard repo="Jursin/TrafficMonitorPlugin_AIBalance" />
 
-如果觉得不错给个 Star 支持一下吧🌟
+如果觉得不错给个 ==Star== 支持一下吧🌟
 
 ## 准备
 - 下载 [TrafficMonitor](https://github.com/zhongyang219/TrafficMonitor/releases/latest)
@@ -29,14 +29,27 @@ createTime: 2026/06/16 21:49:45
 - 右键插件点击**选项**，在选项窗口填写 API Key，可设置刷新频率（默认 5 分钟）
 
   <img src="/images/traffic-monitor-plugin-ai-balance/AIBalance-options.png" width="450px">
+- 任务栏鼠标悬浮框内也会显示余额
+
+  <img src="/images/traffic-monitor-plugin-ai-balance/hover.png" width="200px">
+- 支持的提供商
+  - [DeepSeek](https://platform.deepseek.com/api_keys)
+  - [Xiaomi MiMo](https://platform.xiaomimimo.com/console/api-keys)
+  - [Kimi](https://platform.kimi.com/console/api-keys)
+  - [智谱](https://bigmodel.cn/apikey/platform)
+  - [硅基流动](https://cloud.siliconflow.cn/me/account/ak)
+
+  ::: note
+  调用 **Xiaomi MiMo** 接口需要自行提供 **Cookie**，且只有 **1 天**时效
+  :::
 - 在程序右键菜单中点击**显示设置**，勾选需要显示的 AI 账单余额
 
 [详细文档见 **TrafficMonitor Wiki**](https://github.com/zhongyang219/TrafficMonitor/wiki){.readmore}
 
 ## 注意
-- 插件本身只是通过请求**官方 API 接口**获取余额数据并显示，对于没有官方接口的服务商请自行在开发平台查看
-- 插件为 **AI 辅助编写**，如介意请不要使用
+- 插件本身只是通过请求**官方 API 接口**获取余额数据并显示
 - 插件不会收集你的敏感信息，所有配置保存在本地，您可自行前往 GitHub 仓库查看
+- 插件为 **AI 辅助编写**，如介意请不要使用
 
 ## 感谢
 感谢 [zhongyang219](https://github.com/zhongyang219) 开发者开发出本软件并提供插件系统
