@@ -34,16 +34,6 @@ export default defineNavbarConfig([
         link: 'https://status.jursin.top/'
       },
       {
-        text: 'Openlist',
-        icon: '/icon/openlist.svg',
-        link: 'https://openlist.jursin.top/'
-      },
-      {
-        text: 'MC-Guide',
-        icon: '/icon/mc-guide.svg',
-        link: 'https://mc-guide.jursin.top/'
-      },
-      {
         text: '拾光课程表',
         icon: '/icon/shiguangschedule.svg',
         link: 'https://sgschedule.jursin.top/'
