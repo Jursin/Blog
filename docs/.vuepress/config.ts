@@ -169,9 +169,10 @@ export default defineUserConfig({
       emoji: [
           'https://unpkg.com/@waline/emojis@1.4.0/bilibili',
           'https://unpkg.com/@waline/emojis@1.4.0/bmoji',
-          'https://gcore.jsdelivr.net/gh/Jursin/emojis@v1.1.0/wechat',
+          'https://gcore.jsdelivr.net/gh/Jursin/waline-emojis@v1.5.0/wechat',
           'https://unpkg.com/@waline/emojis@1.4.0/qq',
-          'https://gcore.jsdelivr.net/gh/Jursin/emojis@v1.1.0/feishu',
+          'https://gcore.jsdelivr.net/gh/Jursin/waline-emojis@v1.5.0/feishu',
+          'https://gcore.jsdelivr.net/gh/Jursin/waline-emojis@v1.5.0/douyin',
           'https://unpkg.com/@waline/emojis@1.4.0/tieba',
           'https://unpkg.com/@waline/emojis@1.4.0/weibo',
           'https://unpkg.com/@waline/emojis@1.4.0/tw-emoji',
