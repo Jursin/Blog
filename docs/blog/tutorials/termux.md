@@ -97,9 +97,3 @@ cover: /images/termux.png
 3. 后续即可通过 MT 管理器访问 Termux 目录
 
 :::
-
-## 其它推荐软件包
-- android-tools：Android 开发工具包
-- git: 版本控制系统
-- nodejs: 包管理器
-- python

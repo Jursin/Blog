@@ -19,7 +19,7 @@ cover: /images/unlock-music.png
     - 下载并安装 [MT 管理器](https://mt2.cn/download/) <badge text="非必须，但推荐" type="tip" />
     - 下载 [Unlock Music CLI 版](https://git.um-react.app/um/cli/releases/latest)，选择 Linux arm64 版本
 
-2. 解压 `um-linux-arm64-vx.x.xx.tar.gz` 并将 `um` 移动到系统目录
+2. 解压 `um-linux-arm64-vx.x.xx.tar.gz` 并将 `um` 移动到合适目录
     - 解压 `um-linux-arm64-vx.x.xx.tar.gz`
       > 可用 MT 管理器解压 
     - 设置外部存储访问权限
@@ -28,15 +28,16 @@ cover: /images/unlock-music.png
       ```
     - 在 Termux 中运行以下命令：
       ```bash
-      mv /storage/emulated/0/Download/um $PREFIX/bin/
+      mv /storage/emulated/0/Download/um ~/.local/bin/
       ```
 
       ::: note
-      `/storage/emulated/0/Download/um` 是你解压 `um` 后的 `um` 实际文件路径
+      - `/storage/emulated/0/Download/um` 是你解压 `um` 后的 `um` 实际文件路径
+      - 需将 `~/.local/bin/` 添加到环境变量
       :::
 3. 授予执行权限
     ```bash
-    chmod 550 $PREFIX/bin/um
+    chmod 550 ~/.local/bin/um
     ```
 4. 检查是否安装成功
     ```bash
