@@ -11,6 +11,7 @@ import PostsTop from './theme/components/PostsTop.vue'
 import Games from './theme/components/Games.vue'
 import Anime from './theme/components/Anime.vue'
 import SongList from './theme/components/SongList.vue'
+import PageView from './theme/components/PageView.vue'
 
 import './theme/styles/var.css'
 import './theme/styles/posts-container.css'
@@ -34,6 +35,7 @@ export default defineClientConfig({
     Layout: h(Layout, null, {
       'doc-title-after': () => h(PageContextMenu),
       'aside-outline-after': () => h(AsideNav),
+      'doc-meta-before': () => h(PageView),
       'posts-top': () => h(PostsTop),
     }),
   },
