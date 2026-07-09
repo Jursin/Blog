@@ -1,0 +1,11 @@
+.vp-plot {
+  --vp-plot-blur: 4px;
+  filter: blur(var(--vp-plot-blur));
+  cursor: pointer;
+  transition: filter 0.3s ease;
+  user-select: none;
+}
+
+.vp-plot:hover {
+  filter: blur(0);
+}

@@ -1,0 +1,56 @@
+{
+  "techStack": [
+    {
+      "icon": "devicon:git",
+      "name": "Git"
+    },
+    {
+      "icon": "devicon:html5",
+      "name": "HTML"
+    },
+    {
+      "icon": "devicon:css",
+      "name": "CSS"
+    },
+    {
+      "icon": "devicon:javascript",
+      "name": "JavaScript"
+    },
+    {
+      "icon": "devicon:typescript",
+      "name": "TypeScript"
+    },
+    {
+      "icon": "devicon:vuejs",
+      "name": "Vue"
+    },
+    {
+      "icon": "devicon:nodejs",
+      "name": "Node.js"
+    },
+    {
+      "icon": "devicon:python",
+      "name": "Python"
+    },
+    {
+      "icon": "material-icon-theme:c",
+      "name": "C"
+    },
+    {
+      "icon": "devicon:cplusplus",
+      "name": "C++"
+    },
+    {
+      "icon": "devicon:kotlin",
+      "name": "Kotlin"
+    },
+    {
+      "icon": "logos:postgresql",
+      "name": "PostgreSQL"
+    },
+    {
+      "icon": "devicon:markdown",
+      "name": "Markdown"
+    }
+  ]
+}

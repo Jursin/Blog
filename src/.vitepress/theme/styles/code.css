@@ -1,0 +1,23 @@
+.highlighted-word {
+  padding: 1px 2px;
+  margin: -1px -2px;
+  background-color: var(--vp-c-gray-soft);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 4px;
+}
+
+.highlighted-word:has(+ .highlighted-word) {
+  padding-right: 0;
+  margin-right: 0;
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.highlighted-word + .highlighted-word {
+  padding-left: 0;
+  margin-left: 0;
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

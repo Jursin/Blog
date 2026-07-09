@@ -1,0 +1,28 @@
+{
+  "devTools": [
+    {
+      "icon": "devicon:vscode",
+      "name": "VS Code"
+    },
+    {
+      "icon": "devicon:visualstudio",
+      "name": "Visual Studio"
+    },
+    {
+      "icon": "devicon:pycharm",
+      "name": "PyCharm"
+    },
+    {
+      "icon": "devicon:clion",
+      "name": "CLion"
+    },
+    {
+      "icon": "devicon:androidstudio",
+      "name": "Android Studio"
+    },
+    {
+      "icon": "logos:claude-icon",
+      "name": "Claude Code CLI"
+    }
+  ]
+}

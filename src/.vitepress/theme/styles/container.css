@@ -1,0 +1,117 @@
+.vp-doc blockquote {
+  padding: 0.8rem 1rem;
+  border-left: 4px solid var(--vp-c-default-2);
+  border-radius: 12px;
+  background-color: var(--vp-c-default-soft);
+}
+
+.custom-block {
+  border-radius: 12px;
+}
+
+.custom-block-title {
+  font-size: 16px;
+  margin-bottom: 8px !important;
+}
+
+/* 信息、注意容器 */
+/* 标题颜色 */
+.custom-block.info .custom-block-title {
+  color: #007eff;
+}
+
+.custom-block.note .custom-block-title {
+  color: #5da1a2;
+}
+
+/* 图标样式 */
+.custom-block.info .custom-block-title::before,
+.custom-block.note .custom-block-title::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 9px;
+  top: -1px;    
+}
+
+/* 图标 */
+.custom-block.info .custom-block-title::before {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z' fill='%23007eff'/%3E%3C/svg%3E");
+}
+
+.custom-block.note .custom-block-title::before {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%235da1a2' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 4H7.2c-1.12 0-1.68 0-2.108.218a2 2 0 0 0-.874.874C4 5.52 4 6.08 4 7.2v9.6c0 1.12 0 1.68.218 2.108a2 2 0 0 0 .874.874c.427.218.987.218 2.105.218h9.606c1.118 0 1.677 0 2.104-.218c.377-.192.683-.498.875-.874c.218-.428.218-.987.218-2.105V14m-4-9l-6 6v3h3l6-6m-3-3l3-3l3 3l-3 3m-3-3l3 3'/%3E%3C/svg%3E");
+}
+
+/* 提示容器 */
+.custom-block.tip .custom-block-title {
+  color: #5b6cff;
+}
+
+.custom-block.tip .custom-block-title::before {
+  content: '';
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%235b6cff' d='M7.941 18c-.297-1.273-1.637-2.314-2.187-3a8 8 0 1 1 12.49.002c-.55.685-1.888 1.726-2.185 2.998H7.94zM16 20v1a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-1h8zm-3-9.995V6l-4.5 6.005H11v4l4.5-6H13z'/%3E%3C/svg%3E");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 9px;
+  top: -2px;
+}
+
+/* 警告容器 */
+.custom-block.warning .custom-block-title {
+  color: #f18900;
+}
+
+.custom-block.warning .custom-block-title::before {
+  content: '';
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath d='M576.286 752.57v-95.425q0-7.031-4.771-11.802t-11.3-4.772h-96.43q-6.528 0-11.3 4.772t-4.77 11.802v95.424q0 7.031 4.77 11.803t11.3 4.77h96.43q6.528 0 11.3-4.77t4.77-11.803zm-1.005-187.836 9.04-230.524q0-6.027-5.022-9.543-6.529-5.524-12.053-5.524H456.754q-5.524 0-12.053 5.524-5.022 3.516-5.022 10.547l8.538 229.52q0 5.023 5.022 8.287t12.053 3.265h92.913q7.032 0 11.803-3.265t5.273-8.287zM568.25 95.65l385.714 707.142q17.578 31.641-1.004 63.282-8.538 14.564-23.354 23.102t-31.892 8.538H126.286q-17.076 0-31.892-8.538T71.04 866.074q-18.582-31.641-1.004-63.282L455.75 95.65q8.538-15.57 23.605-24.61T512 62t32.645 9.04 23.605 24.61z' fill='%23f18900'/%3E%3C/svg%3E");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 9px;
+  top: -1px;
+}
+
+/* 危险容器 */
+.custom-block.danger .custom-block-title,
+.custom-block.caution .custom-block-title {
+  color: #e13238;
+}
+
+.custom-block.danger .custom-block-title::before,
+.custom-block.caution .custom-block-title::before {
+  content: '';
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b62a3c' d='M8.27 3L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3M8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41'/%3E%3C/svg%3E");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 9px;
+  top: -2px;
+}
+
+/* 重要容器 */
+.custom-block.important .custom-block-title {
+  color: #a371f7;
+}
+
+.custom-block.important .custom-block-title::before {
+  content: '';
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath d='M512 981.333a84.992 84.992 0 0 1-84.907-84.906h169.814A84.992 84.992 0 0 1 512 981.333zm384-128H128v-42.666l85.333-85.334v-256A298.325 298.325 0 0 1 448 177.92V128a64 64 0 0 1 128 0v49.92a298.325 298.325 0 0 1 234.667 291.413v256L896 810.667v42.666zm-426.667-256v85.334h85.334v-85.334h-85.334zm0-256V512h85.334V341.333h-85.334z' fill='%23a371f7'/%3E%3C/svg%3E");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 9px;
+  top: -1.5px;
+}

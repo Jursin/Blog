@@ -1,0 +1,8 @@
+node_modules/
+src/.vitepress/cache/
+src/.vitepress/dist/
+
+.env
+
+.claude/
+CLAUDE.md

@@ -1,0 +1,23 @@
+.VPNavBarMenuLink span,
+.VPNavScreenMenuLink span,
+.VPNavScreenMenuGroupLink span,
+.VPNavScreenMenuGroup .button-text,
+.VPMenuLink a > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  line-height: 1;
+}
+
+/* 下拉切换按钮图标对齐 */
+.VPFlyout iconify-icon {
+  vertical-align: middle;
+}
+
+/* 下拉菜单项整体居中 */
+.VPMenuLink .link {
+  display: flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+  min-height: 32px;
+}
