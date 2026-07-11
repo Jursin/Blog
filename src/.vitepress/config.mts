@@ -155,6 +155,7 @@ export default defineConfig({
       ],
       socialLinks: [
         { icon: 'github', link: 'https://github.com/Jursin/Blog' },
+        { icon: 'rss', link: '/rss.xml' },
       ],
       footer: {
         message: `<span style="color: var(--vp-c-brand-1);">©</span> 2025-${currentYear} Jursin | 由 <a href="https://vitepress.dev/" target="_blank" style="color: var(--vp-c-brand-1);">VitePress</a> 驱动`,

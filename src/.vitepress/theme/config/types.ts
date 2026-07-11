@@ -14,11 +14,6 @@ export interface CopyrightLicenseInfo {
 	icons: string[]
 }
 
-export interface CopyrightConfig {
-	author: CopyrightAuthor
-	license: CopyrightLicenseKey
-}
-
 export type CopyrightLicense = CopyrightLicenseKey | string
 
 export interface CopyrightLicenseObject {
@@ -94,11 +89,6 @@ export interface SocialLinkItem {
 	label: string
 	size?: string
 	color?: string
-}
-
-// 评论
-export interface CommentConfig {
-	serverURL: string
 }
 
 // 分页

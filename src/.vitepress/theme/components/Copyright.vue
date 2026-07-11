@@ -1,118 +1,51 @@
 <script setup lang="ts">
-import { sanitizeUrl } from '@braintree/sanitize-url';
-import { useData, useRoute } from 'vitepress';
-import { computed, ref, onMounted, watch, nextTick } from 'vue';
-import site from '../config';
-import { copyrightLicenseMap } from '../config/types';
-import type { CopyrightAuthor, CopyrightLicenseKey, CopyrightLicenseObject, CopyrightLicenseInfo, CopyrightFrontmatterConfig } from '../config/types';
+import { sanitizeUrl } from '@braintree/sanitize-url'
+import { useData, useRoute } from 'vitepress'
+import { computed, ref, onMounted, watch, nextTick } from 'vue'
+import site from '../config'
+import { copyrightLicenseMap } from '../config/types'
+import type { CopyrightLicenseKey } from '../config/types'
 
-const { frontmatter } = useData();
-const route = useRoute();
+const { frontmatter } = useData()
+const route = useRoute()
 
-const url = ref('');
+const url = ref('')
 const copyrightEnabled = computed(() => frontmatter.value.copyright !== false)
 
-function isObjectRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null
-}
-
-function isCopyrightLicenseObject(value: unknown): value is CopyrightLicenseObject {
-  return isObjectRecord(value) && typeof value.name === 'string' && typeof value.url === 'string'
-}
-
-function isCopyrightAuthor(value: unknown): value is CopyrightAuthor {
-  return isObjectRecord(value) && typeof value.name === 'string'
-}
-
-function normalizeCopyrightAuthor(author: unknown): CopyrightAuthor | undefined {
-  if (typeof author === 'string' && author.trim()) {
-    return {
-      name: author.trim(),
-    }
-  }
-
-  if (isCopyrightAuthor(author)) {
-    return {
-      name: author.name.trim(),
-      url: author.url?.trim(),
-    }
-  }
-
-  return undefined
-}
-
-function isCopyrightFrontmatterConfig(value: unknown): value is CopyrightFrontmatterConfig {
-  return isObjectRecord(value) && ('author' in value || 'license' in value || 'creation' in value || 'source' in value)
-}
-
-function resolveLicenseInfo(license: unknown): CopyrightLicenseInfo | undefined {
-  if (typeof license === 'string') {
-    if (license in copyrightLicenseMap) {
-      const preset = copyrightLicenseMap[license as CopyrightLicenseKey]
-      return preset
-    }
-
-    return {
-      label: license,
-      url: '',
-      icons: [],
-    }
-  }
-
-  if (!isCopyrightLicenseObject(license)) {
-    return undefined
-  }
-
-  if (license.name in copyrightLicenseMap) {
-    const preset = copyrightLicenseMap[license.name as CopyrightLicenseKey]
-    return {
-      label: preset.label,
-      url: license.url,
-      icons: preset.icons,
-    }
-  }
-
-  return {
-    label: license.name,
-    url: license.url,
-    icons: [],
-  }
-}
-
 const copyrightView = computed(() => {
-  const copyright = frontmatter.value.copyright
-  const isConfigured = isCopyrightFrontmatterConfig(copyright)
-  const isReprint = isConfigured && copyright.creation === 'reprint'
-  const source = isConfigured && typeof copyright.source === 'string' && copyright.source.trim() ? copyright.source.trim() : ''
-  const author = isConfigured ? normalizeCopyrightAuthor(copyright.author) ?? site.copyright.author : site.copyright.author
-  const licenseInfo = isConfigured ? resolveLicenseInfo(copyright.license) ?? copyrightLicenseMap[site.copyright.license] : copyrightLicenseMap[site.copyright.license]
-  const authorHref = author.url ? sanitizeUrl(author.url) : ''
-  const linkHref = sanitizeUrl(isReprint && source ? source : url.value)
+  const cfg = frontmatter.value.copyright
+  const isConfigured = cfg && typeof cfg === 'object'
+  const isReprint = isConfigured && (cfg as any).creation === 'reprint'
+  const source = isConfigured ? ((cfg as any).source || '') : ''
+
+  const rawAuthor = isConfigured ? (cfg as any).author : undefined
+  const author = rawAuthor
+    ? (typeof rawAuthor === 'string' ? { name: rawAuthor } : { name: rawAuthor.name ?? '', url: rawAuthor.url })
+    : site.copyright.author
+
+  const rawLicense = isConfigured ? (cfg as any).license : undefined
+  const licenseKey: CopyrightLicenseKey = (typeof rawLicense === 'string' ? rawLicense : rawLicense?.name) || site.copyright.license
+  const licenseInfo = copyrightLicenseMap[licenseKey] || { label: licenseKey, url: '', icons: [] }
 
   return {
     author,
-    authorHref,
+    authorHref: author.url ? sanitizeUrl(author.url) : '',
     linkLabel: isReprint ? '转载自' : '本文链接',
-    linkHref,
+    linkHref: sanitizeUrl(isReprint && source ? source : url.value),
     linkText: isReprint && source ? source : url.value,
     licenseInfo,
-    licenseVisible: !isReprint || ('license' in copyright),
+    licenseVisible: !isReprint || ('license' in (cfg || {})),
   }
 })
 
-// 提取公共的更新 URL 函数
 const updateUrl = () => {
   if (typeof window !== 'undefined') {
-    const urlObj = new URL(window.location.href);
-    url.value = sanitizeUrl(urlObj.origin + urlObj.pathname);
+    url.value = sanitizeUrl(new URL(window.location.href).origin + new URL(window.location.href).pathname)
   }
-};
+}
 
-onMounted(updateUrl); // 初次客户端挂载时执行
-watch(
-  () => route.path,
-  () => nextTick(updateUrl)
-); // 路由切换时执行
+onMounted(updateUrl)
+watch(() => route.path, () => nextTick(updateUrl))
 </script>
 
 <template>

@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev src --host",
-    "build": "vitepress build src",
+    "build": "vitepress build src && node scripts/generate-indexnow-key.js && node scripts/push-indexnow.js --push",
+    "build-dev": "vitepress build src && node scripts/generate-indexnow-key.js && node scripts/push-indexnow.js",
     "preview": "vitepress preview src"
   },
   "packageManager": "pnpm@11.10.0",
@@ -18,10 +19,6 @@
     "@types/node": "^26.1.1",
     "@waline/client": "^3.15.2",
     "chokidar": "^5.0.0",
-    "cytoscape": "^3.34.0",
-    "cytoscape-cose-bilkent": "^4.1.0",
-    "dayjs": "^1.11.21",
-    "debug": "^4.4.3",
     "feed": "^6.0.0",
     "gray-matter": "^4.0.3",
     "iconify-icon": "^3.0.2",

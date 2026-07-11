@@ -4,7 +4,7 @@ import { useRoute } from 'vitepress';
 import '@waline/client/style';
 import site from '../config';
 
-const Waline = defineAsyncComponent(() => import('@waline/client/component'));
+const Waline = defineAsyncComponent(() => import('@waline/client/component').then(m => m.Waline));
 
 const serverURL = site.comment.serverURL;
 const route = useRoute();
