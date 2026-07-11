@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import { transformHeadMeta } from '@nolebase/vitepress-plugin-meta'
 import { markPlugin } from './theme/plugins/mark'
 import { plotPlugin } from './theme/plugins/plot'
 import { supPlugin, subPlugin } from './theme/plugins/super-sub'
@@ -7,14 +8,20 @@ import { autoTitlePlugin } from './theme/plugins/auto-title'
 import { transformerNotationWordHighlight } from '@shikijs/transformers'
 import taskLists from 'markdown-it-task-lists'
 import container from 'markdown-it-container'
-import { withMermaid } from 'vitepress-plugin-mermaid'
-import { RssPlugin } from 'vitepress-plugin-rss'
+import { buildFeed } from './genFeed'
+import { startAutoFrontmatter } from './autoFrontmatter'
 import { GitChangelog, GitChangelogMarkdownSection } from '@nolebase/vitepress-plugin-git-changelog/vite'
 import zh from './theme/translations/zh'
 import siteConfig from './theme/config'
 const currentYear = new Date().getFullYear()
 
 const env = loadEnv('', process.cwd(), 'VITE_')
+const headMeta = transformHeadMeta({ length: 200, useTaglineForHomeLayout: true })
+
+// 开发模式下自动填充新 md 文件的 title 和 createTime
+if (process.argv.some(a => a === 'dev')) {
+  startAutoFrontmatter()
+}
 
 // 将所有 VITE_ 开头的环境变量注入到组件
 const viteDefine: Record<string, string> = {}
@@ -22,8 +29,7 @@ for (const key of Object.keys(env)) {
   viteDefine[`import.meta.env.${key}`] = JSON.stringify(env[key])
 }
 
-export default withMermaid(
-  defineConfig({
+export default defineConfig({
     lang: 'zh-CN',
     title: "Jursin 的博客",
     description: "一个使用 VitePress 构建的个人博客",
@@ -33,20 +39,31 @@ export default withMermaid(
     vite: {
       publicDir: '.vitepress/public',
       define: viteDefine,
+      build: {
+        target: 'es2020',
+        cssCodeSplit: false,
+        chunkSizeWarningLimit: 2000,
+        rollupOptions: {
+          onwarn(warning, warn) {
+            if (warning.message?.includes('__PURE__')) return
+            warn(warning)
+          },
+        },
+      },
       plugins: [
         groupIconVitePlugin(),
-        RssPlugin({
-          title: 'Jursin 的博客',
-          baseUrl: 'https://blog.jursin.top',
-        }),
         GitChangelog({
           repoURL: () => `https://github.com/${siteConfig.blogRepo}`,
         }),
         GitChangelogMarkdownSection(),
       ],
     },
+    
     head: [
       ['link', { rel: 'icon', href: '/favicon.ico' }],
+      ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: '/rss.xml' }],
+      ['link', { rel: 'alternate', type: 'application/atom+xml', title: 'Atom', href: '/atom.xml' }],
+      ['link', { rel: 'alternate', type: 'application/feed+json', title: 'JSON Feed', href: '/feed.json' }],
       ['script', {
         defer: '',
         src: 'https://umami.jursin.top/script.js',
@@ -55,6 +72,20 @@ export default withMermaid(
     ],
     lastUpdated: true,
     ignoreDeadLinks: true,
+
+    buildEnd: buildFeed,
+
+    async transformHead(ctx) {
+      const siteUrl = ctx.siteConfig.sitemap?.hostname
+      const cover = ctx.pageData.frontmatter?.cover
+      const ogImage = cover ? `${siteUrl}${cover}` : `${siteUrl}/avatar.png`
+      return [
+        ...((await headMeta(ctx.head, ctx)) || []),
+        ['meta', { property: 'og:image', content: ogImage }],
+        ['meta', { property: 'twitter:image', content: ogImage }],
+      ]
+    },
+
     markdown: {
       container: {
         infoLabel: '信息',
@@ -131,13 +162,4 @@ export default withMermaid(
       },
       ...zh,
     },
-    mermaid: {
-      // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
-    },
-    // optionally set additional config for plugin itself with MermaidPluginConfig
-    mermaidPlugin: {
-      class: "mermaid my-class", // set additional css classes for parent container
-    },
-
   })
-)

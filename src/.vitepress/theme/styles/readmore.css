@@ -8,7 +8,7 @@
   font-weight: inherit;
   color: currentcolor;
   text-decoration: none;
-  background-color: var(--vp-c-bg);
+  background-color: var(--vp-c-bg-safe);
   border: dashed 1px var(--vp-c-divider);
   border-radius: 8px;
   transition: border-color 0.25s ease, background-color 0.25s ease;

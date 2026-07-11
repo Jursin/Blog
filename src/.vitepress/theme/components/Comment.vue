@@ -1,18 +1,24 @@
 <script setup>
-import { Waline } from '@waline/client/component';
-import { computed, watch, onMounted, nextTick } from 'vue';
+import { defineAsyncComponent, computed, watch, onMounted, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
-import { pageviewCount } from '@waline/client/pageview';
 import '@waline/client/style';
 import site from '../config';
+
+const Waline = defineAsyncComponent(() => import('@waline/client/component'));
 
 const serverURL = site.comment.serverURL;
 const route = useRoute();
 const path = computed(() => route.path);
 const dark = 'html[class~="dark"]';
 
-onMounted(() => nextTick(() => pageviewCount({ serverURL })));
-watch(path, () => nextTick(() => pageviewCount({ serverURL })));
+onMounted(() => nextTick(async () => {
+  const { pageviewCount } = await import('@waline/client/pageview');
+  pageviewCount({ serverURL });
+}));
+watch(path, () => nextTick(async () => {
+  const { pageviewCount } = await import('@waline/client/pageview');
+  pageviewCount({ serverURL });
+}));
 
 const emojiOptions = [
   'https://unpkg.com/@waline/emojis@1.4.0/bilibili',
@@ -52,7 +58,7 @@ const localesOptions = {
 <template>
   <h2 id="评论区" tabindex="-1">
     <a class="header-anchor" href="#评论区">
-      <Icon name="mdi:comment-text-outline" color="var(--vp-c-brand-2)" />
+      <Icon name="mdi:comment-text-outline" />
     </a>
     评论区
   </h2>
@@ -77,6 +83,24 @@ h2 {
   position: relative;
   font-weight: 600;
   outline: none;
+}
+
+.header-anchor {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  margin-left: -1.25em;
+  font-weight: 500;
+  user-select: none;
+  text-decoration: none;
+  opacity: 0;
+  color: var(--vp-c-brand-1);
+  transition: color 0.25s, opacity 0.25s;
+}
+
+h2:hover .header-anchor,
+.header-anchor:focus {
+  opacity: 1;
 }
 
 [data-waline] {

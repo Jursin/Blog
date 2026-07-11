@@ -118,7 +118,7 @@ watch(
 <template>
   <h2 id="版权信息" tabindex="-1">
     <a class="header-anchor" href="#版权信息">
-      <Icon name="mdi:copyright" color="var(--vp-c-brand-2)" />
+      <Icon name="mdi:copyright" size="1.1em" />
     </a>
     版权信息
   </h2>
@@ -165,6 +165,24 @@ h2 {
   position: relative;
   font-weight: 600;
   outline: none;
+}
+
+.header-anchor {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  margin-left: -1.25em;
+  font-weight: 500;
+  user-select: none;
+  text-decoration: none;
+  opacity: 0;
+  color: var(--vp-c-brand-1);
+  transition: color 0.25s, opacity 0.25s;
+}
+
+h2:hover .header-anchor,
+.header-anchor:focus {
+  opacity: 1;
 }
 
 .copyright-info {

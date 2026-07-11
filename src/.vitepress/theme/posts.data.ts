@@ -3,6 +3,7 @@ import { execSync } from 'child_process'
 import path from 'path'
 import fs from 'fs'
 import site from './config'
+import { extractExcerpt } from './utils/excerpt'
 
 export interface Post {
   title: string
@@ -41,49 +42,21 @@ function getGitTimestamp(filePath: string): string {
 declare const data: Post[]
 export { data }
 
-const EXCERPT_MAX = 200
-
-function stripMarkdown(str: string): string {
-  return str
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/^#+\s+(.*)$/gm, '$1')
-    .replace(/^>\s?(.*)$/gm, '$1')
-    .replace(/!\[.*?\]\(.*?\)/g, '')
-    .replace(/\[([^\]]*)\]\(.*?\)/g, '$1')
-    .replace(/<\/?[^>]*>/g, '')
-    .replace(/==([^=]+)==/g, '$1')
-    .replace(/:::[\s\S]*?:::/g, '')
-    .replace(/[`*~_#\-|]/g, '')
-    .replace(/\s{2,}/g, ' ')
-    .replace(/\n{2,}/g, '\n')
-    .trim()
-}
-
 export default createContentLoader('blog/**/*.md', {
   excerpt: true,
   includeSrc: true,
   transform(raw): Post[] {
     return raw
       .filter(({ frontmatter }) => !frontmatter.draft && !frontmatter.hidden)
-      .map(({ url, frontmatter, excerpt, src }): Post | null => {
+      .map(({ url, frontmatter, src }): Post | null => {
         const title = frontmatter.title
         if (!title) return null
 
         const parts = url.split('/').filter(Boolean)
         const dirName = parts[1] || ''
 
-        // 提取摘要：description > 手动提取（<!--more--> 截断）> VitePress excerpt 兜底
-        let excerptText = ''
-        if (frontmatter.description) {
-          excerptText = frontmatter.description
-        } else if (src) {
-          let text = src.replace(/^---[\s\S]*?---\n*/g, '')
-          const moreIndex = text.search(/<!--\s*more\s*-->/)
-          if (moreIndex !== -1) text = text.slice(0, moreIndex)
-          excerptText = stripMarkdown(text).slice(0, EXCERPT_MAX)
-        } else if (excerpt) {
-          excerptText = excerpt.replace(/<[^>]*>/g, '')
-        }
+        const excerptText = frontmatter.description
+          || (src ? extractExcerpt(src) : '')
 
         const urlPath = url.replace(/\.html$/, '').replace(/^\//, '').replace(/\//g, path.sep)
         const filePath = path.join(srcDir, urlPath) + '.md'

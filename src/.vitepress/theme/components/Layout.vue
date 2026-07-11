@@ -6,6 +6,7 @@ import Breadcrumb from "./Breadcrumb.vue";
 import Copyright from './Copyright.vue'
 import Comment from './Comment.vue'
 import PrevNext from './PrevNext.vue'
+import BackToTop from './BackToTop.vue'
 
 const { Layout } = DefaultTheme
 const { isDark, frontmatter } = useData()
@@ -58,6 +59,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
         <Comment v-if="frontmatter.comment !== false" />
       </template>
     </Layout>
+    <BackToTop />
 </template>
 
 <style>

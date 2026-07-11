@@ -1,8 +1,6 @@
 ---
 layout: Friends
 title: 友情链接
-editLink: false
-cols: 3
 groups:
   - title: 个人
     list:
