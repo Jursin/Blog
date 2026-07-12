@@ -56,7 +56,5 @@ export async function buildFeed(config: SiteConfig) {
   for (const item of items) feed.addItem(item)
 
   writeFileSync(path.join(config.outDir, 'rss.xml'), feed.rss2())
-  writeFileSync(path.join(config.outDir, 'atom.xml'), feed.atom1())
-  writeFileSync(path.join(config.outDir, 'feed.json'), feed.json1())
-  console.log(`\x1b[32m✓\x1b[39m generated feed include ${items.length} posts (rss.xml + atom.xml + feed.json)`)
+  console.log(`\x1b[32m✓\x1b[39m generated feed include ${items.length} posts (rss.xml)`)
 }

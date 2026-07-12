@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
-import { transformHeadMeta } from '@nolebase/vitepress-plugin-meta'
 import { markPlugin } from './theme/plugins/mark'
 import { plotPlugin } from './theme/plugins/plot'
 import { supPlugin, subPlugin } from './theme/plugins/super-sub'
@@ -9,6 +8,7 @@ import { transformerNotationWordHighlight } from '@shikijs/transformers'
 import taskLists from 'markdown-it-task-lists'
 import container from 'markdown-it-container'
 import { buildFeed } from './genFeed'
+import { buildHeadMeta } from './genHead'
 import { startAutoFrontmatter } from './autoFrontmatter'
 import { GitChangelog, GitChangelogMarkdownSection } from '@nolebase/vitepress-plugin-git-changelog/vite'
 import zh from './theme/translations/zh'
@@ -16,7 +16,6 @@ import siteConfig from './theme/config'
 const currentYear = new Date().getFullYear()
 
 const env = loadEnv('', process.cwd(), 'VITE_')
-const headMeta = transformHeadMeta({ length: 200, useTaglineForHomeLayout: true })
 
 // 开发模式下自动填充新 md 文件的 title 和 createTime
 if (process.argv.some(a => a === 'dev')) {
@@ -62,8 +61,6 @@ export default defineConfig({
     head: [
       ['link', { rel: 'icon', href: '/favicon.ico' }],
       ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: '/rss.xml' }],
-      ['link', { rel: 'alternate', type: 'application/atom+xml', title: 'Atom', href: '/atom.xml' }],
-      ['link', { rel: 'alternate', type: 'application/feed+json', title: 'JSON Feed', href: '/feed.json' }],
       ['script', {
         defer: '',
         src: 'https://umami.jursin.top/script.js',
@@ -76,14 +73,7 @@ export default defineConfig({
     buildEnd: buildFeed,
 
     async transformHead(ctx) {
-      const siteUrl = ctx.siteConfig.sitemap?.hostname
-      const cover = ctx.pageData.frontmatter?.cover
-      const ogImage = cover ? `${siteUrl}${cover}` : `${siteUrl}/avatar.png`
-      return [
-        ...((await headMeta(ctx.head, ctx)) || []),
-        ['meta', { property: 'og:image', content: ogImage }],
-        ['meta', { property: 'twitter:image', content: ogImage }],
-      ]
+      return buildHeadMeta(ctx)
     },
 
     markdown: {
@@ -155,7 +145,12 @@ export default defineConfig({
       ],
       socialLinks: [
         { icon: 'github', link: 'https://github.com/Jursin/Blog' },
-        { icon: 'rss', link: '/rss.xml' },
+        { 
+          icon: { 
+            svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img"><path fill="currentColor" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0a8 8 0 0 0-8-8a1 1 0 0 1 0-2m0 4a6 6 0 0 1 6 6a1 1 0 1 1-2 0a4 4 0 0 0-4-4a1 1 0 0 1 0-2m.5 7a1.5 1.5 0 1 1 0-3a1.5 1.5 0 0 1 0 3" /></svg>' 
+          },
+          link: '/rss.xml' 
+        },
       ],
       footer: {
         message: `<span style="color: var(--vp-c-brand-1);">©</span> 2025-${currentYear} Jursin | 由 <a href="https://vitepress.dev/" target="_blank" style="color: var(--vp-c-brand-1);">VitePress</a> 驱动`,
