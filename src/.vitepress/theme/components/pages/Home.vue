@@ -44,10 +44,10 @@
 import { ref, computed, onMounted } from 'vue'
 import { inBrowser } from 'vitepress'
 import { data as posts } from '../../posts.data'
-import { useGroup } from '../../composables/useGroup'
+import { useGroup } from '../../utils/group'
 import { usePagination } from '../../composables/usePagination'
 import site from '../../config'
-import { countDaysFrom } from '../../utils/functions'
+import { countDaysFrom, getCategoryDisplay } from '../../utils/functions'
 import HomeSidebar from '../HomeSidebar.vue'
 import PostList from '../PostList.vue'
 import Pagination from '../Pagination.vue'
@@ -56,8 +56,6 @@ const runningDays = countDaysFrom(site.blogStartDate)
 
 const selectedCategory = ref('')
 const selectedTag = ref('')
-
-const getCategoryDisplay = (cat: string) => site.categoryPathMap[cat] || cat.replaceAll('-', ' ')
 
 const { tabs, posts: groupedPosts } = useGroup(posts)
 

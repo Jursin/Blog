@@ -33,7 +33,7 @@ export default defineConfig({
     title: "Jursin 的博客",
     description: "一个使用 VitePress 构建的个人博客",
     sitemap: {
-      hostname: 'https://blog.jursin.top',
+      hostname: env.VITE_SITE_URL || '',
     },
     vite: {
       publicDir: '.vitepress/public',
@@ -53,6 +53,7 @@ export default defineConfig({
         groupIconVitePlugin(),
         GitChangelog({
           repoURL: () => `https://github.com/${siteConfig.blogRepo}`,
+          maxGitLogCount: 10,
         }),
         GitChangelogMarkdownSection(),
       ],
@@ -63,8 +64,8 @@ export default defineConfig({
       ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: '/rss.xml' }],
       ['script', {
         defer: '',
-        src: 'https://umami.jursin.top/script.js',
-        'data-website-id': 'd072a3ac-3b82-41de-89c9-5c8d4192b39b'
+        src: env.VITE_UMAMI_URL || '',
+        'data-website-id': env.VITE_UMAMI_WEBSITE_ID || ''
       }]
     ],
     lastUpdated: true,

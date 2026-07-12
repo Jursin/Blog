@@ -11,13 +11,15 @@ const route = useRoute();
 const path = computed(() => route.path);
 const dark = 'html[class~="dark"]';
 
+let pageview = null
+
 onMounted(() => nextTick(async () => {
-  const { pageviewCount } = await import('@waline/client/pageview');
-  pageviewCount({ serverURL });
+  const mod = await import('@waline/client/pageview')
+  pageview = mod.pageviewCount
+  pageview({ serverURL });
 }));
-watch(path, () => nextTick(async () => {
-  const { pageviewCount } = await import('@waline/client/pageview');
-  pageviewCount({ serverURL });
+watch(path, () => nextTick(() => {
+  pageview?.({ serverURL });
 }));
 
 const emojiOptions = [

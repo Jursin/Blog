@@ -17,6 +17,7 @@
 
       <div class="post-item__body">
         <h2 class="post-item__title">
+          <span v-if="post.order" class="post-item__pinned">置顶</span>
           <a :href="withBase(post.url)">{{ post.title }}</a>
         </h2>
 
@@ -27,7 +28,7 @@
         <div class="post-item__footer">
           <div class="post-item__meta">
             <Icon name="material-symbols:calendar-today-outline" color="var(--vp-c-brand-1)" />
-            {{ post.createTime ? post.createTime.split(' ')[0] : '' }}
+            {{ formatDate(post.createTime) }}
             <template v-if="post.updateTime">
               <Icon name="material-symbols:history" color="var(--vp-c-brand-1)" />
               {{ post.updateTime }}
@@ -66,6 +67,7 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress'
 import type { Post } from '../posts.data'
+import { formatDate } from '../utils/functions'
 
 defineProps<{
   posts: Post[]
@@ -144,6 +146,8 @@ defineEmits<{
 
 /* === 标题 === */
 .post-item__title {
+  display: flex;
+  align-items: center;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.5;
@@ -154,6 +158,18 @@ defineEmits<{
   color: var(--vp-c-text-1);
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+.post-item__pinned {
+  display: inline-block;
+  margin-right: 0.5em;
+  padding: 0.1em 0.5em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--vp-c-brand-2);
+  border-radius: 0.375rem;
+  vertical-align: middle;
 }
 
 .post-item__title a:hover {

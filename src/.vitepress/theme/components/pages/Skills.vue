@@ -1,56 +1,21 @@
 <template>
   <div class="skills">
     <h2 class="title">技能</h2>
-    <!-- 技术栈 -->
-    <h3 class="skill-header">
-      <Icon name="octicon:code-16" color="var(--vp-c-brand-1)" />
-      使用的技术栈
-    </h3>
-    <div class="itemGrid">
-      <div
-        v-for="(item, index) in techStackData.techStack"
-        :key="'tech-' + index"
-        class="gridItem"
-        :data-name="item.name"
-      >
-        <img v-if="item.custom" :src="item.svg" :alt="item.name" class="icon-img" />
-        <Icon v-else :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
-      </div>
-    </div>
-
-    <!-- 开发工具 -->
-    <h3 class="skill-header">
-      <Icon name="octicon:terminal-16" color="var(--vp-c-brand-1)" />
-      使用的开发工具
-    </h3>
-    <div class="itemGrid">
-      <div
-        v-for="(item, index) in devToolsData.devTools"
-        :key="'tool-' + index"
-        class="gridItem"
-        :data-name="item.name"
-      >
-        <img v-if="item.custom" :src="item.svg" :alt="item.name" class="icon-img" />
-        <Icon v-else :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
-      </div>
-    </div>
-
-    <!-- 云服务平台 -->
-    <h3 class="skill-header">
-      <Icon name="octicon:cloud-16" color="var(--vp-c-brand-1)" />
-      使用的云服务平台
-    </h3>
-    <div class="itemGrid">
-      <div
-        v-for="(item, index) in cloudPlatformsData.cloudPlatforms"
-        :key="'cloud-' + index"
-        class="gridItem"
-        :data-name="item.name"
-      >
-        <img v-if="item.custom" :src="item.svg" :alt="item.name" class="icon-img" />
-        <Icon v-else :name="item.icon" size="2rem" :color="item.color || 'currentColor'" />
-      </div>
-    </div>
+    <SkillSection
+      icon="octicon:code-16"
+      title="使用的技术栈"
+      :items="techStackData.techStack"
+    />
+    <SkillSection
+      icon="octicon:terminal-16"
+      title="使用的开发工具"
+      :items="devToolsData.devTools"
+    />
+    <SkillSection
+      icon="octicon:cloud-16"
+      title="使用的云服务平台"
+      :items="cloudPlatformsData.cloudPlatforms"
+    />
 
     <!-- 贡献图表 -->
     <h3 class="skill-header">
@@ -82,6 +47,7 @@ import devToolsRaw from "../../data/devTools.json";
 import cloudPlatformsRaw from "../../data/cloudPlatforms.json";
 import projectsData from "../../data/projects.json";
 import GitHubContributionGraph from "../GitHubContributionGraph.vue";
+import SkillSection from "../SkillSection.vue";
 
 interface SkillItem {
   name: string
@@ -122,51 +88,6 @@ const cloudPlatformsData = cloudPlatformsRaw as { cloudPlatforms: SkillItem[] }
   margin: 1.5rem 0 1rem;
   font-size: 20px;
   font-weight: 600;
-}
-
-.itemGrid {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.gridItem {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background-color: var(--vp-c-bg-soft);
-  position: relative;
-  margin: 0 0.2rem 0.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.gridItem::before {
-  content: attr(data-name);
-  position: absolute;
-  top: -1.5rem;
-  left: 50%;
-  color: var(--vp-c-text-1);
-  font-size: 14px;
-  background: var(--vp-c-bg-soft);
-  width: max-content;
-  padding: 0 5px;
-  text-align: center;
-  border-radius: 5px;
-  transition: 0.3s ease-in-out;
-  transform: translate(-50%, 20px);
-  opacity: 0;
-}
-
-.gridItem:hover::before {
-  transform: translate(-50%, 0);
-  opacity: 1;
-}
-
-.icon-img {
-  width: 2rem;
-  height: 2rem;
 }
 
 .contribution-section {

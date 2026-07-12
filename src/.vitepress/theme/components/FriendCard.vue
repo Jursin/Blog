@@ -15,13 +15,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'FriendCard',
-  props: {
-    friend: { type: Object, required: true }
-  }
-}
+<script setup>
+defineProps({
+  friend: Object
+})
 </script>
 
 <style scoped>

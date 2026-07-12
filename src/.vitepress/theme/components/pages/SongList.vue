@@ -19,7 +19,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span class="song-index">{{ (page - 1) * pageSize + index + 1 }}</span>
+          <span class="song-index">{{ (page - 1) * PAGE_SIZE + index + 1 }}</span>
           <img
             :src="getCover(song)"
             :alt="song.name"
@@ -51,88 +51,81 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, onMounted } from 'vue'
 import Pagination from '../Pagination.vue'
 
 const API_BASE = import.meta.env.VITE_KUGOU_API
 const COLLECTION_ID = import.meta.env.VITE_KUGOU_COLLECTION_ID
 const PAGE_SIZE = 30
 
-export default {
-  name: 'Music',
-  components: { Pagination },
-  data() {
-    return {
-      songs: [],
-      total: 0,
-      page: 1,
-      pageSize: PAGE_SIZE,
-        loading: true,
-      error: false
-    }
-  },
-  computed: {
-    totalPages() {
-      return Math.ceil(this.total / this.pageSize)
-    }
-  },
-  async mounted() {
-    await this.fetchSongs(1)
-  },
-  methods: {
-    async fetchSongs(page) {
-      this.loading = true
-      this.error = false
-      try {
-        const url = `${API_BASE}/playlist/track/all?id=${COLLECTION_ID}&page=${page}&pagesize=${this.pageSize}`
-        const res = await fetch(url)
-        if (!res.ok) throw new Error(`请求失败: ${res.status}`)
-        const json = await res.json()
-        this.songs = json.data.songs || []
-        this.total = json.data.count || 0
-        this.page = page
-      } catch {
-        this.error = true
-      } finally {
-        this.loading = false
-      }
-    },
-    changePage(page) {
-      if (page < 1 || page > this.totalPages) return
-      this.fetchSongs(page)
-    },
-    getCover(song) {
-      const url = song.trans_param?.union_cover || song.cover || ''
-      return url.replace('{size}', '250')
-    },
-    getTitle(song) {
-      const name = song.name || ''
-      const idx = name.indexOf(' - ')
-      return idx !== -1 ? name.slice(idx + 3) : name
-    },
-    getArtist(song) {
-      if (song.singerinfo?.length) {
-        return song.singerinfo.map(s => s.name).join('、')
-      }
-      const name = song.name || ''
-      const idx = name.indexOf(' - ')
-      return idx !== -1 ? name.slice(0, idx) : '未知'
-    },
-    formatDuration(ms) {
-      const totalSec = Math.floor(ms / 1000)
-      const min = Math.floor(totalSec / 60)
-      const sec = totalSec % 60
-      return `${min}:${String(sec).padStart(2, '0')}`
-    },
-    formatCollectTime(timestamp) {
-      const date = new Date(timestamp * 1000)
-      const y = date.getFullYear()
-      const m = String(date.getMonth() + 1).padStart(2, '0')
-      const d = String(date.getDate()).padStart(2, '0')
-      return `${y}-${m}-${d}`
-    }
+const songs = ref([])
+const total = ref(0)
+const page = ref(1)
+const loading = ref(true)
+const error = ref(false)
+
+const totalPages = computed(() => Math.ceil(total.value / PAGE_SIZE))
+
+async function fetchSongs(p) {
+  loading.value = true
+  error.value = false
+  try {
+    const url = `${API_BASE}/playlist/track/all?id=${COLLECTION_ID}&page=${p}&pagesize=${PAGE_SIZE}`
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`请求失败: ${res.status}`)
+    const json = await res.json()
+    songs.value = json.data.songs || []
+    total.value = json.data.count || 0
+    page.value = p
+  } catch {
+    error.value = true
+  } finally {
+    loading.value = false
   }
 }
+
+function changePage(p) {
+  if (p < 1 || p > totalPages.value) return
+  fetchSongs(p)
+}
+
+function getCover(song) {
+  const url = song.trans_param?.union_cover || song.cover || ''
+  return url.replace('{size}', '250')
+}
+
+function getTitle(song) {
+  const name = song.name || ''
+  const idx = name.indexOf(' - ')
+  return idx !== -1 ? name.slice(idx + 3) : name
+}
+
+function getArtist(song) {
+  if (song.singerinfo?.length) {
+    return song.singerinfo.map((s) => s.name).join('、')
+  }
+  const name = song.name || ''
+  const idx = name.indexOf(' - ')
+  return idx !== -1 ? name.slice(0, idx) : '未知'
+}
+
+function formatDuration(ms) {
+  const totalSec = Math.floor(ms / 1000)
+  const min = Math.floor(totalSec / 60)
+  const sec = totalSec % 60
+  return `${min}:${String(sec).padStart(2, '0')}`
+}
+
+function formatCollectTime(timestamp) {
+  const date = new Date(timestamp * 1000)
+  const y = date.getFullYear()
+  const m = String(date.getMonth() + 1).padStart(2, '0')
+  const d = String(date.getDate()).padStart(2, '0')
+  return `${y}-${m}-${d}`
+}
+
+onMounted(() => fetchSongs(1))
 </script>
 
 <style scoped>

@@ -55,98 +55,96 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+
 const PROXY = import.meta.env.VITE_STEAM_PROXY
 
-export default {
-  name: 'Games',
-  data() {
-    return {
-      games: [],
-      loading: true,
-      error: false
-    }
-  },
-  computed: {
-    sortedGames() {
-      return [...this.games].sort((a, b) => b.playtime_forever - a.playtime_forever)
-    }
-  },
-  async mounted() {
-    try {
-      const url = `${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_played_free_games=true`
-      const data = await this.fetchSteamApi(url)
-      const gamesList = data.response.games || []
-      this.games = gamesList
-      this.fetchAchievements()
-    } catch {
-      this.error = true
-    } finally {
-      this.loading = false
-    }
-  },
-  methods: {
-    async fetchAchievements() {
-      const tasks = this.games.filter(game => game.has_community_visible_stats)
-      const CONCURRENCY = 5
-      for (let i = 0; i < tasks.length; i += CONCURRENCY) {
-        const batch = tasks.slice(i, i + CONCURRENCY)
-        await Promise.allSettled(batch.map(async (game) => {
-          try {
-            const url = `${PROXY}/ISteamUserStats/GetPlayerAchievements/v1/?appid=${game.appid}`
-            const data = await this.fetchSteamApi(url)
-            const stats = data.playerstats
-            if (stats && stats.success && stats.achievements) {
-              const total = stats.achievements.length
-              const unlocked = stats.achievements.filter(a => a.achieved === 1).length
-              game.achievements = { total, unlocked }
-            }
-          } catch {
-            // 部分游戏无成就数据，静默跳过
-          }
-        }))
-      }
-    },
-    formatPlaytime(minutes) {
-      if (minutes < 60) return `${minutes} 分钟`
-      const hours = Math.floor(minutes / 60)
-      const mins = minutes % 60
-      if (hours < 24) {
-        return mins > 0 ? `${hours} 小时 ${mins} 分钟` : `${hours} 小时`
-      }
-      const days = Math.floor(hours / 24)
-      const remainHours = hours % 24
-      return remainHours > 0 ? `${days} 天 ${remainHours} 小时` : `${days} 天`
-    },
-    formatLastPlayed(timestamp) {
-      const diffMs = Date.now() - timestamp * 1000
-      const diffDays = Math.floor(diffMs / 86400000)
-      if (diffDays === 0) return '今天玩过'
-      if (diffDays === 1) return '昨天玩过'
-      if (diffDays < 30) return `${diffDays} 天前玩过`
-      const diffMonths = Math.floor(diffDays / 30)
-      if (diffMonths < 12) return `${diffMonths} 个月前玩过`
-      const diffYears = Math.floor(diffMonths / 12)
-      const remainMonths = diffMonths % 12
-      return remainMonths > 0 ? `${diffYears} 年 ${remainMonths} 个月前玩过` : `${diffYears} 年前玩过`
-    },
-    getAchievementPercent({ unlocked, total }) {
-      return total ? Math.round((unlocked / total) * 100) : 0
-    },
-    async fetchSteamApi(url, retries = 2) {
-      for (let i = 0; i < retries; i++) {
-        try {
-          const res = await fetch(url)
-          if (!res.ok) throw new Error(`请求失败: ${res.status}`)
-          return await res.json()
-        } catch (err) {
-          if (i === retries - 1) throw err
-          await new Promise(r => setTimeout(r, 1000))
+const games = ref([])
+const loading = ref(true)
+const error = ref(false)
+
+const sortedGames = computed(() =>
+  [...games.value].sort((a, b) => b.playtime_forever - a.playtime_forever)
+)
+
+async function fetchAchievements() {
+  const tasks = games.value.filter((game) => game.has_community_visible_stats)
+  const CONCURRENCY = 5
+  for (let i = 0; i < tasks.length; i += CONCURRENCY) {
+    const batch = tasks.slice(i, i + CONCURRENCY)
+    await Promise.allSettled(batch.map(async (game) => {
+      try {
+        const url = `${PROXY}/ISteamUserStats/GetPlayerAchievements/v1/?appid=${game.appid}`
+        const data = await fetchSteamApi(url)
+        const stats = data.playerstats
+        if (stats && stats.success && stats.achievements) {
+          const total = stats.achievements.length
+          const unlocked = stats.achievements.filter((a) => a.achieved === 1).length
+          game.achievements = { total, unlocked }
         }
+      } catch {
+        // 部分游戏无成就数据，静默跳过
       }
+    }))
+  }
+}
+
+function formatPlaytime(minutes) {
+  if (minutes < 60) return `${minutes} 分钟`
+  const hours = Math.floor(minutes / 60)
+  const mins = minutes % 60
+  if (hours < 24) {
+    return mins > 0 ? `${hours} 小时 ${mins} 分钟` : `${hours} 小时`
+  }
+  const days = Math.floor(hours / 24)
+  const remainHours = hours % 24
+  return remainHours > 0 ? `${days} 天 ${remainHours} 小时` : `${days} 天`
+}
+
+function formatLastPlayed(timestamp) {
+  const diffMs = Date.now() - timestamp * 1000
+  const diffDays = Math.floor(diffMs / 86400000)
+  if (diffDays === 0) return '今天玩过'
+  if (diffDays === 1) return '昨天玩过'
+  if (diffDays < 30) return `${diffDays} 天前玩过`
+  const diffMonths = Math.floor(diffDays / 30)
+  if (diffMonths < 12) return `${diffMonths} 个月前玩过`
+  const diffYears = Math.floor(diffMonths / 12)
+  const remainMonths = diffMonths % 12
+  return remainMonths > 0 ? `${diffYears} 年 ${remainMonths} 个月前玩过` : `${diffYears} 年前玩过`
+}
+
+function getAchievementPercent({ unlocked, total }) {
+  return total ? Math.round((unlocked / total) * 100) : 0
+}
+
+async function fetchSteamApi(url, retries = 2) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await fetch(url)
+      if (!res.ok) throw new Error(`请求失败: ${res.status}`)
+      return await res.json()
+    } catch (err) {
+      if (i === retries - 1) throw err
+      await new Promise(r => setTimeout(r, 1000))
     }
   }
 }
+
+onMounted(async () => {
+  try {
+    const url = `${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_played_free_games=true`
+    const data = await fetchSteamApi(url)
+    const gamesList = data.response.games || []
+    games.value = gamesList
+    fetchAchievements()
+  } catch {
+    error.value = true
+  } finally {
+    loading.value = false
+  }
+})
 </script>
 
 <style scoped>

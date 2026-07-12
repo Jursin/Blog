@@ -36,10 +36,16 @@ function normalizePath(p: string): string {
   return p.replace(/\.html$/, '').replace(/\/$/, '')
 }
 
+const postIndexMap = computed(() => {
+  const map = new Map<string, number>()
+  posts.forEach((p, i) => map.set(normalizePath(p.url), i))
+  return map
+})
+
 const currentPath = computed(() => normalizePath(route.path))
 
 const currentIndex = computed(() => {
-  return posts.findIndex(p => normalizePath(p.url) === currentPath.value)
+  return postIndexMap.value.get(currentPath.value) ?? -1
 })
 
 const prev = computed(() => {

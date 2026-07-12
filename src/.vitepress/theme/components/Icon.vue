@@ -12,21 +12,14 @@ const iconName = computed(() => {
   return props.name.replace(/^iconify\s+/, '')
 })
 
-function parseSize(s: string | number): string {
-  if (String(Number(s)) === String(s)) return `${s}px`
-  return String(s)
-}
-
 const dimensions = computed(() => {
   if (!props.size) return {}
-  const parts = String(props.size)
-    .replaceAll('px', '[UNIT]')
-    .split('x')
-    .map(s => parseSize(s.replaceAll('[UNIT]', 'px').trim()))
-
+  const s = String(props.size).replace(/px/g, '\x00')
+  const parts = s.split('x').map(p => p.trim().replace(/\x00/g, 'px'))
+  const toSize = (v: string) => String(Number(v)) === v ? `${v}px` : v
   return {
-    width: parts[0],
-    height: parts[1] || parts[0],
+    width: toSize(parts[0]),
+    height: parts[1] ? toSize(parts[1]) : toSize(parts[0]),
   }
 })
 </script>

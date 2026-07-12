@@ -84,8 +84,9 @@
 
 <script setup lang="ts">
 import { withBase, useData } from 'vitepress'
-import type { GroupData } from '../composables/useGroup'
+import type { GroupData } from '../utils/group'
 import siteConfig from '../config'
+import { getCategoryDisplay } from '../utils/functions'
 
 const { theme, site } = useData()
 
@@ -107,8 +108,6 @@ const emit = defineEmits<{
 const siteTitle = site.value.title || 'Blog'
 const siteLogo = (theme.value as any)?.logo || '/avatar.png'
 const socialLinkItems = siteConfig.socialLinks
-
-const getCategoryDisplay = (cat: string) => siteConfig.categoryPathMap[cat] || cat.replaceAll('-', ' ')
 
 const toggleCategory = (cat: string) => {
   emit('update:selectedCategory', props.selectedCategory === cat ? '' : cat)

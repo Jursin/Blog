@@ -2,6 +2,7 @@
 import { useData, useRouter } from 'vitepress'
 import { computed, ref, onMounted } from 'vue'
 import { countWord } from '../utils/functions'
+import { getCategoryDisplay } from '../utils/functions'
 import site from '../config'
 
 const { page } = useData()
@@ -20,7 +21,7 @@ const category = computed(() => {
 
 const categoryDisplay = computed(() => {
   if (!category.value) return ''
-  return site.categoryPathMap[category.value] || category.value.replaceAll('-', ' ')
+  return getCategoryDisplay(category.value)
 })
 
 const tags = computed(() => {

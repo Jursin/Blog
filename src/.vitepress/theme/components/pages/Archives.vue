@@ -17,7 +17,7 @@
       <template v-if="tabs.archive.length">
         <template v-for="year in tabs.archive" :key="year">
           <h2 class="archives__year">{{ year }}</h2>
-          <PostListLite :posts="groupedPosts.archive[year]" date="full" />
+          <PostListLite :posts="groupedPosts.archive[year]" date="full" :showPinned="false" />
         </template>
       </template>
       <div v-else class="archives__empty">暂无文章</div>
@@ -31,7 +31,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vitepress'
 import { data as posts } from '../../posts.data'
-import { useGroup } from '../../composables/useGroup'
+import { useGroup } from '../../utils/group'
 import site from '../../config'
 import { countDaysFrom } from '../../utils/functions'
 import HomeSidebar from '../HomeSidebar.vue'

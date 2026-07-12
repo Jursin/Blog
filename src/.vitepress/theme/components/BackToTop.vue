@@ -41,6 +41,7 @@ function updateViewport() {
 }
 
 function onScroll() {
+  updateDimensions()
   scrollY.value = window.scrollY
   scrolling.value = true
   if (scrollTimer) clearTimeout(scrollTimer)

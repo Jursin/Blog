@@ -52,13 +52,12 @@ export default {
     app.use(NolebaseGitChangelogPlugin)
     if (inBrowser) {
       router.onBeforeRouteChange = () => {
-        destroyFancybox(); // 销毁图片查看器
+        destroyFancybox().catch(() => {});
       };
       router.onAfterRouteChange = () => {
         mark?.reset();
-        mark?.bind();
         outlineScroll?.restart();
-        bindFancybox(); // 绑定图片查看器
+        bindFancybox().catch(() => {});
       };
     }
   },
@@ -67,10 +66,12 @@ export default {
       mark = useMark();
       mark?.bind();
       outlineScroll = useOutlineScroll();
-      bindFancybox();
+      bindFancybox().catch(() => {});
     });
     onUnmounted(() => {
-      destroyFancybox();
+      destroyFancybox().catch(() => {});
+      mark?.destroy();
+      outlineScroll?.destroy();
     });
   }
 } satisfies Theme

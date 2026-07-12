@@ -87,68 +87,58 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, onMounted } from 'vue'
 import Pagination from '../Pagination.vue'
 
 const API_BASE = import.meta.env.VITE_BILIBILI_API
 const USER_ID = import.meta.env.VITE_BILIBILI_USER_ID
 const PAGE_SIZE = 12
 
-export default {
-  name: 'Anime',
-  components: { Pagination },
-  data() {
-    return {
-      animeList: [],
-      total: 0,
-      page: 1,
-      pageSize: PAGE_SIZE,
-      loading: true,
-      error: false
-    }
-  },
-  computed: {
-    totalPages() {
-      return Math.ceil(this.total / this.pageSize)
-    }
-  },
-  async mounted() {
-    await this.fetchAnime(1)
-  },
-  methods: {
-    async fetchAnime(page) {
-      this.loading = true
-      this.error = false
-      try {
-        const url = `${API_BASE}/x/space/bangumi/follow/list?vmid=${USER_ID}&type=1&pn=${page}&ps=${this.pageSize}`
-        const res = await fetch(url)
-        if (!res.ok) throw new Error(`请求失败: ${res.status}`)
-        const json = await res.json()
-        if (json.code !== 0) throw new Error(json.message)
-        this.animeList = json.data.list || []
-        this.total = json.data.total || 0
-        this.page = page
-      } catch {
-        this.error = true
-      } finally {
-        this.loading = false
-      }
-    },
-    changePage(page) {
-      if (page < 1 || page > this.totalPages) return
-      this.fetchAnime(page)
-    },
-    fixHttps(url) {
-      return url ? url.replace(/^http:\/\//, 'https://') : ''
-    },
-    formatCount(count) {
-      if (count >= 10000) {
-        return (count / 10000).toFixed(1) + '万'
-      }
-      return count.toLocaleString()
-    }
+const animeList = ref([])
+const total = ref(0)
+const page = ref(1)
+const loading = ref(true)
+const error = ref(false)
+
+const totalPages = computed(() => Math.ceil(total.value / PAGE_SIZE))
+
+async function fetchAnime(p) {
+  loading.value = true
+  error.value = false
+  try {
+    const url = `${API_BASE}/x/space/bangumi/follow/list?vmid=${USER_ID}&type=1&pn=${p}&ps=${PAGE_SIZE}`
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`请求失败: ${res.status}`)
+    const json = await res.json()
+    if (json.code !== 0) throw new Error(json.message)
+    animeList.value = json.data.list || []
+    total.value = json.data.total || 0
+    page.value = p
+  } catch {
+    error.value = true
+  } finally {
+    loading.value = false
   }
 }
+
+function changePage(p) {
+  if (p < 1 || p > totalPages.value) return
+  fetchAnime(p)
+}
+
+function fixHttps(url) {
+  return url ? url.replace(/^http:\/\//, 'https://') : ''
+}
+
+function formatCount(count) {
+  if (count >= 10000) {
+    return (count / 10000).toFixed(1) + '万'
+  }
+  return count.toLocaleString()
+}
+
+onMounted(() => fetchAnime(1))
 </script>
 
 <style scoped>

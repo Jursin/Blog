@@ -1,90 +1,3 @@
-<script>
-const TOKEN = import.meta.env.VITE_GITHUB_TOKEN || ''
-
-export default {
-  props: {
-    repo: { type: String, required: true }
-  },
-  data() {
-    return {
-      repoData: null,
-      lastCommitAt: null,
-      loading: true,
-      error: false,
-      languageColors: {}
-    }
-  },
-  async mounted() {
-    try {
-      this.loadLanguageColors()
-      const [repoData, commits] = await Promise.all([
-        this.githubFetch(`https://api.github.com/repos/${this.repo}`),
-        this.githubFetch(`https://api.github.com/repos/${this.repo}/commits?per_page=1`)
-      ])
-      this.repoData = repoData
-      this.lastCommitAt = commits[0]?.commit?.committer?.date || repoData.updated_at
-    } catch (err) {
-      this.error = true
-    } finally {
-      this.loading = false
-    }
-  },
-  methods: {
-    async githubFetch(url) {
-      const headers = { Accept: 'application/vnd.github.v3+json' }
-      if (TOKEN) headers.Authorization = `Bearer ${TOKEN}`
-      const res = await fetch(url, { headers })
-      if (!res.ok) throw new Error(`请求失败: ${url} (${res.status})`)
-      return res.json()
-    },
-    async loadLanguageColors() {
-      const SOURCES = ['https://gh.dpik.top/', 'https://github.dpik.top/', '']
-      const COLOR_URL = 'https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
-      for (const mirror of SOURCES) {
-        try {
-          const res = await fetch(mirror + COLOR_URL)
-          if (!res.ok) throw Error()
-          const data = await res.json()
-          const map = {}
-          for (const [lang, info] of Object.entries(data)) {
-            if (info?.color) map[lang] = info.color
-          }
-          this.languageColors = map
-          return
-        } catch (_) { /* 尝试下一个 */ }
-      }
-      console.warn('加载语言颜色失败')
-    },
-    getRelativeTime(dateString) {
-      const date = new Date(dateString)
-      const now = new Date()
-      const diffMs = now - date
-      const diffSecs = Math.floor(diffMs / 1000)
-      const diffMins = Math.floor(diffSecs / 60)
-      const diffHours = Math.floor(diffMins / 60)
-      const diffDays = Math.floor(diffHours / 24)
-      const diffMonths = Math.floor(diffDays / 30)
-      const diffYears = Math.floor(diffMonths / 12)
-
-      if (diffSecs < 60) return '1分钟前'
-      if (diffMins < 60) return `${diffMins}分钟前`
-      if (diffHours < 24) return `${diffHours}小时前`
-      if (diffDays < 30) return `${diffDays}天前`
-      if (diffMonths < 12) return `${diffMonths}个月前`
-      
-      const remainingMonths = diffMonths % 12
-      if (remainingMonths === 0) {
-        return `${diffYears}年前`
-      }
-      return `${diffYears}年${remainingMonths}个月前`
-    },
-    getLanguageColor(language) {
-      return this.languageColors[language] || '#ccc'
-    },
-  }
-}
-</script>
-
 <template>
   <div class="github-card" :class="{ loading, error }">
     <div v-if="loading" class="loading-spinner">
@@ -120,20 +33,108 @@ export default {
             <Icon name="lucide:scale" />
             {{ repoData.license.spdx_id }}
           </span>
-          <span class="meta-item">
-            <Icon name="octicon:clock-16" />
-            创建于 {{ getRelativeTime(repoData.created_at) }}
-          </span>
-          <span class="meta-item">
-            <Icon name="octicon:git-commit-16" />
-            更新于 {{ getRelativeTime(lastCommitAt) }}
-          </span>
+            <span class="meta-item">
+              <Icon name="octicon:clock-16" />
+              创建于 {{ getRelativeTime(repoData.created_at) }}
+            </span>
+            <span class="meta-item">
+              <Icon name="octicon:git-commit-16" />
+              更新于 {{ getRelativeTime(lastCommitAt ?? '') }}
+            </span>
         </div>
         <span v-if="repoData.archived" class="archive-label">公共存档</span>
       </div>
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const TOKEN = import.meta.env.VITE_GITHUB_TOKEN || ''
+
+const props = defineProps({
+  repo: String
+})
+
+const repoData = ref(null)
+const lastCommitAt = ref(null)
+const loading = ref(true)
+const error = ref(false)
+const languageColors = ref({})
+
+async function githubFetch(url) {
+  const headers = { Accept: 'application/vnd.github.v3+json' }
+  if (TOKEN) headers.Authorization = `Bearer ${TOKEN}`
+  const res = await fetch(url, { headers })
+  if (!res.ok) throw new Error(`请求失败: ${url} (${res.status})`)
+  return res.json()
+}
+
+async function loadLanguageColors() {
+  const SOURCES = ['https://gh.dpik.top/', 'https://github.dpik.top/', '']
+  const COLOR_URL = 'https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
+  for (const mirror of SOURCES) {
+    try {
+      const res = await fetch(mirror + COLOR_URL)
+      if (!res.ok) throw Error()
+      const data = await res.json()
+      const map = {}
+      for (const [lang, info] of Object.entries(data)) {
+        const entry = info
+        if (entry?.color) map[lang] = entry.color
+      }
+      languageColors.value = map
+      return
+    } catch (_) { /* try next */ }
+  }
+  console.warn('加载语言颜色失败')
+}
+
+function getRelativeTime(dateString) {
+  const date = new Date(dateString)
+  const now = new Date()
+  const diffMs = now.getTime() - date.getTime()
+  const diffSecs = Math.floor(diffMs / 1000)
+  const diffMins = Math.floor(diffSecs / 60)
+  const diffHours = Math.floor(diffMins / 60)
+  const diffDays = Math.floor(diffHours / 24)
+  const diffMonths = Math.floor(diffDays / 30)
+  const diffYears = Math.floor(diffMonths / 12)
+
+  if (diffSecs < 60) return '1分钟前'
+  if (diffMins < 60) return `${diffMins}分钟前`
+  if (diffHours < 24) return `${diffHours}小时前`
+  if (diffDays < 30) return `${diffDays}天前`
+  if (diffMonths < 12) return `${diffMonths}个月前`
+
+  const remainingMonths = diffMonths % 12
+  if (remainingMonths === 0) {
+    return `${diffYears}年前`
+  }
+  return `${diffYears}年${remainingMonths}个月前`
+}
+
+function getLanguageColor(language) {
+  return languageColors.value[language] || '#ccc'
+}
+
+onMounted(async () => {
+  try {
+    loadLanguageColors()
+    const [repoResult, commits] = await Promise.all([
+      githubFetch(`https://api.github.com/repos/${props.repo}`),
+      githubFetch(`https://api.github.com/repos/${props.repo}/commits?per_page=1`)
+    ])
+    repoData.value = repoResult
+    lastCommitAt.value = commits[0]?.commit?.committer?.date || repoResult.updated_at
+  } catch (err) {
+    error.value = true
+  } finally {
+    loading.value = false
+  }
+})
+</script>
 
 <style scoped>
 .github-card {
@@ -269,7 +270,6 @@ export default {
   transition: color var(--gc-transition), border-color var(--gc-transition);
 }
 
-/* 响应式调整 */
 @media (max-width: 768px) {
   .repo-info h3 {
     font-size: 18px;

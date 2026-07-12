@@ -40,6 +40,8 @@ export function useOutlineScroll() {
     requestAnimationFrame(start)
   }
 
+  const destroy = () => { observer.disconnect() }
+
   // 首次挂载
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start)
@@ -47,5 +49,5 @@ export function useOutlineScroll() {
     start()
   }
 
-  return { restart }
+  return { restart, destroy }
 }

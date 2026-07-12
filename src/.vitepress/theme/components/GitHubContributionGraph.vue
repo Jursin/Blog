@@ -1,5 +1,133 @@
+<script setup>
+import { ref, watch, onMounted } from 'vue'
+
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN
+const GITHUB_USERNAME = 'Jursin'
+const MONTH_NAMES = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+const LEVEL_MAP = { NONE: 0, FIRST_QUARTILE: 1, SECOND_QUARTILE: 2, THIRD_QUARTILE: 3, FOURTH_QUARTILE: 4 }
+const API_URL = 'https://api.github.com/graphql'
+
+const root = ref(null)
+const selectedYear = ref(new Date().getFullYear())
+const currentYear = ref(new Date().getFullYear())
+const minYear = ref(new Date().getFullYear())
+const weeks = ref([])
+const monthLabels = ref([])
+const totalContributions = ref(0)
+const loading = ref(true)
+const error = ref(false)
+const tooltip = ref({ visible: false, x: 0, y: 0, text: '', date: '' })
+
+watch(selectedYear, () => fetchContributions())
+
+async function githubGraphQL(query, variables) {
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `bearer ${GITHUB_TOKEN}` },
+    body: JSON.stringify({ query, variables })
+  })
+  if (!res.ok) throw new Error(`请求失败: ${res.status}`)
+  const { data, errors } = await res.json()
+  if (errors) throw new Error(errors[0].message)
+  return data
+}
+
+async function fetchUserJoinYear() {
+  try {
+    const data = await githubGraphQL('query($l:String!){user(login:$l){createdAt}}', { l: GITHUB_USERNAME })
+    minYear.value = new Date(data.user.createdAt).getFullYear()
+  } catch {}
+}
+
+async function fetchContributions() {
+  loading.value = true
+  error.value = false
+  try {
+    const y = selectedYear.value
+    const data = await githubGraphQL(`
+      query($l:String!,$f:DateTime!,$t:DateTime!){
+        user(login:$l){
+          contributionsCollection(from:$f,to:$t){
+            contributionCalendar{
+              totalContributions
+              weeks{contributionDays{contributionCount date contributionLevel weekday}}
+            }
+          }
+        }
+      }`, { l: GITHUB_USERNAME, f: `${y}-01-01T00:00:00Z`, t: `${y}-12-31T23:59:59Z` })
+    const calendar = data.user.contributionsCollection.contributionCalendar
+    totalContributions.value = calendar.totalContributions
+    processWeeks(calendar.weeks)
+  } catch {
+    error.value = true
+  } finally {
+    loading.value = false
+  }
+}
+
+function processWeeks(rawWeeks) {
+  const days = []
+  for (let wi = 0; wi < rawWeeks.length; wi++) {
+    for (const d of rawWeeks[wi].contributionDays) {
+      const col = d.weekday === 0 ? wi - 1 : wi
+      if (col >= 0) {
+        days.push({
+          col,
+          row: d.weekday === 0 ? 6 : d.weekday - 1,
+          date: d.date,
+          count: d.contributionCount,
+          level: LEVEL_MAP[d.contributionLevel] || 0
+        })
+      }
+    }
+  }
+
+  const w = Array.from({ length: Math.max(...days.map((d) => d.col)) + 1 }, () => new Array(7).fill(null))
+  days.forEach((d) => { w[d.col][d.row] = d })
+
+  const monthSet = new Set()
+  const ml = []
+  w.forEach((week, wi) => {
+    const day = week.find(Boolean)
+    if (!day) return
+    const key = day.date.slice(0, 7)
+    if (!monthSet.has(key)) {
+      monthSet.add(key)
+      ml.push({ name: MONTH_NAMES[+day.date.slice(5, 7) - 1], weekIndex: wi })
+    }
+  })
+  ml.forEach((m, i) => { m.weekIndex = i === 0 ? 0 : Math.max(0, m.weekIndex - 1) })
+
+  weeks.value = w
+  monthLabels.value = ml
+}
+
+function prevYear() { if (selectedYear.value > minYear.value) selectedYear.value-- }
+function nextYear() { if (selectedYear.value < currentYear.value) selectedYear.value++ }
+
+function showTooltip(event, day) {
+  if (!day) return
+  const rect = event.target.getBoundingClientRect()
+  const container = root.value.getBoundingClientRect()
+  const m = +day.date.slice(5, 7)
+  const dd = +day.date.slice(8, 10)
+  tooltip.value = {
+    visible: true,
+    x: rect.left - container.left + rect.width / 2,
+    y: rect.top - container.top - 36,
+    text: day.count ? `${m}月${dd}日，贡献 ${day.count} 次` : `${m}月${dd}日，没有贡献`,
+    date: ''
+  }
+}
+
+onMounted(async () => {
+  await fetchUserJoinYear()
+  await fetchContributions()
+})
+</script>
+
 <template>
-  <div class="contribution-graph">
+  <div ref="root" class="contribution-graph">
     <div class="graph-header">
       <h3 class="graph-title">{{ selectedYear }} 年，贡献 {{ totalContributions }} 次</h3>
       <div class="year-nav">
@@ -26,9 +154,9 @@
         <div
           class="graph-grid"
           :style="{
-            gridTemplateColumns: `auto repeat(${weeks.length}, ${cellSize}px)`,
-            gridTemplateRows: `auto repeat(7, ${cellSize}px)`,
-            gap: cellGap + 'px'
+            gridTemplateColumns: `auto repeat(${weeks.length}, 18px)`,
+            gridTemplateRows: `auto repeat(7, 18px)`,
+            gap: '5px'
           }"
         >
           <template v-for="m in monthLabels" :key="'m' + m.weekIndex">
@@ -72,133 +200,6 @@
     </div>
   </div>
 </template>
-
-<script>
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN
-const GITHUB_USERNAME = 'Jursin'
-const MONTH_NAMES = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
-const LEVEL_MAP = { NONE: 0, FIRST_QUARTILE: 1, SECOND_QUARTILE: 2, THIRD_QUARTILE: 3, FOURTH_QUARTILE: 4 }
-const API_URL = 'https://api.github.com/graphql'
-
-export default {
-  name: 'GitHubContributionGraph',
-  data: () => ({
-    selectedYear: new Date().getFullYear(),
-    currentYear: new Date().getFullYear(),
-    minYear: new Date().getFullYear(),
-    weeks: [],
-    monthLabels: [],
-    totalContributions: 0,
-    loading: true,
-    error: false,
-    cellSize: 18,
-    cellGap: 5,
-    tooltip: { visible: false, x: 0, y: 0, text: '', date: '' }
-  }),
-  watch: {
-    selectedYear() { this.fetchContributions() }
-  },
-  async mounted() {
-    await this.fetchUserJoinYear()
-    await this.fetchContributions()
-  },
-  methods: {
-    async githubGraphQL(query, variables) {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `bearer ${GITHUB_TOKEN}` },
-        body: JSON.stringify({ query, variables })
-      })
-      if (!res.ok) throw new Error(`请求失败: ${res.status}`)
-      const { data, errors } = await res.json()
-      if (errors) throw new Error(errors[0].message)
-      return data
-    },
-    async fetchUserJoinYear() {
-      try {
-        const data = await this.githubGraphQL('query($l:String!){user(login:$l){createdAt}}', { l: GITHUB_USERNAME })
-        this.minYear = new Date(data.user.createdAt).getFullYear()
-      } catch {}
-    },
-    async fetchContributions() {
-      this.loading = true
-      this.error = false
-      try {
-        const y = this.selectedYear
-        const data = await this.githubGraphQL(`
-          query($l:String!,$f:DateTime!,$t:DateTime!){
-            user(login:$l){
-              contributionsCollection(from:$f,to:$t){
-                contributionCalendar{
-                  totalContributions
-                  weeks{contributionDays{contributionCount date contributionLevel weekday}}
-                }
-              }
-            }
-          }`, { l: GITHUB_USERNAME, f: `${y}-01-01T00:00:00Z`, t: `${y}-12-31T23:59:59Z` })
-        const calendar = data.user.contributionsCollection.contributionCalendar
-        this.totalContributions = calendar.totalContributions
-        this.processWeeks(calendar.weeks)
-      } catch {
-        this.error = true
-      } finally {
-        this.loading = false
-      }
-    },
-    processWeeks(rawWeeks) {
-      const days = []
-      for (let wi = 0; wi < rawWeeks.length; wi++) {
-        for (const d of rawWeeks[wi].contributionDays) {
-          const col = d.weekday === 0 ? wi - 1 : wi
-          if (col >= 0) {
-            days.push({
-              col,
-              row: d.weekday === 0 ? 6 : d.weekday - 1,
-              date: d.date,
-              count: d.contributionCount,
-              level: LEVEL_MAP[d.contributionLevel] || 0
-            })
-          }
-        }
-      }
-
-      const weeks = Array.from({ length: Math.max(...days.map(d => d.col)) + 1 }, () => new Array(7).fill(null))
-      days.forEach(d => { weeks[d.col][d.row] = d })
-
-      const monthSet = new Set()
-      const monthLabels = []
-      weeks.forEach((week, wi) => {
-        const day = week.find(Boolean)
-        if (!day) return
-        const key = day.date.slice(0, 7)
-        if (!monthSet.has(key)) {
-          monthSet.add(key)
-          monthLabels.push({ name: MONTH_NAMES[+day.date.slice(5, 7) - 1], weekIndex: wi })
-        }
-      })
-      monthLabels.forEach((m, i) => { m.weekIndex = i === 0 ? 0 : Math.max(0, m.weekIndex - 1) })
-
-      this.weeks = weeks
-      this.monthLabels = monthLabels
-    },
-    prevYear() { if (this.selectedYear > this.minYear) this.selectedYear-- },
-    nextYear() { if (this.selectedYear < this.currentYear) this.selectedYear++ },
-    showTooltip(event, day) {
-      if (!day) return
-      const rect = event.target.getBoundingClientRect()
-      const container = this.$el.getBoundingClientRect()
-      const m = +day.date.slice(5, 7)
-      const dd = +day.date.slice(8, 10)
-      this.tooltip = {
-        visible: true,
-        x: rect.left - container.left + rect.width / 2,
-        y: rect.top - container.top - 36,
-        text: day.count ? `${m}月${dd}日，贡献 ${day.count} 次` : `${m}月${dd}日，没有贡献`
-      }
-    }
-  }
-}
-</script>
 
 <style scoped>
 .contribution-graph {
@@ -333,14 +334,12 @@ export default {
   outline: 2px solid var(--vp-c-text-3);
 }
 
-/* 亮色 */
 .level-0 { background-color: #ebedf0; }
 .level-1 { background-color: #9be9a8; }
 .level-2 { background-color: #40c463; }
 .level-3 { background-color: #30a14e; }
 .level-4 { background-color: #216e39; }
 
-/* 暗色 */
 :root.dark .level-0 { background-color: #161b22; }
 :root.dark .level-1 { background-color: #0e4429; }
 :root.dark .level-2 { background-color: #006d32; }

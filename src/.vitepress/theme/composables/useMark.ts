@@ -18,5 +18,7 @@ export function useMark() {
 
   const reset = () => { observer.disconnect(); bind() }
 
-  return { bind, reset }
+  const destroy = () => { observer.disconnect() }
+
+  return { bind, reset, destroy }
 }

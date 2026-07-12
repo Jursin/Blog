@@ -9,7 +9,6 @@ export async function buildFeed(config: SiteConfig) {
   const siteUrl = config.sitemap?.hostname
 
   const raw = await createContentLoader('blog/**/*.md', {
-    render: true,
     includeSrc: true,
   }).load()
 
@@ -47,7 +46,7 @@ export async function buildFeed(config: SiteConfig) {
         id: `${siteUrl}${p.url}`,
         link: `${siteUrl}${p.url}`,
         description: desc,
-        content: p.html,
+        content: desc,
         date: new Date(p.frontmatter.createTime),
         category: categories,
       }

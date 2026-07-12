@@ -59,36 +59,22 @@ defineEmits<{
   change: [page: number]
 }>()
 
-const maxVisible = computed(() => props.maxVisible ?? 7)
+const maxVisible = props.maxVisible ?? 7
 
-const pages = computed(() => findNeighbors(props.currentPage, props.totalPages, maxVisible.value))
+const pages = computed(() => findNeighbors(props.currentPage, props.totalPages, maxVisible))
 
 function findNeighbors(target: number, total: number, max: number): number[] {
-  const result: number[] = []
-  const half = Math.floor(max / 2)
-
   if (total <= max) {
-    for (let i = 1; i <= total; i++) result.push(i)
-    return result
+    return Array.from({ length: total }, (_, i) => i + 1)
   }
-
-  for (let i = target - half; i <= target + half; i++) {
-    if (i >= 1 && i <= total) result.push(i)
+  const half = Math.floor(max / 2)
+  let start = Math.max(1, target - half)
+  let end = start + max - 1
+  if (end > total) {
+    end = total
+    start = Math.max(1, end - max + 1)
   }
-
-  while (result.length < max) {
-    const first = result[0]
-    const last = result[result.length - 1]
-    if (first > 1) {
-      result.unshift(first - 1)
-    } else if (last < total) {
-      result.push(last + 1)
-    } else {
-      break
-    }
-  }
-
-  return result
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i)
 }
 </script>
 

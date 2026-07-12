@@ -2,9 +2,12 @@
   <ul class="post-list-lite">
     <li v-for="post in posts" :key="post.url">
       <a :href="withBase(post.url)" class="post-list-lite__item">
-        <span class="post-list-lite__title">{{ post.title }}</span>
+        <span class="post-list-lite__title">
+          <span v-if="post.order && showPinned" class="post-list-lite__pinned">置顶</span>
+          {{ post.title }}
+        </span>
         <span class="post-list-lite__date">
-          {{ date === 'full' ? post.createTime.split(' ')[0] : post.createTime.split(' ')[0].slice(5) }}
+          {{ formatDate(post.createTime, date) }}
         </span>
       </a>
     </li>
@@ -15,10 +18,12 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress'
 import type { Post } from '../posts.data'
+import { formatDate } from '../utils/functions'
 
 defineProps<{
   posts: Post[]
   date?: 'full' | 'short'
+  showPinned?: boolean
 }>()
 </script>
 
@@ -48,6 +53,18 @@ defineProps<{
 
 .post-list-lite__item:hover .post-list-lite__title::before {
   background-color: var(--vp-c-brand);
+}
+
+.post-list-lite__pinned {
+  display: inline-block;
+  margin-right: 0.5em;
+  padding: 0.05em 0.45em;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--vp-c-brand-1);
+  border-radius: 0.3125rem;
+  vertical-align: middle;
 }
 
 .post-list-lite__title::before {

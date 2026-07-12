@@ -11,7 +11,7 @@ const c = {
   dim: (s) => `\x1b[2m${s}\x1b[0m`,
 }
 
-const SITE_URL = process.env.SITE_URL
+const SITE_URL = process.env.VITE_SITE_URL
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY
 const DIST_DIR = path.resolve('src/.vitepress/dist')
 const SITEMAP_FILE = path.join(DIST_DIR, 'sitemap.xml')

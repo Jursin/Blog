@@ -2,8 +2,7 @@
 import { sanitizeUrl } from '@braintree/sanitize-url'
 import { useData, useRoute } from 'vitepress'
 import { computed, ref, onMounted, watch, nextTick } from 'vue'
-import site from '../config'
-import { copyrightLicenseMap } from '../config/types'
+import site, { copyrightLicenseMap } from '../config'
 import type { CopyrightLicenseKey } from '../config/types'
 
 const { frontmatter } = useData()
@@ -87,7 +86,7 @@ watch(() => route.path, () => nextTick(updateUrl))
   </div>
 </template>
 
-<style lang="less" scoped>
+<style scoped>
 h2 {
   margin: 48px 0 16px;
   border-top: 1px solid var(--vp-c-divider);
@@ -174,10 +173,10 @@ h2:hover .header-anchor,
   text-decoration: none;
   font-weight: 500;
   transition: color 0.25s;
+}
 
-  &:hover {
-    color: var(--vp-c-brand-2);
-  }
+.copyright-info-link:hover {
+  color: var(--vp-c-brand-2);
 }
 
 @media (max-width: 768px) {
