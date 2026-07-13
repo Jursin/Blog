@@ -19,10 +19,6 @@
     {
       "icon": "devicon:androidstudio",
       "name": "Android Studio"
-    },
-    {
-      "icon": "logos:claude-icon",
-      "name": "Claude Code CLI"
     }
   ]
 }

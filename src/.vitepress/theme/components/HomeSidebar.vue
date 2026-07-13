@@ -173,9 +173,9 @@ const toggleTag = (tag: string) => {
 .home-sidebar__links {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
   flex-wrap: wrap;
-  max-width: 80%;
+  max-width: 95%;
   margin: 0 auto;
 }
 
