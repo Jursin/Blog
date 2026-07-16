@@ -31,12 +31,16 @@ export const useGroup = (posts: Post[]): GroupResult => {
     if (year != null) addToData(groupPosts.archive, String(year), post)
   })
 
-  tabs.category = Object.keys(groupPosts.category).sort((a, b) =>
-    a.localeCompare(b, 'zh-CN')
-  )
-  tabs.tag = Object.keys(groupPosts.tag).sort((a, b) =>
-    a.localeCompare(b, 'zh-CN')
-  )
+  tabs.category = Object.keys(groupPosts.category).sort((a, b) => {
+    const countDiff = groupPosts.category[b].length - groupPosts.category[a].length
+    if (countDiff !== 0) return countDiff
+    return a.localeCompare(b, 'zh-CN')
+  })
+  tabs.tag = Object.keys(groupPosts.tag).sort((a, b) => {
+    const countDiff = groupPosts.tag[b].length - groupPosts.tag[a].length
+    if (countDiff !== 0) return countDiff
+    return a.localeCompare(b, 'zh-CN')
+  })
   tabs.archive = Object.keys(groupPosts.archive).sort(
     (a, b) => parseInt(b) - parseInt(a)
   )

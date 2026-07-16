@@ -54,6 +54,9 @@ export default defineConfig({
         GitChangelog({
           repoURL: () => `https://github.com/${siteConfig.blogRepo}`,
           maxGitLogCount: 10,
+          mapAuthors: [
+            { name: 'Jursin', username: 'Jursin' },
+          ],
         }),
         GitChangelogMarkdownSection(),
       ],

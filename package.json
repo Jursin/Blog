@@ -14,7 +14,7 @@
     "@fancyapps/ui": "^6.1.14",
     "@iconify/vue": "^5.0.1",
     "@nolebase/vitepress-plugin-git-changelog": "^2.18.2",
-    "@shikijs/transformers": "^4.3.1",
+    "@shikijs/transformers": "^3.23.0",
     "@types/node": "^26.1.1",
     "@waline/client": "^3.15.2",
     "chokidar": "^5.0.0",
