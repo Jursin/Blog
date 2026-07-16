@@ -40,8 +40,9 @@ function getGitTimestamps(filePaths: string[]): Map<string, string> {
       if (!trimmed) continue
       if (/^\d+$/.test(trimmed)) {
         currentTimestamp = trimmed
-      } else if (currentTimestamp && !result.has(trimmed)) {
-        result.set(path.resolve(process.cwd(), trimmed), currentTimestamp)
+      } else if (currentTimestamp) {
+        const absPath = path.resolve(process.cwd(), trimmed)
+        if (!result.has(absPath)) result.set(absPath, currentTimestamp)
       }
     }
   } catch {}
