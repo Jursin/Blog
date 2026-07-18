@@ -1,6 +1,6 @@
 <template>
   <div class="home-page" v-if="posts.length">
-    <div class="home-page__sidebar">
+    <div class="page-aside">
       <HomeSidebar
         :totalPosts="posts.length"
         :runningDays="runningDays"
@@ -13,13 +13,13 @@
         @update:selectedTag="onTagChange"
       />
     </div>
-    <div class="home-page__content">
-      <div v-if="selectedCategory || selectedTag" class="home-page__filter-hint">
-        <span class="home-page__filter-label">
+    <div class="page-body">
+      <div v-if="selectedCategory || selectedTag" class="filter-bar">
+        <span class="filter-label">
           {{ selectedCategory ? '分类' : '标签' }}：<strong>{{ filterDisplayName }}</strong>
         </span>
-        <span class="home-page__filter-count">{{ filteredPosts.length }} 篇</span>
-        <button class="home-page__filter-clear" @click="clearFilter">清除筛选</button>
+        <span class="filter-count">{{ filteredPosts.length }} 篇</span>
+        <button class="filter-clear" @click="clearFilter">清除筛选</button>
       </div>
       <PostList
         :posts="pagePosts"
@@ -35,7 +35,7 @@
       />
     </div>
   </div>
-  <div v-else class="home-page home-page--empty">
+  <div v-else class="home-page page-empty">
     <p>暂无文章</p>
   </div>
 </template>
@@ -140,26 +140,26 @@ onMounted(() => {
   padding: 2rem 1.5rem;
 }
 
-.home-page--empty {
+.page-empty {
   justify-content: center;
   padding: 4rem 1.5rem;
   color: var(--vp-c-text-3);
   font-size: 1rem;
 }
 
-.home-page__sidebar {
+.page-aside {
   flex-shrink: 0;
   width: 280px;
   position: sticky;
   top: 5rem;
 }
 
-.home-page__content {
+.page-body {
   flex: 1;
   min-width: 0;
 }
 
-.home-page__filter-hint {
+.filter-bar {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -171,21 +171,21 @@ onMounted(() => {
   font-size: 0.875rem;
 }
 
-.home-page__filter-label {
+.filter-bar .filter-label {
   color: var(--vp-c-text-2);
 }
 
-.home-page__filter-label strong {
+.filter-bar .filter-label strong {
   color: var(--vp-c-brand);
   font-weight: 600;
 }
 
-.home-page__filter-count {
+.filter-bar .filter-count {
   color: var(--vp-c-text-3);
   font-size: 0.8125rem;
 }
 
-.home-page__filter-clear {
+.filter-bar .filter-clear {
   margin-left: auto;
   padding: 0.25rem 0.625rem;
   font-size: 0.8125rem;
@@ -197,7 +197,7 @@ onMounted(() => {
   transition: all 0.2s;
 }
 
-.home-page__filter-clear:hover {
+.filter-bar .filter-clear:hover {
   color: var(--vp-c-brand);
   border-color: var(--vp-c-brand);
 }
@@ -209,12 +209,12 @@ onMounted(() => {
     gap: 1.5rem;
   }
 
-  .home-page__sidebar {
+  .page-aside {
     width: 100%;
     position: static;
   }
 
-  .home-page__content {
+  .page-body {
     width: 100%;
   }
 }

@@ -146,7 +146,7 @@ onMounted(async () => {
       <p>加载中...</p>
     </div>
     <div v-else-if="error" class="error">
-      <Icon name="fa-exclamation-triangle" size="1.5rem" />
+      <Icon name="material-symbols:error-outline" />
       <span>加载失败</span>
     </div>
     <div v-else class="graph-body">

@@ -1,3 +1,9 @@
+<script setup>
+defineProps({
+  friend: Object
+})
+</script>
+
 <template>
   <div class="friend-card">
     <div class="avatar">
@@ -14,12 +20,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-defineProps({
-  friend: Object
-})
-</script>
 
 <style scoped>
 .friend-card {

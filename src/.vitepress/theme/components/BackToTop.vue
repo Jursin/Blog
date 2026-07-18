@@ -1,23 +1,3 @@
-<template>
-  <Transition name="fade">
-    <button
-      v-show="visible"
-      type="button"
-      class="back-to-top"
-      aria-label="回到顶部"
-      @click="scrollToTop"
-    >
-      <span class="percent" :class="{ show: scrolling }">{{ percent }}</span>
-      <span class="icon-wrap" :class="{ show: !scrolling }">
-        <Icon name="icon-park-outline:to-top" :size="iconSize" />
-      </span>
-      <svg class="ring" aria-hidden="true">
-        <circle cx="50%" cy="50%" :style="{ strokeDasharray }" />
-      </svg>
-    </button>
-  </Transition>
-</template>
-
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
@@ -96,6 +76,26 @@ onUnmounted(() => {
   if (scrollTimer) clearTimeout(scrollTimer)
 })
 </script>
+
+<template>
+  <Transition name="fade">
+    <button
+      v-show="visible"
+      type="button"
+      class="back-to-top"
+      aria-label="回到顶部"
+      @click="scrollToTop"
+    >
+      <span class="percent" :class="{ show: scrolling }">{{ percent }}</span>
+      <span class="icon-wrap" :class="{ show: !scrolling }">
+        <Icon name="icon-park-outline:to-top" :size="iconSize" />
+      </span>
+      <svg class="ring" aria-hidden="true">
+        <circle cx="50%" cy="50%" :style="{ strokeDasharray }" />
+      </svg>
+    </button>
+  </Transition>
+</template>
 
 <style scoped>
 .back-to-top {

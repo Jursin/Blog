@@ -1,4 +1,4 @@
-const EXCERPT_MAX = 200
+const EXCERPT_MAX = 100
 
 function stripMarkdown(str: string): string {
   return str

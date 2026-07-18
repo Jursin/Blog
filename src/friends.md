@@ -79,7 +79,7 @@ groups:
         avatar: /icon/Aiwb.png
         desc: 为广大电教倾情撰写，让班级大屏更好用！
       - name: SECTL | 思拓创联
-        link: https://sectl.top/
-        avatar: https://sectl.top/SECTL-LOGO.svg
+        link: https://sectl.cn/
+        avatar: https://sectl.cn/SECTL-LOGO.svg
         desc: 专注于教育场景的开源软件组织
 ---

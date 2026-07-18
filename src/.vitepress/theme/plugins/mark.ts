@@ -1,4 +1,3 @@
-// markdown-it 内联规则回调类型
 type InlineRule = (state: any, silent: boolean) => boolean
 
 export function markPlugin(md: any): void {

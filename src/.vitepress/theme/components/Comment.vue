@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang>
 import { defineAsyncComponent, computed, watch, onMounted, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
 import '@waline/client/style';

@@ -1,9 +1,8 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useData, useRouter } from 'vitepress'
 import { computed, ref, onMounted } from 'vue'
 import { countWord } from '../utils/functions'
 import { getCategoryDisplay } from '../utils/functions'
-import site from '../config'
 
 const { page } = useData()
 const router = useRouter()
@@ -84,23 +83,23 @@ onMounted(() => {
         class="meta-item meta-badge"
         @click="navigateToCategory"
       >
-        <Icon name="material-symbols:folder-outline" color="var(--vp-c-brand-1)" />
+        <Icon name="mdi:folder-outline" color="var(--vp-c-brand-1)" size="1.15em" />
         {{ categoryDisplay }}
       </span>
       <span
         v-for="tag in tags"
         :key="tag"
-        class="meta-item meta-badge meta-badge--tag"
+        class="meta-item meta-badge"
         @click="navigateToTag(tag)"
       >
-        <Icon name="material-symbols:label-outline" color="var(--vp-c-brand-1)" />
+        <Icon name="mdi:tag-outline" color="var(--vp-c-brand-1)" />
         {{ tag }}
       </span>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 .meta-info {
   display: flex;
   align-items: center;
@@ -117,7 +116,6 @@ onMounted(() => {
   gap: 0.2rem;
 }
 
-/* 分类/标签徽章 */
 .meta-badge {
   padding: 0.05rem 0.45rem;
   border: 1px solid var(--vp-c-divider);
@@ -133,6 +131,7 @@ onMounted(() => {
   border-color: var(--vp-c-brand-soft);
   background-color: var(--vp-c-brand-soft);
 }
+
 .meta-item-pageview {
   display: inline-flex;
   align-items: center;

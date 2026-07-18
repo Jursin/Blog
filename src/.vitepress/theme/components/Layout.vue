@@ -62,7 +62,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     <BackToTop />
 </template>
 
-<style>
+<style scoped>
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

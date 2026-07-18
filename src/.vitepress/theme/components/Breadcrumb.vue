@@ -1,18 +1,3 @@
-<template>
-  <div id="breadcrumb">
-    <a href="/">
-      <Icon name="material-symbols:home-outline-rounded" />
-    </a>
-    <template v-for="(item, index) in items" :key="`${item.name}-${index}`">
-      <Icon name="material-symbols:chevron-right-rounded" color="var(--vp-c-text-2)" />
-      <span
-        class="bc-items"
-        :id="item.first ? 'bc-project' : undefined"
-      >{{ item.name }}</span>
-    </template>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { ref, watchEffect } from 'vue'
@@ -44,7 +29,19 @@ watchEffect(() => {
 })
 </script>
 
-<style>
+<template>
+  <div id="breadcrumb">
+    <a href="/">
+      <Icon name="material-symbols:home-outline-rounded" />
+    </a>
+    <template v-for="(item, index) in items" :key="`${item.name}-${index}`">
+      <Icon name="material-symbols:chevron-right-rounded" color="var(--vp-c-text-2)" />
+      <span :id="item.first ? 'bc-project' : undefined" >{{ item.name }}</span>
+    </template>
+  </div>
+</template>
+
+<style scoped>
 #breadcrumb {
   margin-bottom: 15px;
   font-size: 15px;

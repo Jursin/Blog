@@ -1,20 +1,3 @@
-<template>
-  <ul class="post-list-lite">
-    <li v-for="post in posts" :key="post.url">
-      <a :href="withBase(post.url)" class="post-list-lite__item">
-        <span class="post-list-lite__title">
-          <span v-if="post.order && showPinned" class="post-list-lite__pinned">置顶</span>
-          {{ post.title }}
-        </span>
-        <span class="post-list-lite__date">
-          {{ formatDate(post.createTime, date) }}
-        </span>
-      </a>
-    </li>
-    <li v-if="!posts.length" class="post-list-lite__empty">暂无文章</li>
-  </ul>
-</template>
-
 <script setup lang="ts">
 import { withBase } from 'vitepress'
 import type { Post } from '../posts.data'
@@ -27,14 +10,31 @@ defineProps<{
 }>()
 </script>
 
+<template>
+  <ul class="lite-list">
+    <li v-for="post in posts" :key="post.url">
+      <a :href="withBase(post.url)" class="link-row">
+        <span class="link-title">
+          <span v-if="post.order && showPinned" class="link-pin">置顶</span>
+          {{ post.title }}
+        </span>
+        <span class="link-date">
+          {{ formatDate(post.createTime, date) }}
+        </span>
+      </a>
+    </li>
+    <li v-if="!posts.length" class="list-empty">暂无文章</li>
+  </ul>
+</template>
+
 <style scoped>
-.post-list-lite {
+.lite-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.post-list-lite__item {
+.link-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,16 +46,16 @@ defineProps<{
   transition: background-color 0.2s;
 }
 
-.post-list-lite__item:hover {
+.link-row:hover {
   background-color: var(--vp-c-bg-soft);
   color: var(--vp-c-brand);
 }
 
-.post-list-lite__item:hover .post-list-lite__title::before {
+.link-row:hover .link-title::before {
   background-color: var(--vp-c-brand);
 }
 
-.post-list-lite__pinned {
+.link-pin {
   display: inline-block;
   margin-right: 0.5em;
   padding: 0.05em 0.45em;
@@ -67,7 +67,7 @@ defineProps<{
   vertical-align: middle;
 }
 
-.post-list-lite__title::before {
+.link-title::before {
   display: inline-block;
   content: '';
   margin: 0 10px 2px 0;
@@ -78,14 +78,14 @@ defineProps<{
   transition: background-color 0.2s;
 }
 
-.post-list-lite__date {
+.link-date {
   flex-shrink: 0;
   font-size: 0.8125rem;
   color: var(--vp-c-text-2);
   font-variant-numeric: tabular-nums;
 }
 
-.post-list-lite__empty {
+.list-empty {
   padding: 1rem 0;
   text-align: center;
   color: var(--vp-c-text-2);
@@ -93,7 +93,7 @@ defineProps<{
 }
 
 @media (max-width: 768px) {
-  .post-list-lite__item {
+  .link-row {
     padding: 4px 0;
   }
 }

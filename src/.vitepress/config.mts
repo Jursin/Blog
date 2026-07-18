@@ -33,7 +33,7 @@ export default defineConfig({
     title: "Jursin 的博客",
     description: "一个使用 VitePress 构建的个人博客",
     sitemap: {
-      hostname: env.VITE_SITE_URL || '',
+      hostname: 'https://blog.jursin.top',
     },
     vite: {
       publicDir: '.vitepress/public',
@@ -63,13 +63,15 @@ export default defineConfig({
     },
     
     head: [
-      ['link', { rel: 'icon', href: '/favicon.ico' }],
-      ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: '/rss.xml' }],
-      ['script', {
-        defer: '',
-        src: env.VITE_UMAMI_URL || '',
-        'data-website-id': env.VITE_UMAMI_WEBSITE_ID || ''
-      }]
+      [ 'link', { rel: 'icon', href: '/favicon.ico' } ],
+      [ 'link', { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: '/rss.xml' } ],
+      [
+        'script', {
+          defer: '',
+          src: 'https://umami.jursin.top/script.js',
+          'data-website-id': 'd072a3ac-3b82-41de-89c9-5c8d4192b39b'
+        }
+      ]
     ],
     lastUpdated: true,
     ignoreDeadLinks: true,
@@ -111,9 +113,9 @@ export default defineConfig({
         md.use(supPlugin)
         md.use(subPlugin)
         md.use(autoTitlePlugin)
-        md.use(taskLists, { label: true })
+        md.use(taskLists, { label: true });
         // 注册 VitePress 未内置的容器
-        ;(['note', 'important', 'caution'] as const).forEach((type) => {
+        (['note', 'important', 'caution'] as const).forEach((type) => {
           const labels = { note: '注意', important: '重要', caution: '危险' }
           md.use(container, type, {
             render(tokens: any[], idx: number) {

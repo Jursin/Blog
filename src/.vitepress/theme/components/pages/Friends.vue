@@ -13,7 +13,7 @@
     </section>
 
     <!-- 分组列表 -->
-    <div v-for="(group, gIdx) in groups" :key="gIdx" class="friends-group">
+    <div v-for="(group, gIdx) in groups" :key="gIdx">
       <h3 class="group-title">{{ group.title }}</h3>
       <p v-if="group.desc" class="group-desc">{{ group.desc }}</p>
       <section v-if="group.list?.length" class="friends-list">
@@ -33,10 +33,10 @@
       </header>
       <ul>
         <li>名称：<code>Jursin 的博客</code></li>
-        <li>链接：<code>{{ SITE_URL }}/</code></li>
-        <li>头像：<code>{{ SITE_URL }}/avatar.png</code></li>
+        <li>链接：<code>https://blog.jursin.top/</code></li>
+        <li>头像：<code>https://blog.jursin.top/avatar.png</code></li>
         <li>描述：<code>若要梦想实现，先从梦中醒来</code></li>
-        <li>订阅：<code>{{ SITE_URL }}/rss.xml</code></li>
+        <li>订阅：<code>https://blog.jursin.top/rss.xml</code></li>
       </ul>
     </div>
 
@@ -53,8 +53,6 @@ import { computed } from 'vue'
 import Comment from '../Comment.vue'
 import FriendCard from '../FriendCard.vue'
 
-const SITE_URL = import.meta.env.VITE_SITE_URL || ''
-
 export default {
   name: 'Friends',
   components: { Comment, FriendCard },
@@ -66,7 +64,7 @@ export default {
     const groups = computed(() => frontmatter.value.groups || [])
     const list = computed(() => frontmatter.value.list || [])
 
-    return { title, description, groups, list, SITE_URL }
+    return { title, description, groups, list }
   }
 }
 </script>

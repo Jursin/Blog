@@ -1,69 +1,3 @@
-<template>
-  <div class="post-list">
-    <div
-      v-for="post in posts"
-      :key="post.url"
-      class="post-item"
-      :class="{ 'has-cover': post.cover }"
-    >
-      <div v-if="post.cover" class="post-item__cover-wrap">
-        <img
-          :src="withBase(post.cover)"
-          :alt="post.title"
-          class="post-item__cover"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="post-item__body">
-        <h2 class="post-item__title">
-          <span v-if="post.order" class="post-item__pinned">置顶</span>
-          <a :href="withBase(post.url)">{{ post.title }}</a>
-        </h2>
-
-        <p v-if="post.excerpt" class="post-item__excerpt">
-          {{ post.excerpt }}
-        </p>
-
-        <div class="post-item__footer">
-          <div class="post-item__meta">
-            <Icon name="material-symbols:calendar-today-outline" color="var(--vp-c-brand-1)" />
-            {{ formatDate(post.createTime) }}
-            <template v-if="post.updateTime">
-              <Icon name="material-symbols:history" color="var(--vp-c-brand-1)" />
-              {{ post.updateTime }}
-            </template>
-          </div>
-
-          <div class="post-item__badges">
-            <span
-              v-if="post.category"
-              class="post-item__badge"
-              @click.stop="$emit('selectCategory', post.category)"
-            >
-              <Icon name="material-symbols:folder-outline" color="var(--vp-c-brand-1)" />
-              {{ post.categoryDisplay }}
-            </span>
-            <span
-              v-for="tag in post.tags"
-              :key="tag"
-              class="post-item__badge post-item__badge--tag"
-              @click.stop="$emit('selectTag', tag)"
-            >
-              <Icon name="material-symbols:label-outline" color="var(--vp-c-brand-1)" />
-              {{ tag }}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div v-if="!posts.length" class="post-list__empty">
-      暂无文章
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { withBase } from 'vitepress'
 import type { Post } from '../posts.data'
@@ -80,6 +14,72 @@ defineEmits<{
 
 </script>
 
+<template>
+  <div class="post-list">
+    <div
+      v-for="post in posts"
+      :key="post.url"
+      class="post-item"
+      :class="{ 'has-cover': post.cover }"
+    >
+      <div v-if="post.cover" class="cover-wrap">
+        <img
+          :src="withBase(post.cover)"
+          :alt="post.title"
+          class="cover-img"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="post-body">
+        <h2 class="post-title">
+          <span v-if="post.order" class="post-pin">置顶</span>
+          <a :href="withBase(post.url)">{{ post.title }}</a>
+        </h2>
+
+        <p v-if="post.excerpt" class="excerpt">
+          {{ post.excerpt }}
+        </p>
+
+        <div class="post-foot">
+          <div class="post-meta">
+            <Icon name="material-symbols:calendar-today-outline" color="var(--vp-c-brand-1)" />
+            {{ formatDate(post.createTime) }}
+            <template v-if="post.updateTime">
+              <Icon name="material-symbols:history" color="var(--vp-c-brand-1)" />
+              {{ post.updateTime }}
+            </template>
+          </div>
+
+          <div class="badge-list">
+            <span
+              v-if="post.category"
+              class="badge-item"
+              @click.stop="$emit('selectCategory', post.category)"
+            >
+              <Icon name="mdi:folder-outline" color="var(--vp-c-brand-1)" size="1.25em" />
+              {{ post.categoryDisplay }}
+            </span>
+            <span
+              v-for="tag in post.tags"
+              :key="tag"
+              class="badge-item badge-alt"
+              @click.stop="$emit('selectTag', tag)"
+            >
+              <Icon name="mdi:tag-outline" color="var(--vp-c-brand-1)" size="1.1em" />
+              {{ tag }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="!posts.length" class="list-empty">
+      暂无文章
+    </div>
+  </div>
+</template>
+
 <style scoped>
 .post-list {
   display: flex;
@@ -87,7 +87,7 @@ defineEmits<{
   gap: 1rem;
 }
 
-.post-list__empty {
+.list-empty {
   padding: 3rem 0;
   text-align: center;
   color: var(--vp-c-text-2);
@@ -109,7 +109,6 @@ defineEmits<{
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
 }
 
-/* === 有封面时的两栏布局 === */
 .post-item.has-cover {
   display: flex;
   flex-direction: row-reverse;
@@ -117,7 +116,7 @@ defineEmits<{
   align-items: flex-start;
 }
 
-.post-item__cover-wrap {
+.cover-wrap {
   flex-shrink: 0;
   width: 200px;
   height: auto;
@@ -126,7 +125,7 @@ defineEmits<{
   overflow: hidden;
 }
 
-.post-item__cover {
+.cover-img {
   display: block;
   width: 100%;
   height: 100%;
@@ -135,17 +134,16 @@ defineEmits<{
   transition: transform 0.2s ease;
 }
 
-.post-item.has-cover:hover .post-item__cover {
+.post-item.has-cover:hover .cover-img {
   transform: scale(1.03);
 }
 
-.post-item__body {
+.post-body {
   flex: 1;
   min-width: 0;
 }
 
-/* === 标题 === */
-.post-item__title {
+.post-title {
   display: flex;
   align-items: center;
   font-size: 1.125rem;
@@ -154,13 +152,13 @@ defineEmits<{
   margin: 0 0 0.625rem;
 }
 
-.post-item__title a {
+.post-title a {
   color: var(--vp-c-text-1);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.post-item__pinned {
+.post-pin {
   display: inline-block;
   margin-right: 0.5em;
   padding: 0.1em 0.5em;
@@ -172,11 +170,11 @@ defineEmits<{
   vertical-align: middle;
 }
 
-.post-item__title a:hover {
+.post-title a:hover {
   color: var(--vp-c-brand);
 }
 
-.post-item__excerpt {
+.excerpt {
   color: var(--vp-c-text-2);
   font-size: 0.875rem;
   line-height: 1.6;
@@ -188,7 +186,7 @@ defineEmits<{
   overflow: hidden;
 }
 
-.post-item__footer {
+.post-foot {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -197,7 +195,7 @@ defineEmits<{
   padding-top: 0.75rem;
 }
 
-.post-item__meta {
+.post-meta {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -206,18 +204,18 @@ defineEmits<{
   flex-shrink: 0;
 }
 
-.post-item__meta :deep(.icon) {
+.post-meta :deep(.icon) {
   font-size: 1rem;
 }
 
-.post-item__badges {
+.badge-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   align-items: center;
 }
 
-.post-item__badge {
+.badge-item {
   display: inline-flex;
   align-items: center;
   gap: 0.2rem;
@@ -231,21 +229,20 @@ defineEmits<{
   transition: all 0.2s;
 }
 
-.post-item__badge:hover {
+.badge-item:hover {
   color: var(--vp-c-brand);
   border-color: var(--vp-c-brand-soft);
   background-color: var(--vp-c-brand-soft);
 }
 
-.post-item__badge :deep(.icon) {
+.badge-item :deep(.icon) {
   font-size: 0.8125rem;
 }
 
-.post-item__badge--tag {
+.badge-item.badge-alt {
   border-color: var(--vp-c-divider);
 }
 
-/* === 响应式 === */
 @media (max-width: 768px) {
   .post-list {
     gap: 0.75rem;
@@ -259,30 +256,30 @@ defineEmits<{
     flex-direction: column;
   }
 
-  .post-item__cover-wrap {
+  .cover-wrap {
     width: 100%;
     height: auto;
     aspect-ratio: unset;
   }
 
-  .post-item__cover {
+  .cover-img {
     width: 100%;
     height: auto;
     object-fit: initial;
   }
 
-  .post-item__title {
+  .post-title {
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
 
-  .post-item__excerpt {
+  .excerpt {
     font-size: 0.8125rem;
     -webkit-line-clamp: 2;
     line-clamp: 2;
   }
 
-  .post-item__footer {
+  .post-foot {
     gap: 0.5rem;
   }
 }

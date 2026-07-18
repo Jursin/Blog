@@ -1,53 +1,3 @@
-<template>
-  <div class="github-card" :class="{ loading, error }">
-    <div v-if="loading" class="loading-spinner">
-      <Icon name="line-md:loading-twotone-loop" />
-    </div>
-    <div v-else-if="error" class="error-message">
-      <Icon name="material-symbols:error-outline" /> 加载失败
-    </div>
-    <div v-else class="card-content">
-      <div class="header">
-        <img :src="repoData.owner.avatar_url" class="avatar" alt="avatar">
-        <div class="repo-info">
-          <h3>
-            <a :href="repoData.html_url" target="_blank">
-              {{ repoData.full_name }}
-            </a>
-          </h3>
-          <p class="description">{{ repoData.description }}</p>
-        </div>
-      </div>
-
-      <div class="meta-info">
-        <div class="meta-items">
-          <span v-if="repoData.language" class="language">
-            <span class="language-color" :style="{ backgroundColor: getLanguageColor(repoData.language) }"></span>
-            {{ repoData.language }}
-          </span>
-          <span class="meta-item">
-            <Icon name="octicon:star-fill-16" color="#E3B341" />
-            {{ repoData.stargazers_count }}
-          </span>
-          <span v-if="repoData.license" class="meta-item">
-            <Icon name="lucide:scale" />
-            {{ repoData.license.spdx_id }}
-          </span>
-            <span class="meta-item">
-              <Icon name="octicon:clock-16" />
-              创建于 {{ getRelativeTime(repoData.created_at) }}
-            </span>
-            <span class="meta-item">
-              <Icon name="octicon:git-commit-16" />
-              更新于 {{ getRelativeTime(lastCommitAt ?? '') }}
-            </span>
-        </div>
-        <span v-if="repoData.archived" class="archive-label">公共存档</span>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -136,6 +86,56 @@ onMounted(async () => {
 })
 </script>
 
+<template>
+  <div class="github-card" :class="{ loading, error }">
+    <div v-if="loading" class="loading-spinner">
+      <Icon name="line-md:loading-twotone-loop" />
+    </div>
+    <div v-else-if="error" class="error-message">
+      <Icon name="material-symbols:error-outline" /> 加载失败
+    </div>
+    <div v-else class="card-content">
+      <div class="header">
+        <img :src="repoData.owner.avatar_url" class="avatar" alt="avatar">
+        <div class="repo-info">
+          <h3>
+            <a :href="repoData.html_url" target="_blank">
+              {{ repoData.full_name }}
+            </a>
+          </h3>
+          <p class="description">{{ repoData.description }}</p>
+        </div>
+      </div>
+
+      <div class="meta-info">
+        <div class="meta-items">
+          <span v-if="repoData.language" class="language">
+            <span class="language-color" :style="{ backgroundColor: getLanguageColor(repoData.language) }"></span>
+            {{ repoData.language }}
+          </span>
+          <span class="meta-item">
+            <Icon name="octicon:star-fill-16" color="#E3B341" />
+            {{ repoData.stargazers_count }}
+          </span>
+          <span v-if="repoData.license" class="meta-item">
+            <Icon name="lucide:scale" />
+            {{ repoData.license.spdx_id }}
+          </span>
+            <span class="meta-item">
+              <Icon name="octicon:clock-16" />
+              创建于 {{ getRelativeTime(repoData.created_at) }}
+            </span>
+            <span class="meta-item">
+              <Icon name="octicon:git-commit-16" />
+              更新于 {{ getRelativeTime(lastCommitAt ?? '') }}
+            </span>
+        </div>
+        <span v-if="repoData.archived" class="archive-label">公共存档</span>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style scoped>
 .github-card {
   --gc-transition: 0.25s ease;
@@ -164,10 +164,6 @@ onMounted(async () => {
   justify-content: center;
   padding: 20px;
   border-radius: 12px;
-}
-
-.error-message {
-  color: var(--vp-c-danger-1);
 }
 
 .header {

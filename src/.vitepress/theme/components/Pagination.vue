@@ -1,3 +1,35 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const props = defineProps<{
+  currentPage: number
+  totalPages: number
+  maxVisible?: number
+}>()
+
+defineEmits<{
+  change: [page: number]
+}>()
+
+const maxVisible = props.maxVisible ?? 7
+
+const pages = computed(() => findNeighbors(props.currentPage, props.totalPages, maxVisible))
+
+function findNeighbors(target: number, total: number, max: number): number[] {
+  if (total <= max) {
+    return Array.from({ length: total }, (_, i) => i + 1)
+  }
+  const half = Math.floor(max / 2)
+  let start = Math.max(1, target - half)
+  let end = start + max - 1
+  if (end > total) {
+    end = total
+    start = Math.max(1, end - max + 1)
+  }
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i)
+}
+</script>
+
 <template>
   <nav v-if="totalPages > 1" class="pagination">
     <button
@@ -45,38 +77,6 @@
     </button>
   </nav>
 </template>
-
-<script setup lang="ts">
-import { computed } from 'vue'
-
-const props = defineProps<{
-  currentPage: number
-  totalPages: number
-  maxVisible?: number
-}>()
-
-defineEmits<{
-  change: [page: number]
-}>()
-
-const maxVisible = props.maxVisible ?? 7
-
-const pages = computed(() => findNeighbors(props.currentPage, props.totalPages, maxVisible))
-
-function findNeighbors(target: number, total: number, max: number): number[] {
-  if (total <= max) {
-    return Array.from({ length: total }, (_, i) => i + 1)
-  }
-  const half = Math.floor(max / 2)
-  let start = Math.max(1, target - half)
-  let end = start + max - 1
-  if (end > total) {
-    end = total
-    start = Math.max(1, end - max + 1)
-  }
-  return Array.from({ length: end - start + 1 }, (_, i) => start + i)
-}
-</script>
 
 <style scoped>
 .pagination {

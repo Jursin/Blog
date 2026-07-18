@@ -1,29 +1,3 @@
-<template>
-  <nav v-if="prev || next" class="prev-next" aria-labelledby="doc-footer-aria-label">
-    <span class="visually-hidden" id="doc-footer-aria-label">Pager</span>
-    <div class="pager">
-      <a
-        v-if="prev"
-        :href="withBase(prev.url)"
-        class="pager-link prev"
-      >
-        <span class="desc">{{ theme.docFooter?.prev || '上一页' }}</span>
-        <span class="title">{{ prev.title }}</span>
-      </a>
-    </div>
-    <div class="pager">
-      <a
-        v-if="next"
-        :href="withBase(next.url)"
-        class="pager-link next"
-      >
-        <span class="desc">{{ theme.docFooter?.next || '下一页' }}</span>
-        <span class="title">{{ next.title }}</span>
-      </a>
-    </div>
-  </nav>
-</template>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useData, withBase } from 'vitepress'
@@ -58,6 +32,32 @@ const next = computed(() => {
   return posts[currentIndex.value + 1]
 })
 </script>
+
+<template>
+  <nav v-if="prev || next" class="prev-next" aria-labelledby="doc-footer-aria-label">
+    <span class="visually-hidden" id="doc-footer-aria-label">Pager</span>
+    <div class="pager">
+      <a
+        v-if="prev"
+        :href="withBase(prev.url)"
+        class="pager-link prev"
+      >
+        <span class="desc">{{ theme.docFooter?.prev || '上一页' }}</span>
+        <span class="title">{{ prev.title }}</span>
+      </a>
+    </div>
+    <div class="pager">
+      <a
+        v-if="next"
+        :href="withBase(next.url)"
+        class="pager-link next"
+      >
+        <span class="desc">{{ theme.docFooter?.next || '下一页' }}</span>
+        <span class="title">{{ next.title }}</span>
+      </a>
+    </div>
+  </nav>
+</template>
 
 <style scoped>
 .prev-next {
