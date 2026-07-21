@@ -41,9 +41,6 @@ importers:
       iconify-icon:
         specifier: ^3.0.2
         version: 3.0.2
-      less:
-        specifier: ^4.6.7
-        version: 4.6.7
       markdown-it-container:
         specifier: ^4.0.0
         version: 4.0.0

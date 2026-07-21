@@ -91,7 +91,6 @@ pnpm preview
 ### 构建与部署
 
 - **IndexNow 推送** — `scripts/push-indexnow.js`，构建后自动向搜索引擎推送链接
-- **Umami 统计** — 通过环境变量注入 Umami 分析脚本
 - **Git 提交历史** — 集成 `@nolebase/vitepress-plugin-git-changelog`，文章底部显示 Git 变更记录
 - **环境变量注入** — 自动将所有 `VITE_` 开头的环境变量暴露给 Vue 组件
 

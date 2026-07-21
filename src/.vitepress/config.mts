@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv } from 'vitepress'
+import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import { markPlugin } from './theme/plugins/mark'
 import { plotPlugin } from './theme/plugins/plot'
@@ -15,17 +15,9 @@ import zh from './theme/translations/zh'
 import siteConfig from './theme/config'
 const currentYear = new Date().getFullYear()
 
-const env = loadEnv('', process.cwd(), 'VITE_')
-
 // 开发模式下自动填充新 md 文件的 title 和 createTime
 if (process.argv.some(a => a === 'dev')) {
   startAutoFrontmatter()
-}
-
-// 将所有 VITE_ 开头的环境变量注入到组件
-const viteDefine: Record<string, string> = {}
-for (const key of Object.keys(env)) {
-  viteDefine[`import.meta.env.${key}`] = JSON.stringify(env[key])
 }
 
 export default defineConfig({
@@ -37,7 +29,7 @@ export default defineConfig({
     },
     vite: {
       publicDir: '.vitepress/public',
-      define: viteDefine,
+      envDir: process.cwd(),
       build: {
         target: 'es2020',
         cssCodeSplit: false,

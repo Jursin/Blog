@@ -18,7 +18,7 @@ const zhTranslations: Partial<DefaultTheme.Config> = {
 
   // 编辑链接
   editLink: {
-    pattern: `https://github.com/${siteConfig.blogRepo}/edit/main/docs/:path`,
+    pattern: `https://github.com/${siteConfig.blogRepo}/edit/vitepress/src/:path`,
     text: '在 GitHub 上编辑此页面',
   },
 
