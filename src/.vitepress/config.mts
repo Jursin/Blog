@@ -15,8 +15,10 @@ import zh from './theme/translations/zh'
 import siteConfig from './theme/config'
 const currentYear = new Date().getFullYear()
 
+const isDev = process.argv.some(a => a === 'dev')
+
 // 开发模式下自动填充新 md 文件的 title 和 createTime
-if (process.argv.some(a => a === 'dev')) {
+if (isDev) {
   startAutoFrontmatter()
 }
 
@@ -32,7 +34,7 @@ export default defineConfig({
       envDir: process.cwd(),
       build: {
         target: 'es2020',
-        cssCodeSplit: false,
+        cssCodeSplit: !isDev,
         chunkSizeWarningLimit: 2000,
         rollupOptions: {
           onwarn(warning, warn) {
@@ -71,6 +73,7 @@ export default defineConfig({
     buildEnd: buildFeed,
 
     async transformHead(ctx) {
+      if (isDev) return []
       return buildHeadMeta(ctx)
     },
 
