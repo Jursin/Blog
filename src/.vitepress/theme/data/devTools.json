@@ -9,14 +9,6 @@
       "name": "Visual Studio"
     },
     {
-      "icon": "devicon:pycharm",
-      "name": "PyCharm"
-    },
-    {
-      "icon": "devicon:clion",
-      "name": "CLion"
-    },
-    {
       "icon": "devicon:androidstudio",
       "name": "Android Studio"
     }

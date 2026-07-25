@@ -47,7 +47,7 @@ cover: /images/schedule-vela/banner.png
 - [安卓端同步器](https://github.com/Jursin/Schedule-Sync/releases/latest)
 
   <a href="https://www.bandbbs.cn/resources/5772/">
-    <img src="/images/schedule-vela/get-it-on-bandbbs.png" style="height:80px;">
+    <img src="/images/schedule-vela/get-it-on-bandbbs.png" style="height:60px;">
   </a>
 
 ::: important
@@ -55,11 +55,9 @@ cover: /images/schedule-vela/banner.png
 :::
 
 ### 向手环安装快应用
+[![astrobox](https://astrobox.online/goab/zhcn/black.svg)](https://astrobox.online/open?source=resv2&id=5772&provider=BandBBS)
 
-<div class="install-row">
-  <p class="install-desc">打开 <code>AstroBox-设备</code>，连接设备<br/>点击<code>安装快应用</code>，选择 <code>rpk</code> 文件<br/>点击队列-安装队列的<code>发送</code>按钮，执行安装</p>
-  <img src="/images/schedule-vela/AstroBox.png" alt="AstroBox" class="install-img">
-</div>
+[或通过**自定义表盘工具**](https://api.bandbbs.cn/wftools/bandbbs.html?code=A&state=1855993){.readmore}
 
 ### 在手机端编辑课程表并导出配置文件
 :::  tip

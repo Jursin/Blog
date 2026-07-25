@@ -5,78 +5,68 @@ tags:
   - Steam
 ---
 
-> 通过 Steam 官方接口获取游戏库列表并展示在个人网站，需要通过云函数解决 **CORS 跨域**和 **API Key 暴露**等问题。
+> 通过 Steam 官方接口获取游戏库列表并展示在个人网站，需用云函数代理解决 **CORS 跨域**和 **API Key 暴露**等问题。
 
 <!-- more -->
 
 [详情请阅读 **Steam Web API** 文档](https://partner.steamgames.com/doc/webapi_overview){.readmore}
 
-## 整体思路
+## 架构概览
 
 ```
 前端组件 → 云函数代理 → Steam API
 ```
 
-- **前端**：组件负责展示，只请求自己的云函数
-- **云函数**：持有 API Key，转发请求到 Steam，再返回结果
+- **前端**：只请求自己的云函数，不直接接触 Steam API
+- **云函数**：持有 API Key，转发请求到 Steam，返回结果给前端
 - **Steam API**：官方数据源，只接受带 Key 的服务端请求
 
-这样做的两个好处：
-1. **解决 CORS**：浏览器直接请求 `api.steampowered.com` 会被拦截，通过配置了 CORS 的云函数中转即可
-2. **隐藏 API Key**：Key 只存在于云函数中，前端代码和仓库中完全不出现
+这样做解决两个核心问题：
+1. **CORS**：浏览器直接请求 `api.steampowered.com` 会被拦截，云函数配置 CORS 头中转即可
+2. **API Key 暴露**：Key 只存在于云函数，不会出现在前端代码或仓库中
 
-## 获取 Steam Web API 用户密钥
+## 前置准备
+
+### 获取 Steam Web API 密钥
 
 1. 同意 [Steam Web API 使用条款](http://steamcommunity.com/dev/apiterms)
 2. 在 [Steam 社区注册页面](https://steamcommunity.com/dev/apikey)创建用户 Web API 密钥
 
 ::: important
-**妥善保管**密钥，不要出现在前端代码、公共仓库或浏览器网络请求中。
+需**妥善保管**密钥，不要出现在前端代码、公共仓库或浏览器网络请求中。
 :::
 
-## 获取 Steam ID
+### 获取 Steam ID
 
 两种方式任选：
 - 访问 [主页 > 帐户](https://store.steampowered.com/account/)，页面显示有 Steam ID
-- 访问个人资料页面，URL 中 `https://steamcommunity.com/profiles/xxxxx/` 的 `xxxxx` 即为 Steam ID
+- 个人资料 URL 中 `https://steamcommunity.com/profiles/xxxxx/` 的 `xxxxx` 即为 Steam ID
 
 ## 搭建云函数代理
 
-如阿里云函数计算 (FC)、腾讯云云函数 (SCF)、Cloudflare Workers、Vercel Functions、Netlify Functions 等
+使用如阿里云函数计算 (FC)、腾讯云云函数 (SCF)、Cloudflare Workers、Vercel Functions、Netlify Functions 等。
 
 ### 核心逻辑
 
-接收前端请求 → 拼接 Steam API 参数 → 转发 → 返回结果
+拼接参数并携带 Key 和 ID → 请求 Steam API → 返回结果给前端
 
 ```
-前端 GET ${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_played_free_games=true
-       ↓
-云函数拼接完整 URL：
-https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key={KEY}&steamid={ID}&include_appinfo=true&include_played_free_games=true
-       ↓
-请求 Steam API，返回 JSON 给前端
+https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${KEY}&steamid=${ID}&include_appinfo=true&include_played_free_games=true
 ```
 
-### 关键设计
+### 关键实现
 
-- **隐藏 API Key**
-
-  提前携带 Key 参数，完成认证且避免暴露
-
-- **CORS 响应头**
-
-  云函数需要返回正确的 CORS 头，否则浏览器会拦截响应：
+- **隐藏 API Key**：云函数提前携带 Key 参数完成认证，前端请求不感知 Key
+- **CORS 配置**：云函数需返回正确响应头，并对 OPTIONS 预检请求返回 204：
 
   ```
   Access-Control-Allow-Origin: https://your_domain
   Access-Control-Allow-Methods: GET, OPTIONS
   ```
 
-  对于预检请求（OPTIONS 方法），直接返回 204 空响应即可
-
 ## 前端组件
 
-组件只请求自己的云函数地址，不直接接触 Steam API：
+前端仅需请求云函数地址，附上 Steam API 参数即可。
 
 ```
 GET ${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_played_free_games=true
@@ -94,7 +84,7 @@ GET ${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_playe
 ```json
 {
   "response": {
-    "game_count": 5,
+    "game_count": 2,
     "games": [
       {
         "appid": 105600,
@@ -110,31 +100,6 @@ GET ${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_playe
         "playtime_disconnected": 2
       },
       {
-        "appid": 255710,
-        "name": "Cities: Skylines",
-        "playtime_forever": 62,
-        "img_icon_url": "6cf7b10dd29db28448ef79698ed2118a03617d63",
-        "has_community_visible_stats": true,
-        "playtime_windows_forever": 62,
-        "playtime_mac_forever": 0,
-        "playtime_linux_forever": 0,
-        "playtime_deck_forever": 0,
-        "rtime_last_played": 1754831594,
-        "playtime_disconnected": 0
-      },
-      {
-        "appid": 322330,
-        "name": "Don't Starve Together",
-        "playtime_forever": 113,
-        "img_icon_url": "a80aa6cff8eebc1cbc18c367d9ab063e1553b0ee",
-        "playtime_windows_forever": 113,
-        "playtime_mac_forever": 0,
-        "playtime_linux_forever": 0,
-        "playtime_deck_forever": 0,
-        "rtime_last_played": 1772286418,
-        "playtime_disconnected": 1
-      },
-      {
         "appid": 413150,
         "name": "Stardew Valley",
         "playtime_forever": 198,
@@ -146,27 +111,13 @@ GET ${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_playe
         "playtime_deck_forever": 0,
         "rtime_last_played": 1759891823,
         "playtime_disconnected": 5
-      },
-      {
-        "appid": 431960,
-        "name": "Wallpaper Engine",
-        "playtime_2weeks": 58,
-        "playtime_forever": 100,
-        "img_icon_url": "72edaed9d748c6cf7397ffb1c83f0b837b9ebd9d",
-        "has_community_visible_stats": true,
-        "playtime_windows_forever": 100,
-        "playtime_mac_forever": 0,
-        "playtime_linux_forever": 0,
-        "playtime_deck_forever": 0,
-        "rtime_last_played": 1779675749,
-        "playtime_disconnected": 3
       }
     ]
   }
 }
 ```
 
-#### 数据说明
+#### 数据字段说明
 
 | 字段 | 类型 | 说明 |
 |------|------|------|

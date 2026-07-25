@@ -29,6 +29,7 @@ tags:
 - [VLC media player](https://www.videolan.org/vlc/) - 一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议。
 - [PotPlayer](https://potplayer.tv/?lang=zh_CN) - 一款免费的多媒体播放器
 - [EcoPaste](https://ecopaste.cn/) - 免费、开源的跨平台剪贴板管理工具
+- [UniGetUI](https://devolutions.net/unigetui/) - 包管理器的图形界面，支持 WinGet、Scoop、Chocolatey、Homebrew、APT、DNF、Pacman、Flatpak、Snap、pip、npm、Bun、.NET Tool、PowerShell Gallery 等包管理器
 
 ## 下载工具
 - [Motrix Next](https://motrix-next.pages.dev/) - 一款功能齐全的下载管理器

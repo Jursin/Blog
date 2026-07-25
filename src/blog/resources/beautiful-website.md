@@ -16,26 +16,25 @@ tags:
 - [Tools-Web](https://tools.ranblogs.com/) - 一个轻量的在线工具箱
 - [在线工具](https://tool.lu/) - 你的工具箱
 - [菜鸟工具](https://www.jyshare.com/) - 不止于工具
-- [ESJSON在线工具](http://www.esjson.com/)
+- [ESJSON在线工具](http://www.esjson.com/) - 提供多种 JSON 在线解析校验格式化美化等工具以及各种加解密工具、编码转换、压缩格式化、文本实用工具、计算器/数学工具等等在线工具
 - [在线工具大全](https://www.lddgo.net/index)
 - [土薯工具](https://toolshu.com/) - 土薯在线工具
 - [蜻蜓工具](https://33tool.com/) - 好用免费的在线工具站
 
 ## 下载站
-- [Microsoft Store](https://store.rg-adguard.net)
-- [潇然下载站](https://dl.xrgzs.top/)
+- [Microsoft Store](https://store.rg-adguard.net) - Microsoft Store 的在线链接生成器
 - [小众软件](https://www.appinn.com/) - 分享免费、小巧、实用、有趣、绿色的软件
 - [APP 喵](https://www.appmiu.com/) - 发现互联网有趣好用的软件资源
 - [异次元软件世界](https://www.iplaysoft.com/) - 软件改变生活！
-- [Puresys纯净系统](https://www.puresys.net)
+- [Puresys纯净系统](https://www.puresys.net) - 软件下载
 - [果核剥壳](https://www.ghxi.com/) - 互联网的净土
 - [鸭先知](https://www.yxzhi.com/) - 专注分享优质软件应用、技术教程等资源！
-- [海棠网](https://www.haitangw.cc)
+- [海棠网](https://www.haitangw.cc) - 专注黑科技软件，绿色无毒互联网资源分享
 
 ## 插件＆脚本
 - [Crx 搜搜](https://www.crxsoso.com/) - 个牛X的扩展和应用商店
 - [Greasy Fork](https://greasyfork.org/zh-CN) - 知名用户脚本资源共享网站
-- [ScriptCat](https://scriptcat.org/zh-CN)
+- [ScriptCat](https://scriptcat.org/zh-CN) - 提供脚本列表
 
 ## 系统工具
 - [Ventoy](https://www.ventoy.net/cn/) - 新一代多系统启动U盘解决方案
@@ -45,19 +44,18 @@ tags:
 - [cmdpe 网络版](https://www.cmdpe.com/) - 可以上网、远程、下载的网络版PE系统
 - [FirPE](https://firpe.cn/) - 也许是最适合年轻人使用的 WinPE 系统
 - [Edgeless](https://home.edgeless.top/) - 强大而优雅的半开源 PE 工具
-- [Edgeless 网页下载站](https://zfile.edgeless.top/)
 
 ## 设计
 - [Iconify](https://icon-sets.iconify.design/) - 开源图标库
-- [Font Awesome](https://fontawesome.com/)
-- [Material Symbols & Icons - Google Fonts](https://fonts.google.com/icons)
-- [Simple Icons](https://simpleicons.org)
-- [ByteDance IconPark](https://iconpark.oceanengine.com/official) - 图标库
-- [Yesicon - 精选矢量图标库](https://yesicon.app)
-- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+- [Font Awesome](https://fontawesome.com/) -  互联网的图标库和工具包，受到数百万设计师、开发者和内容创作者的青睐
+- [Material Symbols & Icons - Google Fonts](https://fonts.google.com/icons) - 谷歌图标库
+- [Simple Icons](https://simpleicons.org) - 流行品牌的 SVG 图标
+- [ByteDance IconPark](https://iconpark.oceanengine.com/official) - 技术驱动图标样式的开源图标库
+- [Yesicon](https://yesicon.app) - 开源、免费的图标库
+- [Nerd Fonts](https://www.nerdfonts.com/#home) - 标志性字体聚合器、集合与修补工具
 - [ZeoSeven Fonts](https://fonts.zeoseven.com/) - 免费商用字体
 - [字体天下](https://www.fonts.net.cn/) - 提供各类字体的免费下载和在线预览服务
-- [喵闪字库](https://www.miao3.cn)
+- [喵闪字库](https://www.miao3.cn) - 提供中文字体的在线预览和免费下载
 
 ## 文档站框架
 - [VuePress](https://vuepress.vuejs.org/zh/) - Vue 驱动的静态网站生成器

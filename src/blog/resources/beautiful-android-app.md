@@ -5,7 +5,7 @@ tags:
   - Android
 ---
 
-> 欢迎补充~
+> 收录一些好用的安卓开源应用
 
 <!-- more -->
 
@@ -37,8 +37,8 @@ tags:
 - **[Termux](https://github.com/termux/termux-app)** - 一款十分强大的终端模拟器应用
 - **[ProxyPin](https://github.com/wanghongenpin/proxypin)** - HTTP(S) 流量捕获应用
 - **[Flutter Server Box](https://github.com/lollipopkit/flutter_server_box)** - 使用 Flutter 提供图表显示 Linux/Unix/Windows 服务器状态并进行管理
-- **[Shizuku](https://github.com/RikkaApps/Shizuku)**
-- **[Dhizuku](https://github.com/iamr0s/Dhizuku)**
+- **[Shizuku](https://github.com/RikkaApps/Shizuku)** - 让你的应用直接使用系统 API
+- **[Dhizuku](https://github.com/iamr0s/Dhizuku)** - 分享 DeviceOwner (设备所有者) 权限给其余应用
 - **[aShellYou](https://github.com/DP-Hridayan/aShellYou)** - 具有 Material Design 3 用户界面的全功能 Android Shell 应用
 
 ### 🔐 安全与密码管理

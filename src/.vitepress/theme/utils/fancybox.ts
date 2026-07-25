@@ -26,7 +26,7 @@ const findNearestHeading = (imgElement: Element) => {
 export const bindFancybox = () => {
   return nextTick(async () => {
     const { Fancybox, PanzoomAction } = await import('@fancyapps/ui'); // 采用这种导入方式是为了避免构建报错问题
-    const imgs = document.querySelectorAll('.vp-doc img');
+    const imgs = document.querySelectorAll('.vp-doc img:not(a img)');
     imgs.forEach((img) => {
       const image = img as HTMLImageElement;
       if (!image.hasAttribute('data-fancybox')) {

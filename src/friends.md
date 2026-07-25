@@ -72,12 +72,20 @@ groups:
         desc: 个人博客俱乐部
       - name: 智教联盟论坛
         link: https://forum.smart-teach.cn/
-        avatar: /icon/SmartTeach.svg
+        avatar: https://forum.smart-teach.cn/assets/favicon-v4ksoaxf.png
         desc: 全国最大的电教委交流社区
+      - name: SeewoGeek
+        link: https://wiki.misaka.space/
+        avatar: https://wiki.misaka.space/img/logo.svg
+        desc: 希沃业绩售后冲击部
       - name: Awesome-Iwb
         link: https://aiwb.smart-teach.cn/
-        avatar: /icon/Aiwb.png
+        avatar: https://aiwb.smart-teach.cn/assets/brand/aiwb-icon.webp
         desc: 为广大电教倾情撰写，让班级大屏更好用！
+      - name: CN E Learning
+        link: https://cnel.smart-teach.cn/
+        avatar: https://cnel.smart-teach.cn/logo.png
+        desc: 电教委员指南
       - name: SECTL | 思拓创联
         link: https://sectl.cn/
         avatar: https://sectl.cn/SECTL-LOGO.svg
