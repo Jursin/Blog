@@ -25,11 +25,11 @@
       </section>
     </div>
 
-    <!-- 本站友情链接 -->
+    <!-- 本站信息 -->
     <div class="vp-doc friends-info-card">
       <header class="info-title">
         <Icon name="mdi:web" />
-        <span>本站友情链接</span>
+        <span>本站信息</span>
       </header>
       <ul>
         <li>名称：<code>Jursin 的博客</code></li>
@@ -40,7 +40,7 @@
       </ul>
     </div>
 
-    <!-- Comment -->
+    <!-- 评论区 -->
     <div class="friends-comment">
       <Comment />
     </div>
@@ -59,12 +59,10 @@ export default {
   setup() {
     const { frontmatter } = useData()
 
-    const title = computed(() => frontmatter.value.title || '友情链接')
-    const description = computed(() => frontmatter.value.description || '')
     const groups = computed(() => frontmatter.value.groups || [])
     const list = computed(() => frontmatter.value.list || [])
 
-    return { title, description, groups, list }
+    return { groups, list }
   }
 }
 </script>

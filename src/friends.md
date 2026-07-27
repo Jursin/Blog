@@ -46,7 +46,7 @@ groups:
         desc: 热爱探索的前端开发者，正在不断学习与成长
       - name: 孙悟元
         link: https://wuyuan.dev/
-        avatar: https://wuyuan.dev/assets/avatar-BmmkW_Ps.png
+        avatar: https://wuyuan.dev/media/avatar.png
         desc: 今年欢笑复明年，秋月春风等闲度
       - name: AzureMioの小窝
         link: https://blog.azuremio.com/

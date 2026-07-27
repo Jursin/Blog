@@ -5,18 +5,18 @@
 ## 安装
 
 ```sh
-pnpm i
+pnpm install
 ```
 
 ## 使用
 
 ```sh
-# 启动开发服务
-pnpm dev
-# 构建生产包
-pnpm build
-# 本地预览生产服务
-pnpm preview
+# 启动开发服务器
+pnpm run dev
+# 构建生产环境站点
+pnpm run build
+# 本地预览生产版本
+pnpm run preview
 ```
 
 ## 扩展功能

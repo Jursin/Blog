@@ -22,7 +22,7 @@
             loading="lazy"
           />
           <div v-if="game.achievements" class="achievement-badge">
-            <Icon name="octicon:check-circle-16" size="0.75em" />
+            <Icon name="lucide:badge-check" />
             {{ game.achievements.unlocked }}/{{ game.achievements.total }}
           </div>
         </div>
@@ -60,6 +60,22 @@ import { ref, computed, onMounted } from 'vue'
 
 const PROXY = import.meta.env.VITE_STEAM_PROXY
 
+const CACHE_TTL = 5 * 60 * 1000 // 5 分钟
+
+function loadCache(key) {
+  try {
+    const raw = localStorage.getItem(key)
+    if (!raw) return null
+    const { d, t } = JSON.parse(raw)
+    return Date.now() - t < CACHE_TTL ? d : null
+  } catch { return null }
+}
+
+function saveCache(key, data) {
+  try { localStorage.setItem(key, JSON.stringify({ d: data, t: Date.now() })) }
+  catch { /* ignore */ }
+}
+
 const games = ref([])
 const loading = ref(true)
 const error = ref(false)
@@ -69,25 +85,25 @@ const sortedGames = computed(() =>
 )
 
 async function fetchAchievements() {
-  const tasks = games.value.filter((game) => game.has_community_visible_stats)
-  const CONCURRENCY = 5
-  for (let i = 0; i < tasks.length; i += CONCURRENCY) {
-    const batch = tasks.slice(i, i + CONCURRENCY)
-    await Promise.allSettled(batch.map(async (game) => {
+  await Promise.allSettled(
+    games.value.map(async (game) => {
+      const cached = loadCache('ach_' + game.appid)
+      if (cached) { game.achievements = cached; return }
+
+      const url = `${PROXY}/ISteamUserStats/GetPlayerAchievements/v1/?appid=${game.appid}`
       try {
-        const url = `${PROXY}/ISteamUserStats/GetPlayerAchievements/v1/?appid=${game.appid}`
         const data = await fetchSteamApi(url)
         const stats = data.playerstats
-        if (stats && stats.success && stats.achievements) {
+        if (stats?.success && stats.achievements) {
           const total = stats.achievements.length
           const unlocked = stats.achievements.filter((a) => a.achieved === 1).length
-          game.achievements = { total, unlocked }
+          const ach = { total, unlocked }
+          game.achievements = ach
+          saveCache('ach_' + game.appid, ach)
         }
-      } catch {
-        // 部分游戏无成就数据，静默跳过
-      }
-    }))
-  }
+      } catch { /* 无成就数据 */ }
+    })
+  )
 }
 
 function formatPlaytime(minutes) {
@@ -132,17 +148,37 @@ async function fetchSteamApi(url, retries = 2) {
   }
 }
 
+async function loadGames() {
+  const url = `${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_played_free_games=true`
+  const data = await fetchSteamApi(url)
+  const gamesList = data.response.games || []
+
+  // 保留已有成就数据，避免刷新时成就闪烁消失
+  const achMap = {}
+  games.value.forEach((g) => { if (g.achievements) achMap[g.appid] = g.achievements })
+  gamesList.forEach((g) => { if (achMap[g.appid]) g.achievements = achMap[g.appid] })
+
+  games.value = gamesList
+  saveCache('games', gamesList)
+  fetchAchievements()
+}
+
 onMounted(async () => {
-  try {
-    const url = `${PROXY}/IPlayerService/GetOwnedGames/v1/?include_appinfo=true&include_played_free_games=true`
-    const data = await fetchSteamApi(url)
-    const gamesList = data.response.games || []
-    games.value = gamesList
-    fetchAchievements()
-  } catch {
-    error.value = true
-  } finally {
+  const cached = loadCache('games')
+  if (cached?.length) {
+    games.value = cached
     loading.value = false
+    // 立即用缓存数据拉取成就，不依赖 loadGames 是否成功
+    fetchAchievements()
+    loadGames().catch(() => {})
+  } else {
+    try {
+      await loadGames()
+    } catch {
+      error.value = true
+    } finally {
+      loading.value = false
+    }
   }
 })
 </script>

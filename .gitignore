@@ -3,6 +3,7 @@ src/.vitepress/cache/
 src/.vitepress/dist/
 
 .env
+api-proxy.js*
 
 .claude/
 CLAUDE.md
