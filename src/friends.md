@@ -29,7 +29,7 @@ groups:
         avatar: https://www.lxhtt.cn/img/avatar.webp
         desc: 活着就是为了改变世界
       - name: HelloWRC
-        link: https://hellowrc.dev/
+        link: https://blogs.hellowrc.dev/
         avatar: https://blogs.hellowrc.dev/avatar.png
         desc: 一个高中在读学生，ClassIsland 开发者
       - name: 黎泽懿
