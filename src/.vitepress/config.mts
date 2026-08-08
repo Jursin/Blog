@@ -11,6 +11,7 @@ import { markPlugin } from './theme/plugins/mark'
 import { plotPlugin } from './theme/plugins/plot'
 import { supPlugin, subPlugin } from './theme/plugins/super-sub'
 import { autoTitlePlugin } from './theme/plugins/auto-title'
+import { textImagePlugin } from './theme/plugins/text-image'
 import zh from './theme/translations/zh'
 import siteConfig from './theme/config'
 const currentYear = new Date().getFullYear()
@@ -108,6 +109,7 @@ export default defineConfig({
         md.use(supPlugin)
         md.use(subPlugin)
         md.use(autoTitlePlugin)
+        md.use(textImagePlugin)
         md.use(taskLists, { label: true });
         // 注册 VitePress 未内置的容器
         (['note', 'important', 'caution'] as const).forEach((type) => {

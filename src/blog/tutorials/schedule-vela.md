@@ -7,16 +7,16 @@ tags:
 cover: /images/schedule-vela/banner.png
 ---
 
-> 我在 AI 辅助下开发了一个适用于 Vela 设备的==课程表快应用==，欢迎 ==Star 🌟==
+> 我在 AI 辅助下开发了一款适用于 Xiaomi Vela OS 操作系统的==课程表快应用==，欢迎 ==Star 🌟==
 
 <!-- more -->
 
 ![banner](/images/schedule-vela/banner.png)
 
-<div class="github-cards-grid">
+<CardGrid>
   <GitHubCard repo="Jursin/Schedule-Vela" />
   <GitHubCard repo="Jursin/Schedule-Sync" />
-</div>
+</CardGrid>
 
 ## 特点
 - [X] 以卡片形式显示每日课程及详细信息
@@ -79,45 +79,21 @@ cover: /images/schedule-vela/banner.png
     后缀为 `wakeup_schedule`
     :::
 
-    <img src="/images/schedule-vela/WakeUp课程表导出.png" class="wakeup-export" width="50%">
+    <img src="/images/schedule-vela/WakeUp课程表导出.png" alt="WakeUp课程表导出.png" class="wakeup-export" width="50%">
 - [CSES](https://cloud.smart-teach.cn/)
 
 ### 在手机端传递配置文件
 
-<div class="install-row">
-  <p class="install-desc">先确保<code>小米运动健康</code>已连接到穿戴设备<br/>打开<code>腕上课程表同步器</code>，会自动连接穿戴设备并打开快应用<br/>点击<code>选择配置文件</code>按钮选择 <code>json</code>/<code>wakeup_schedule</code> 文件<br/>点击<code>确认导入</code>按钮，手环端会提示导入成功</p>
-  <img src="/images/schedule-vela/Schedule-Sync.png" alt="Schedule-Sync" class="install-img">
-</div>
+::: text-image
+@text
+- 先确保`小米运动健康`已连接到穿戴设备
+- 打开`腕上课程表同步器`，会自动连接穿戴设备并打开快应用
+- 点击`选择配置文件`按钮选择 `json`/`wakeup_schedule` 文件
+- 点击`确认导入`按钮，手环端会提示导入成功
+@image src="/images/schedule-vela/Schedule-Sync.png"
+:::
 
 <style>
-.github-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-@media (max-width: 768px) {
-  .github-cards-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.install-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin: 0 35px;
-}
-
-.install-desc {
-  margin: 0;
-}
-
-.install-img {
-  width: 50%;
-}
-
 @media screen and (max-width: 768px) {
   .wakeup-export {
     width: 100%;

@@ -66,13 +66,13 @@
       <Icon name="octicon:repo-16" size="20px" color="var(--vp-c-brand-1)" />
       开源项目
     </h3>
-    <div class="github-cards-grid">
+    <CardGrid>
       <GitHubCard
         v-for="(project, index) in projectsData.projects"
         :key="'project-' + index"
         :repo="project.repo"
       />
-    </div>
+    </CardGrid>
   </div>
 </template>
 
@@ -171,17 +171,5 @@ const cloudPlatformsData = cloudPlatformsRaw as { cloudPlatforms: SkillItem[] }
 
 .contribution-section {
   min-width: 0;
-}
-
-.github-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-@media (max-width: 768px) {
-  .github-cards-grid {
-    grid-template-columns: 1fr;
-  }
 }
 </style>

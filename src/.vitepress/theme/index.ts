@@ -11,6 +11,7 @@ import Layout from './components/Layout.vue'
 import ArticleMeta from "./components/ArticleMeta.vue"
 import Icon from './components/Icon.vue'
 import GitHubCard from './components/GitHubCard.vue'
+import CardGrid from './components/CardGrid.vue'
 import Bilibili from './components/Bilibili.vue'
 import Home from './components/pages/Home.vue'
 import Archives from './components/pages/Archives.vue'
@@ -28,6 +29,7 @@ import './styles/mark.css'
 import './styles/plot.css'
 import './styles/code.css'
 import './styles/task-list.css'
+import './styles/text-image.css'
 import 'virtual:group-icons.css'
 import '@nolebase/vitepress-plugin-git-changelog/client/style.css'
 
@@ -42,6 +44,7 @@ export default {
     app.component('Icon' , Icon)
     app.component('Bilibili' , Bilibili)
     app.component('GitHubCard' , GitHubCard)
+    app.component('CardGrid' , CardGrid)
     app.component('Home', Home)
     app.component('Archives', Archives)
     app.component('Skills', Skills)
