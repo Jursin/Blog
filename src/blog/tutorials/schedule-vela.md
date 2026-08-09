@@ -18,14 +18,17 @@ cover: /images/schedule-vela/banner.png
   <GitHubCard repo="Jursin/Schedule-Sync" />
 </CardGrid>
 
-## 特点
+## 功能特性
 - [X] 以卡片形式显示每日课程及详细信息
+- [X] 用主题色高亮正在进行的课程卡片
 - [X] 每日课程分时间段显示
 - [X] 可自由切换显示上/下一天课程
 - [X] 点击课程卡片进入全屏显示
 - [X] 显示上/下课倒计时和进度条
-
-> 目前支持导入[拾光课程表](https://sgschedule.jursin.top/)、[WakeUp 课程表](https://www.wakeup.fun/)和 [CSES](https://cloud.smart-teach.cn/) 的配置文件
+- [X] 上课时详情页显示下一节课课程和教室
+- [X] 支持隐藏授课老师、首页文本居中等偏好
+- [X] 支持多种预设主题色
+- [X] 支持导入[拾光课程表](https://sgschedule.jursin.top/)、[WakeUp 课程表](https://www.wakeup.fun/)和 [CSES](https://cloud.smart-teach.cn/) 的配置文件
 
 ## 预览图
 ### Xiaomi-Band
@@ -57,7 +60,7 @@ cover: /images/schedule-vela/banner.png
 ### 向手环安装快应用
 [![astrobox](https://astrobox.online/goab/zhcn/black.svg)](https://astrobox.online/open?source=resv2&id=5772&provider=BandBBS)
 
-[或通过**自定义表盘工具**](https://api.bandbbs.cn/wftools/bandbbs.html?code=A&state=1855993){.readmore}
+[![自定义表盘工具](https://img.shields.io/badge/%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E7%9B%98%E5%B7%A5%E5%85%B7%E8%8E%B7%E5%8F%96-black?style=for-the-badge)](https://api.bandbbs.cn/wftools/bandbbs.html?code=A&state=1855993)
 
 ### 在手机端编辑课程表并导出配置文件
 :::  tip
@@ -92,6 +95,19 @@ cover: /images/schedule-vela/banner.png
 - 点击`确认导入`按钮，手环端会提示导入成功
 @image src="/images/schedule-vela/Schedule-Sync.png"
 :::
+
+## 常见问题
+### 为什么没有编辑课表功能？
+穿戴设备屏幕小，不方便操作，且手机端编辑好后导入更高效，所以短期内不考虑实现。
+
+### 为什么应用不能放在首页小组件页面？
+官方没开放实现方式，我也没办法。
+
+### 手机端同步器能不能添加编辑课表功能？
+没必要。可以在 WakeUp课程表、拾光课程表、CSES Cloud 编辑好课表后导入，重复造轮子无意义。
+
+### 可以适配小爱课程表导入吗？
+暂不考虑。现在小爱课程表难以打开，且没有导出配置文件的功能。手动适配难度大、收益低，如果一定要使用建议直接使用相关衍生项目。
 
 <style>
 @media screen and (max-width: 768px) {

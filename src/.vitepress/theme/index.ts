@@ -7,6 +7,7 @@ import { NolebaseGitChangelogPlugin } from '@nolebase/vitepress-plugin-git-chang
 import { bindFancybox, destroyFancybox } from './utils/fancybox';
 import { useMark } from './composables/useMark';
 import { useOutlineScroll } from './composables/useOutlineScroll';
+import { useActiveHeaderLinks } from './composables/useActiveHeaderLinks';
 import Layout from './components/Layout.vue'
 import ArticleMeta from "./components/ArticleMeta.vue"
 import Icon from './components/Icon.vue'
@@ -35,6 +36,7 @@ import '@nolebase/vitepress-plugin-git-changelog/client/style.css'
 
 let mark: ReturnType<typeof useMark> | undefined
 let outlineScroll: ReturnType<typeof useOutlineScroll> | undefined
+let activeHeaderLinks: ReturnType<typeof useActiveHeaderLinks> | undefined
 
 export default {
   extends: DefaultTheme,
@@ -69,12 +71,14 @@ export default {
       mark = useMark();
       mark?.bind();
       outlineScroll = useOutlineScroll();
+      activeHeaderLinks = useActiveHeaderLinks();
       bindFancybox().catch(() => {});
     });
     onUnmounted(() => {
       destroyFancybox().catch(() => {});
       mark?.destroy();
       outlineScroll?.destroy();
+      activeHeaderLinks?.destroy();
     });
   }
 } satisfies Theme
