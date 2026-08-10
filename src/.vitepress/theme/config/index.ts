@@ -50,7 +50,6 @@ const breadcrumbPathMap: BreadcrumbPathMap =
 
 const socialLinks: SocialLinkItem[] = [
 	{ icon: 'mdi:github', url: 'https://github.com/Jursin', label: 'GitHub', size: '1.25em' },
-	{ icon: 'simple-icons:afdian', url: 'https://ifdian.net/a/jursin', label: '爱发电', color: '#946ce6', size: '1.25em' },
 	{ icon: 'mdi:email-outline', url: 'mailto:jursin@126.com', label: '邮箱', color: '#177F41', size: '1.25em' },
 	{ icon: 'mingcute:bilibili-line', url: 'https://space.bilibili.com/1575907920', label: 'bilibili', color: '#F9709A', size: '1.25em' },
 	{ icon: 'logos:tiktok-icon', url: 'https://www.douyin.com/user/MS4wLjABAAAAQGQcpmhfTWT-dnMkBX1Dtdw4mqk-WUPiz1Stbb5nn7Q', label: '抖音', size: '1em' },

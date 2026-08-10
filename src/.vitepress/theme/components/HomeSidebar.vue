@@ -3,6 +3,7 @@ import { withBase, useData } from 'vitepress'
 import type { GroupData } from '../utils/group'
 import siteConfig from '../config'
 import { getCategoryDisplay } from '../utils/functions'
+import ChargeCard from './ChargeCard.vue'
 
 const { theme, site } = useData()
 
@@ -61,6 +62,9 @@ const toggleTag = (tag: string) => {
         </a>
       </div>
     </div>
+
+    <!-- 发电赞助 -->
+    <ChargeCard url="https://ifdian.net/a/jursin" />
 
     <!-- 网站数据 -->
     <div class="info-card stat-card">
@@ -122,7 +126,7 @@ const toggleTag = (tag: string) => {
 .info-panel {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .info-card {
@@ -173,7 +177,7 @@ const toggleTag = (tag: string) => {
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
   max-width: 95%;
   margin: 0 auto;
