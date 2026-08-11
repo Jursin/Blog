@@ -32,7 +32,7 @@ tags:
 - [海棠网](https://www.haitangw.cc) - 专注黑科技软件，绿色无毒互联网资源分享
 
 ## 插件＆脚本
-- [Crx 搜搜](https://www.crxsoso.com/) - 个牛X的扩展和应用商店
+- [Crx 搜搜](https://www.crxsoso.com/) - 一个牛X的扩展和应用商店
 - [Greasy Fork](https://greasyfork.org/zh-CN) - 知名用户脚本资源共享网站
 - [ScriptCat](https://scriptcat.org/zh-CN) - 提供脚本列表
 

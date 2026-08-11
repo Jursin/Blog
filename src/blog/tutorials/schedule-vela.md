@@ -49,7 +49,7 @@ cover: /images/schedule-vela/banner.png
 [![自定义表盘工具](https://img.shields.io/badge/%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E7%9B%98%E5%B7%A5%E5%85%B7%E8%8E%B7%E5%8F%96-black?style=for-the-badge)](https://api.bandbbs.cn/wftools/bandbbs.html?code=A&state=1855993)
 
 ### 在手机端编辑课程表并导出配置文件
-:::  tip
+::: tip
 根据文档在对应应用添加课程表或从教务系统导入再导出课表配置文件
 :::
 
@@ -85,7 +85,7 @@ cover: /images/schedule-vela/banner.png
 #### 通过 AstroBox 插件
 - 在 AstroBox 插件市场搜索**腕上课程表同步器**
 - 安装插件后打开
-- 操作流程与同步器 APP 类似，提示需要权限使允许即可
+- 操作流程与同步器 APP 类似，提示需要权限时允许即可
 
 ## 常见问题
 ### 为什么没有编辑课表功能？

@@ -80,7 +80,7 @@ lang: zh-CN
 
 更多信息，参见 [frontmatter](https://vitepress.dev/zh/reference/frontmatter-config)。
 
-## Github风格的表格
+## GitHub 风格的表格
 
 **输入：**
 
