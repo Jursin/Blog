@@ -3,7 +3,7 @@ title: 【手环快应用】腕上课程表
 createTime: 2026/03/22 16:36:47
 tags:
     - 小米
-    - Vela 穿戴设备
+    - Vela 快应用
 cover: /images/schedule-vela/banner.png
 ---
 
