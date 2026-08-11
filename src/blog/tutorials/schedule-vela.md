@@ -13,10 +13,7 @@ cover: /images/schedule-vela/banner.png
 
 ![banner](/images/schedule-vela/banner.png)
 
-<CardGrid>
-  <GitHubCard repo="Jursin/Schedule-Vela" />
-  <GitHubCard repo="Jursin/Schedule-Sync" />
-</CardGrid>
+<GitHubCard repo="Jursin/Schedule-Vela" />
 
 ## 功能特性
 - [X] 以卡片形式显示每日课程及详细信息
@@ -28,7 +25,7 @@ cover: /images/schedule-vela/banner.png
 - [X] 上课时详情页显示下一节课课程和教室
 - [X] 支持隐藏授课老师、首页文本居中等偏好
 - [X] 支持多种预设主题色
-- [X] 支持导入[拾光课程表](https://sgschedule.jursin.top/)、[WakeUp 课程表](https://www.wakeup.fun/)和 [CSES](https://cloud.smart-teach.cn/) 的配置文件
+- [X] 支持导入[拾光课程表](https://sgschedule.jursin.top/)、[WakeUp课程表](https://www.wakeup.fun/)和 [CSES](https://cloud.smart-teach.cn/) 的配置文件
 
 ## 预览图
 ### Xiaomi-Band
@@ -42,23 +39,12 @@ cover: /images/schedule-vela/banner.png
 
 ## 开始使用
 ### 准备
-- [AstroBox 客户端](https://astrobox.online/downloads)
-  ::: tip
-  如果 AstroBox 不支持你的穿戴设备，可以使用[表盘自定义工具](https://www.bandbbs.cn/threads/9797/)
-  :::
-- [手环端 `rpk` 文件](https://github.com/Jursin/Schedule-Vela/releases/latest)
-- [安卓端同步器](https://github.com/Jursin/Schedule-Sync/releases/latest)
-
-  <a href="https://www.bandbbs.cn/resources/5772/">
-    <img src="/images/schedule-vela/get-it-on-bandbbs.png" style="height:60px;">
-  </a>
-
-::: important
-本手环端快应用根据[Xiaomi Vela JS 应用开发文档](https://iot.mi.com/vela/quickapp/)开发，理论上支持小米 Vela 穿戴设备
-:::
+- [AstroBox 客户端](https://astrobox.online/downloads) <Badge text="推荐" />
+- [表盘自定义工具](https://www.bandbbs.cn/threads/9797/)*（如果 AstroBox 不支持你的穿戴设备，可以使用这个）*
+- [同步器APP](https://gh.dpik.top/https://github.com/Jursin/Schedule-Sync/releases/latest/download/app-release.apk)*（如果不能使用 AstroBox 插件可以用这个）*
 
 ### 向手环安装快应用
-[![astrobox](https://astrobox.online/goab/zhcn/black.svg)](https://astrobox.online/open?source=resv2&id=5772&provider=BandBBS)
+[![astrobox](https://astrobox.online/goab/zhcn/black.svg)](https://astrobox.online/open?source=resv2&id=com.schedule.vela&provider=OfficialV2)
 
 [![自定义表盘工具](https://img.shields.io/badge/%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E7%9B%98%E5%B7%A5%E5%85%B7%E8%8E%B7%E5%8F%96-black?style=for-the-badge)](https://api.bandbbs.cn/wftools/bandbbs.html?code=A&state=1855993)
 
@@ -86,7 +72,7 @@ cover: /images/schedule-vela/banner.png
 - [CSES](https://cloud.smart-teach.cn/)
 
 ### 在手机端传递配置文件
-
+#### 通过同步器 APP
 ::: text-image
 @text
 - 先确保`小米运动健康`已连接到穿戴设备
@@ -95,6 +81,11 @@ cover: /images/schedule-vela/banner.png
 - 点击`确认导入`按钮，手环端会提示导入成功
 @image src="/images/schedule-vela/Schedule-Sync.png"
 :::
+
+#### 通过 AstroBox 插件
+- 在 AstroBox 插件市场搜索**腕上课程表同步器**
+- 安装插件后打开
+- 操作流程与同步器 APP 类似，提示需要权限使允许即可
 
 ## 常见问题
 ### 为什么没有编辑课表功能？
@@ -108,6 +99,10 @@ cover: /images/schedule-vela/banner.png
 
 ### 可以适配小爱课程表导入吗？
 暂不考虑。现在小爱课程表难以打开，且没有导出配置文件的功能。手动适配难度大、收益低，如果一定要使用建议直接使用相关衍生项目。
+
+### 可不可以适配其它设备？
+本快应用根据Xiaomi Vela JS 应用开发文档开发，理论上支持文档提到的[小米 Vela 穿戴设备](https://iot.mi.com/vela/quickapp/zh/guide/multi-screens/)。但因为我只有小米手环 9，所以除了这个设备屏幕适配较好外，其它设备屏幕适配可能不太好，但仍可以尝试安装。
+
 
 <style>
 @media screen and (max-width: 768px) {
