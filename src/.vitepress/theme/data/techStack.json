@@ -25,6 +25,10 @@
       "name": "Vue"
     },
     {
+      "icon": "devicon:tauri",
+      "name": "Tauri"
+    },
+    {
       "icon": "devicon:nodejs",
       "name": "Node.js"
     },
@@ -39,6 +43,10 @@
     {
       "icon": "devicon:cplusplus",
       "name": "C++"
+    },
+    {
+      "icon": "devicon:rust",
+      "name": "Rust"
     },
     {
       "icon": "devicon:kotlin",

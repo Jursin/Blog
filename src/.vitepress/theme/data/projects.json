@@ -1,9 +1,9 @@
 {
   "projects": [
     { "repo": "Jursin/Blog" },
-    { "repo": "Jursin/Schedule-Vela" },   
+    { "repo": "Jursin/Schedule-Vela" },
+    { "repo": "Jursin/lanzou-next" },
     { "repo": "Jursin/TrafficMonitorPlugin_AIBalance" },
-    { "repo": "Jursin/plasmoid-ai-balance" }, 
     { "repo": "Jursin/student-info-system" },
     { "repo": "Jursin/Awesome-Class-Softwares" }
   ]
