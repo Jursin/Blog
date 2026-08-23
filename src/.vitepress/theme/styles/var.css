@@ -46,6 +46,16 @@
 /* 使图片同行排列 */
 .vp-doc img {
   display: inline-block !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* 连续图片自动间距 */
+.vp-doc img + img,
+.vp-doc a:has(> img) + img,
+.vp-doc img + a:has(> img),
+.vp-doc a:has(> img) + a:has(> img) {
+  margin-left: 6px;
 }
 
 /* 外部链接图标 */
