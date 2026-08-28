@@ -212,11 +212,6 @@ onMounted(async () => {
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
-.contribution-graph:hover {
-  border-color: var(--vp-c-brand-2);
-  box-shadow: var(--vp-shadow-2);
-}
-
 .graph-header {
   display: flex;
   align-items: center;

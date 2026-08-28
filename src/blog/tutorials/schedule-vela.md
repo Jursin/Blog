@@ -25,7 +25,7 @@ cover: /images/schedule-vela/banner.png
 - [X] 上课时详情页显示下一节课课程和教室
 - [X] 支持首页文本居中、地点前添加@、隐藏授课老师等偏好
 - [X] 支持多种预设主题色
-- [X] 支持导入[拾光课程表](https://sgschedule.jursin.top/)、[WakeUp课程表](https://www.wakeup.fun/)、星链课表和 [CSES](https://cloud.smart-teach.cn/) 的配置文件
+- [X] 支持导入[拾光课程表](https://sgschedule.jursin.top/)、[WakeUp课程表](https://www.wakeup.fun/)、[星链课表](https://pd.qq.com/g/pd81186469)和 [CSES](https://cloud.smart-teach.cn/) 的配置文件
 
 ## 预览图
 ### Xiaomi-Band
@@ -69,6 +69,11 @@ cover: /images/schedule-vela/banner.png
     :::
 
     <img src="/images/schedule-vela/WakeUp课程表导出.png" alt="WakeUp课程表导出.png" class="wakeup-export" width="50%">
+- 星链课表
+
+  ::: important
+  需要分别导出**课表文件**和**时间表文件**
+  :::
 - [CSES](https://cloud.smart-teach.cn/)
 
 ### 在手机端传递配置文件
@@ -76,6 +81,10 @@ cover: /images/schedule-vela/banner.png
 - 在 AstroBox 插件市场搜索**腕上课程表同步器**
 - 安装插件后打开
 - 操作流程与同步器 APP 类似，提示需要权限时允许即可
+
+::: important
+**星链课表**需要先选择**课表文件**再在二次弹出的文件选择器中选择**时间表文件**
+:::
 
 #### 通过同步器 APP
 ::: text-image
